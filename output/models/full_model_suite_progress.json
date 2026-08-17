@@ -1,0 +1,31 @@
+{
+  "stage": "uniform_out_of_sample_scoring_complete",
+  "models_attempted": [
+    "OUF",
+    "ThresholdOU_Heteroskedastic",
+    "MOUF",
+    "CIR_Price",
+    "MCIR",
+    "AffineTransformedOU",
+    "AffineTransformedCIR",
+    "ExponentialTransformedOU",
+    "QuadraticTransformedCIR",
+    "ExponentialTransformedCIR",
+    "SeasonalIntensityMOU",
+    "JumpOU",
+    "FullyTimeVaryingMarginalCopula",
+    "NestedOU",
+    "MarkovSwitchingOU",
+    "RandomWalk"
+  ],
+  "completed_copula_families": [
+    "Clayton",
+    "Frank",
+    "Gaussian",
+    "Gumbel",
+    "StudentT",
+    "SurvivalClayton",
+    "SurvivalGumbel"
+  ],
+  "score_rows": 1128
+}

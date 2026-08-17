@@ -1,0 +1,2 @@
+sample,training_rows,test_rows,test_mapping_source,test_u_min,test_u_max,test_reranked
+baseline,314759,104923,training_2021_2023_empirical_CDF,0.0021842107771342517,0.9985274448069793,False

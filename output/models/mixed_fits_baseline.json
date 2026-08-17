@@ -1,0 +1,140 @@
+[
+  {
+    "model_name": "MOU0",
+    "params": {
+      "theta": 0.0,
+      "kappa": 0.024078261155279248,
+      "sigma": 0.0009634711497955868,
+      "lambda": 1.8813856503131121
+    },
+    "loglik": 4351515.340115358,
+    "nobs": 524610,
+    "aic": -8703024.680230716,
+    "bic": -8702991.168999491,
+    "converged": true,
+    "optimizer_message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH",
+    "gradient_norm": 7.536443847484639e-07,
+    "hessian_condition": 560.262512917018,
+    "covariance": [
+      [
+        0.0005759127846684931,
+        7.004786871009071e-07,
+        1.961335384346214e-06
+      ],
+      [
+        7.004786871009097e-07,
+        1.0440879123031991e-06,
+        -2.210597887068721e-06
+      ],
+      [
+        1.961335384346241e-06,
+        -2.210597887068722e-06,
+        0.00032170482623402626
+      ]
+    ],
+    "robust_covariance": null,
+    "start_values": {
+      "theta": 0.0,
+      "kappa": 1.6793675367360021,
+      "sigma": 0.0013551207295999796,
+      "lambda": 0.0001
+    },
+    "metadata": {
+      "base_half_life_minutes": 41453.65537691567,
+      "effective_half_life_minutes": 523.8262105090929,
+      "daily_reset_probability": 0.8476211843500276,
+      "repeated_best_solutions": 12,
+      "boundary_hit": false,
+      "weak_identification": false
+    }
+  },
+  {
+    "model_name": "MOUF",
+    "params": {
+      "theta": 0.0007247597684910645,
+      "kappa": 0.024835057812351864,
+      "sigma": 0.0009633663515152837,
+      "lambda": 1.8863245500743775
+    },
+    "loglik": 4351562.036142891,
+    "nobs": 524610,
+    "aic": -8703116.072285783,
+    "bic": -8703071.39064415,
+    "converged": true,
+    "optimizer_message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH",
+    "gradient_norm": 1.3053503640027926e-06,
+    "hessian_condition": 167773.6514778487,
+    "covariance": [
+      [
+        4.2855052271357975e-08,
+        8.254030493061526e-06,
+        3.1621566335718435e-09,
+        -3.4236591949976557e-07
+      ],
+      [
+        8.254030493061526e-06,
+        0.002717023669974831,
+        -1.2527483293829234e-06,
+        0.00018149036465970852
+      ],
+      [
+        3.16215663357185e-09,
+        -1.2527483293829268e-06,
+        1.0335913541848238e-06,
+        3.893713210403455e-06
+      ],
+      [
+        -3.42365919499766e-07,
+        0.00018149036465970865,
+        3.893713210403457e-06,
+        0.000614748111775489
+      ]
+    ],
+    "robust_covariance": null,
+    "start_values": {
+      "theta": 6.645310882805937e-05,
+      "kappa": 1.6932405042087457,
+      "sigma": 0.0013551371515619851,
+      "lambda": 0.0001
+    },
+    "metadata": {
+      "base_half_life_minutes": 40190.44157448647,
+      "effective_half_life_minutes": 522.2650875873254,
+      "daily_reset_probability": 0.8483719126343656,
+      "repeated_best_solutions": 12,
+      "boundary_hit": false,
+      "weak_identification": false
+    }
+  },
+  {
+    "model_name": "MCIR",
+    "params": {
+      "theta": 1.0000989581702744,
+      "kappa": 1.9371513287575681,
+      "sigma": 0.001274113245701976,
+      "lambda": 0.9239042994379066
+    },
+    "loglik": 4291486.674615513,
+    "nobs": 524610,
+    "aic": -8582965.349231025,
+    "bic": -8582920.667589393,
+    "converged": true,
+    "optimizer_message": "Solution found.",
+    "gradient_norm": NaN,
+    "hessian_condition": null,
+    "covariance": null,
+    "robust_covariance": null,
+    "start_values": {
+      "theta": 1.0000989581702744,
+      "kappa": 1.9371513287575681,
+      "sigma": 0.001274113245701976,
+      "lambda": 1.0
+    },
+    "metadata": {
+      "base_parameters_fixed": true,
+      "estimation_nobs": 100000,
+      "effective_half_life_minutes": 348.8684142208948,
+      "weak_identification": true
+    }
+  }
+]

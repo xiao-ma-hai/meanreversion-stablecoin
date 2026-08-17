@@ -1,0 +1,76 @@
+project:
+  random_seed: 20260806
+  timezone: UTC
+  time_unit: day
+  empirical_profile: final
+
+data:
+  raw_csv: data/raw/USDTUSD_5.csv
+  expected_sha256: 417ea3aa71f86c4476c30568f251f3f873ae8b0d44c5f480f5ad2f35fc6acc22
+  columns: [timestamp, open, high, low, close, volume, trades]
+  bar_seconds: 300
+  baseline_start: "2021-01-01T00:00:00Z"
+  baseline_end: "2025-12-31T23:55:00Z"
+  extended_start: "2020-01-01T00:00:00Z"
+  full_start: "2017-03-29T17:05:00Z"
+  hard_anomaly_timestamps: [1557591900, 1568645400, 1568645700]
+  long_gap_minutes: 360
+
+variables:
+  primary_price: close
+  primary_state: log_price
+  anchor_price: 1.0
+
+estimation:
+  exact_pair_seconds: 300
+  horizons_minutes: [5, 10, 30, 60, 120, 360]
+  optimizer: L-BFGS-B
+  multistart: 12
+  gradient_tolerance: 1.0e-6
+  bootstrap_replications_mvp: 200
+  bootstrap_replications_final: 1000
+  lr_bootstrap_replications: 200
+  lr_bootstrap_nobs: 25000
+  block_lengths_bars: [288, 864, 2016]
+  copula_max_pairs_per_horizon: 150000
+  nonparametric_max_pairs: 200000
+
+article_extension:
+  matched_lr_bootstrap_replications: 500
+  matched_lr_pairs: 25000
+  matched_lr_multistart: 4
+  matched_lr_parallel_jobs: 4
+  two_scale_copula_max_pairs_per_horizon: 100000
+
+full_model_suite:
+  enabled: true
+  estimation_pairs: 60000
+  evaluation_pairs_per_period_horizon: 40000
+  multistart: 6
+  primary_ranking_horizon_minutes: 5
+  horizons_minutes: [5, 60, 360, 1440]
+  copula_families: [Gaussian, StudentT, Frank, Clayton, SurvivalClayton, Gumbel, SurvivalGumbel]
+  marginal_families: [Normal, StudentT, SkewStudentT, GED, MonotoneSpline]
+  fit_mixed_variant_for_each_copula: true
+  identification_hessian_condition_max: 1.0e12
+  repeated_best_solutions_min: 2
+  support_violation_tolerance: 0.0
+  monotonicity_grid_points: 401
+  selection_metric: validation_mean_log_score
+  validation_period: validation_2024
+  test_period: test_2025
+  test_is_post_extension_exploratory: true
+
+forecast:
+  train_end: "2023-12-31T23:55:00Z"
+  validation_end: "2024-12-31T23:55:00Z"
+  test_end: "2025-12-31T23:55:00Z"
+  horizons_minutes: [5, 60, 360, 1440]
+  refit_frequency_days: 30
+  rolling_window_days: 365
+
+output:
+  tables: output/tables
+  figures: output/figures
+  models: output/models
+  logs: output/logs

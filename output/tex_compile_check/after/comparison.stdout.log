@@ -1,0 +1,1550 @@
+note: generating format "latex"
+(texput (tectonic-format-latex.tex (xelatex.ini (latex.ltx (texsys.cfg)
+./texsys.aux found
+
+
+\@currdir set to: ./.
+
+
+Assuming \openin and \input 
+have the same search path.
+
+
+Defining UNIX/DOS style filename parser.
+
+catcodes, registers, parameters,
+LaTeX2e <2021-11-15> patch level 1
+(expl3.ltx (expl3-code.tex)) hacks, document commands, control, par, spacing,
+files, font encodings, lengths,
+====================================
+
+Local config file fonttext.cfg used
+
+====================================
+(fonttext.cfg (fonttext.ltx
+=== Don't modify this file, use a .cfg file instead ===
+
+(omlenc.def) (omsenc.def) (ot1enc.def) (t1enc.def) (ts1enc.def) (tuenc.def)
+(tulmr.fd) (tulmss.fd) (tulmtt.fd) (ts1lmr.fd) (t1cmr.fd) (ot1cmr.fd)
+(ot1cmss.fd) (ot1cmtt.fd)))
+====================================
+
+Local config file fontmath.cfg used
+
+====================================
+(fontmath.cfg (fontmath.ltx
+=== Don't modify this file, use a .cfg file instead ===
+
+(omlcmm.fd) (omscmsy.fd) (omxcmex.fd) (ucmr.fd)))
+====================================
+
+Local config file preload.cfg used
+
+=====================================
+(preload.cfg (preload.ltx)) page nos., x-ref, environments, center, verbatim,
+math definitions, boxes, title, sectioning, contents, floats, footnotes,
+index, bibliography, output,  Unicode character data,note: downloading load-unicode-data.tex
+ (load-unicode-data 
+load-unicode-data.tex v1.15 (2021-09-15)
+Reading Unicode data
+# UnicodeData-14.0.0.txt
+# Modified 2021-09-15 11:00:00 GMT [JAW]
+)note: downloading hyphen.cfg
+
+===========================================
+Local configuration file hyphen.cfg used
+===========================================
+(hyphen.cfgnote: downloading xebabel.def
+ (xebabel.def)note: downloading language.dat
+note: downloading hyphen.tex
+ (hyphen.tex)note: downloading dumyhyph.tex
+ (dumyhyph.tex)note: downloading zerohyph.tex
+ (zerohyph.tex)note: downloading dehypht-x-2022-03-16.tex
+
+(dehypht-x-2022-03-16.tex
+dehyph-exptl: using a TeX engine with native UTF-8 support.note: downloading dehypht-x-2022-03-16.pat
+
+(dehypht-x-2022-03-16.pat
+German Hyphenation Patterns (Traditional Orthography) `dehypht-x' 2022-03-16 (W
+L)))note: downloading dehyphn-x-2022-03-16.tex
+ (dehyphn-x-2022-03-16.tex
+dehyph-exptl: using a TeX engine with native UTF-8 support.note: downloading dehyphn-x-2022-03-16.pat
+
+(dehyphn-x-2022-03-16.pat
+German Hyphenation Patterns (Reformed Orthography, 2006) `dehyphn-x' 2022-03-16
+ (WL)))note: downloading loadhyph-af.tex
+ (loadhyph-af.tex UTF-8 Afrikaans hyphenation patternsnote: downloading hyph-af.tex
+ (hyph-af.tex)note: downloading hyph-quote-af.tex
+
+(hyph-quote-af.tex))note: downloading loadhyph-grc.tex
+ (loadhyph-grc.tex
+UTF-8 Hyphenation patterns for Ancient Greeknote: downloading hyph-grc.tex
+ (hyph-grc.tex))note: downloading ibyhyph.tex
+ (ibyhyph.tex
+Greek hyphenation patterns for Ibycus encoding, v3.0) (zerohyph.tex)note: downloading loadhyph-hy.tex
+
+(loadhyph-hy.tex UTF-8 Armenian hyphenation patternsnote: downloading hyph-hy.tex
+ (hyph-hy.tex))note: downloading loadhyph-eu.tex
+
+(loadhyph-eu.tex UTF-8 Basque hyphenation patternsnote: downloading hyph-eu.tex
+ (hyph-eu.tex))note: downloading loadhyph-be.tex
+
+(loadhyph-be.tex UTF-8 Belarusian hyphenation patternsnote: downloading hyph-be.tex
+ (hyph-be.tex)note: downloading hyph-quote-be.tex
+
+(hyph-quote-be.tex))note: downloading loadhyph-bg.tex
+ (loadhyph-bg.tex UTF-8 Bulgarian hyphenation patternsnote: downloading hyph-bg.tex
+
+(hyph-bg.tex
+Bulgarian hyphenation patterns (options: --safe-morphology --standalone-tex, ve
+rsion 21 October 2017)))note: downloading loadhyph-ca.tex
+ (loadhyph-ca.tex UTF-8 Catalan hyphenation patternsnote: downloading hyph-ca.tex
+
+(hyph-ca.tex))note: downloading loadhyph-zh-latn-pinyin.tex
+ (loadhyph-zh-latn-pinyin.tex
+UTF-8 Pinyin Hyphenation Patterns (with tone markers) 2018-11-25 (WL)note: downloading hyph-zh-latn-pinyin.tex
+
+(hyph-zh-latn-pinyin.tex))note: downloading loadhyph-cu.tex
+ (loadhyph-cu.tex
+UTF-8 Church Slavonic hyphenation patternsnote: downloading hyph-cu.tex
+ (hyph-cu.tex))note: downloading loadhyph-cop.tex
+ (loadhyph-cop.tex
+UTF-8 Coptic hyphenation patternsnote: downloading hyph-cop.tex
+ (hyph-cop.tex))note: downloading loadhyph-hr.tex
+ (loadhyph-hr.tex
+UTF-8 Croatian hyphenation patternsnote: downloading hyph-hr.tex
+ (hyph-hr.tex))note: downloading loadhyph-cs.tex
+ (loadhyph-cs.tex
+UTF-8 Czech hyphenation patternsnote: downloading hyph-cs.tex
+ (hyph-cs.tex))note: downloading loadhyph-da.tex
+ (loadhyph-da.tex
+UTF-8 Danish hyphenation patternsnote: downloading hyph-da.tex
+ (hyph-da.tex))note: downloading loadhyph-nl.tex
+ (loadhyph-nl.tex
+UTF-8 Dutch hyphenation patternsnote: downloading hyph-nl.tex
+ (hyph-nl.tex))note: downloading loadhyph-en-gb.tex
+ (loadhyph-en-gb.tex
+ASCII Hyphenation patterns for British Englishnote: downloading hyph-en-gb.tex
+ (hyph-en-gb.tex))note: downloading loadhyph-en-us.tex
+
+(loadhyph-en-us.tex ASCII Hyphenation patterns for American Englishnote: downloading hyph-en-us.tex
+
+(hyph-en-us.tex))note: downloading loadhyph-eo.tex
+ (loadhyph-eo.tex UTF-8 Esperanto hyphenation patternsnote: downloading hyph-eo.tex
+
+(hyph-eo.tex))note: downloading loadhyph-et.tex
+ (loadhyph-et.tex UTF-8 Estonian hyphenation patternsnote: downloading hyph-et.tex
+
+(hyph-et.tex))note: downloading loadhyph-mul-ethi.tex
+ (loadhyph-mul-ethi.tex UTF-8 Pan-Ethiopic hyphenation patternsnote: downloading hyph-mul-ethi.tex
+
+(hyph-mul-ethi.tex)) (zerohyph.tex)note: downloading loadhyph-fi.tex
+ (loadhyph-fi.tex
+UTF-8 Finnish hyphenation patternsnote: downloading hyph-fi.tex
+ (hyph-fi.tex))note: downloading loadhyph-fi-x-school.tex
+ (loadhyph-fi-x-school.tex
+UTF-8 Finnish hyphenation patterns for schoolnote: downloading hyph-fi-x-school.tex
+ (hyph-fi-x-school.tex))note: downloading loadhyph-fr.tex
+
+(loadhyph-fr.tex UTF-8 French hyphenation patternsnote: downloading hyph-fr.tex
+ (hyph-fr.tex)note: downloading hyph-quote-fr.tex
+
+(hyph-quote-fr.tex))note: downloading loadhyph-fur.tex
+ (loadhyph-fur.tex UTF-8 Friulan hyphenation patternsnote: downloading hyph-fur.tex
+
+(hyph-fur.tex)note: downloading hyph-quote-fur.tex
+ (hyph-quote-fur.tex))note: downloading loadhyph-gl.tex
+ (loadhyph-gl.tex
+UTF-8 Galician hyphenation patternsnote: downloading hyph-gl.tex
+ (hyph-gl.tex))note: downloading loadhyph-ka.tex
+ (loadhyph-ka.tex
+UTF-8 Georgian hyphenation patternsnote: downloading hyph-ka.tex
+ (hyph-ka.tex))note: downloading loadhyph-de-1901.tex
+ (loadhyph-de-1901.tex
+UTF-8 German hyphenation patterns (traditional orthography)note: downloading hyph-de-1901.tex
+ (hyph-de-1901.tex
+German Hyphenation Patterns (Traditional Orthography) `dehypht-x' 2021-02-26 (W
+L)))note: downloading loadhyph-de-1996.tex
+ (loadhyph-de-1996.tex
+UTF-8 German hyphenation patterns (reformed orthography)note: downloading hyph-de-1996.tex
+ (hyph-de-1996.tex
+German Hyphenation Patterns (Reformed Orthography, 2006) `dehyphn-x' 2021-02-26
+ (WL)))note: downloading loadhyph-de-ch-1901.tex
+ (loadhyph-de-ch-1901.tex
+UTF-8 Swiss-German hyphenation patterns (traditional orthography)note: downloading hyph-de-ch-1901.tex
+
+(hyph-de-ch-1901.tex
+Swiss-German Hyphenation Patterns (Traditional Orthography) `dehyphts-x' 2021-0
+2-26 (WL)))note: downloading loadhyph-el-polyton.tex
+ (loadhyph-el-polyton.tex
+UTF-8 Hyphenation patterns for multi-accent (polytonic) Modern Greeknote: downloading hyph-el-polyton.tex
+
+(hyph-el-polyton.tex))note: downloading loadhyph-el-monoton.tex
+ (loadhyph-el-monoton.tex
+UTF-8 Hyphenation patterns for uni-accent (monotonic) Modern Greeknote: downloading hyph-el-monoton.tex
+
+(hyph-el-monoton.tex))note: downloading loadhyph-hu.tex
+ (loadhyph-hu.tex UTF-8 Hungarian hyphenation patternsnote: downloading hyph-hu.tex
+
+(hyph-hu.tex))note: downloading loadhyph-is.tex
+ (loadhyph-is.tex UTF-8 Icelandic hyphenation patternsnote: downloading hyph-is.tex
+
+(hyph-is.tex))note: downloading loadhyph-as.tex
+ (loadhyph-as.tex UTF-8 Assamese hyphenation patternsnote: downloading hyph-as.tex
+
+(hyph-as.tex))note: downloading loadhyph-bn.tex
+ (loadhyph-bn.tex UTF-8 Bengali hyphenation patternsnote: downloading hyph-bn.tex
+ (hyph-bn.tex
+))note: downloading loadhyph-gu.tex
+ (loadhyph-gu.tex UTF-8 Gujarati hyphenation patternsnote: downloading hyph-gu.tex
+ (hyph-gu.tex))note: downloading loadhyph-hi.tex
+
+(loadhyph-hi.tex UTF-8 Hindi hyphenation patternsnote: downloading hyph-hi.tex
+ (hyph-hi.tex))note: downloading loadhyph-kn.tex
+
+(loadhyph-kn.tex UTF-8 Kannada hyphenation patternsnote: downloading hyph-kn.tex
+ (hyph-kn.tex))note: downloading loadhyph-ml.tex
+
+(loadhyph-ml.tex UTF-8 Malayalam hyphenation patternsnote: downloading hyph-ml.tex
+ (hyph-ml.tex))note: downloading loadhyph-mr.tex
+
+(loadhyph-mr.tex UTF-8 Marathi hyphenation patternsnote: downloading hyph-mr.tex
+ (hyph-mr.tex))note: downloading loadhyph-or.tex
+
+(loadhyph-or.tex UTF-8 Oriya hyphenation patternsnote: downloading hyph-or.tex
+ (hyph-or.tex))note: downloading loadhyph-pi.tex
+
+(loadhyph-pi.tex UTF-8 Pali hyphenation patternsnote: downloading hyph-pi.tex
+ (hyph-pi.tex))note: downloading loadhyph-pa.tex
+
+(loadhyph-pa.tex UTF-8 Panjabi hyphenation patternsnote: downloading hyph-pa.tex
+ (hyph-pa.tex))note: downloading loadhyph-ta.tex
+
+(loadhyph-ta.tex UTF-8 Tamil hyphenation patternsnote: downloading hyph-ta.tex
+ (hyph-ta.tex))note: downloading loadhyph-te.tex
+
+(loadhyph-te.tex UTF-8 Telugu hyphenation patternsnote: downloading hyph-te.tex
+ (hyph-te.tex))note: downloading loadhyph-id.tex
+
+(loadhyph-id.tex ASCII Indonesian hyphenation patternsnote: downloading hyph-id.tex
+ (hyph-id.tex))note: downloading loadhyph-ia.tex
+
+(loadhyph-ia.tex ASCII Hyphenation patterns for Interlinguanote: downloading hyph-ia.tex
+ (hyph-ia.tex))note: downloading loadhyph-ga.tex
+
+(loadhyph-ga.tex UTF-8 Irish hyphenation patternsnote: downloading hyph-ga.tex
+ (hyph-ga.tex))note: downloading loadhyph-it.tex
+
+(loadhyph-it.tex UTF-8 Italian hyphenation patternsnote: downloading hyph-it.tex
+ (hyph-it.tex)note: downloading hyph-quote-it.tex
+
+(hyph-quote-it.tex))note: downloading loadhyph-kmr.tex
+ (loadhyph-kmr.tex UTF-8 Kurmanji hyphenation patternsnote: downloading hyph-kmr.tex
+
+(hyph-kmr.tex))note: downloading loadhyph-la-x-classic.tex
+ (loadhyph-la-x-classic.tex
+UTF-8 Classical Latin hyphenation patterns, v.2.0 2019-07-03note: downloading hyph-la-x-classic.tex
+
+(hyph-la-x-classic.tex))note: downloading loadhyph-la.tex
+ (loadhyph-la.tex UTF-8 Latin hyphenation patternsnote: downloading hyph-la.tex
+
+(hyph-la.tex))note: downloading loadhyph-la-x-liturgic.tex
+ (loadhyph-la-x-liturgic.tex
+UTF-8 Liturgical Latin hyphenation patternsnote: downloading hyph-la-x-liturgic.tex
+ (hyph-la-x-liturgic.tex))note: downloading loadhyph-lv.tex
+
+(loadhyph-lv.tex UTF-8 Latvian hyphenation patternsnote: downloading hyph-lv.tex
+ (hyph-lv.tex))note: downloading loadhyph-lt.tex
+
+(loadhyph-lt.tex UTF-8 Lithuanian hyphenation patternsnote: downloading hyph-lt.tex
+ (hyph-lt.tex))note: downloading loadhyph-mk.tex
+
+(loadhyph-mk.tex UTF-8 Macedonian hyphenation patternsnote: downloading hyph-mk.tex
+ (hyph-mk.tex))note: downloading loadhyph-mn-cyrl.tex
+
+(loadhyph-mn-cyrl.tex UTF-8 (New) Mongolian hyphenation patternsnote: downloading hyph-mn-cyrl.tex
+
+(hyph-mn-cyrl.tex))note: downloading loadhyph-mn-cyrl-x-lmc.tex
+ (loadhyph-mn-cyrl-x-lmc.tex
+UTF-8 Mongolian hyphenation patternsnote: downloading hyph-mn-cyrl-x-lmc.tex
+ (hyph-mn-cyrl-x-lmc.tex))note: downloading loadhyph-nb.tex
+ (loadhyph-nb.tex
+ UTF-8 Norwegian Bokmal hyphenation patternsnote: downloading hyph-nb.tex
+ (hyph-nb.texnote: downloading hyph-no.tex
+ (hyph-no.tex)))note: downloading loadhyph-nn.tex
+
+(loadhyph-nn.tex UTF-8 Norwegian Nynorsk hyphenation patternsnote: downloading hyph-nn.tex
+ (hyph-nn.tex
+(hyph-no.tex)))note: downloading loadhyph-oc.tex
+ (loadhyph-oc.tex UTF-8 Occitan hyphenation patternsnote: downloading hyph-oc.tex
+
+(hyph-oc.tex)note: downloading hyph-quote-oc.tex
+ (hyph-quote-oc.tex))note: downloading loadhyph-pms.tex
+ (loadhyph-pms.tex
+UTF-8 Piedmontese hyphenation patternsnote: downloading hyph-pms.tex
+ (hyph-pms.tex)note: downloading hyph-quote-pms.tex
+ (hyph-quote-pms.tex))note: downloading loadhyph-pl.tex
+
+(loadhyph-pl.tex UTF-8 Polish hyphenation patternsnote: downloading hyph-pl.tex
+ (hyph-pl.tex))note: downloading loadhyph-pt.tex
+
+(loadhyph-pt.tex UTF-8 Portuguese hyphenation patternsnote: downloading hyph-pt.tex
+ (hyph-pt.tex))note: downloading loadhyph-ro.tex
+
+(loadhyph-ro.tex UTF-8 Romanian hyphenation patternsnote: downloading hyph-ro.tex
+ (hyph-ro.tex))note: downloading loadhyph-rm.tex
+
+(loadhyph-rm.tex UTF-8 Romansh hyphenation patternsnote: downloading hyph-rm.tex
+ (hyph-rm.tex)note: downloading hyph-quote-rm.tex
+
+(hyph-quote-rm.tex))note: downloading loadhyph-ru.tex
+ (loadhyph-ru.tex UTF-8 Russian hyphenation patternsnote: downloading hyph-ru.tex
+
+(hyph-ru.tex))note: downloading loadhyph-sa.tex
+ (loadhyph-sa.tex UTF-8 Sanskrit hyphenation patternsnote: downloading hyph-sa.tex
+
+(hyph-sa.tex))note: downloading loadhyph-sr-latn.tex
+ (loadhyph-sr-latn.tex UTF-8 Serbian hyphenation patternsnote: downloading hyph-sh-latn.tex
+
+(hyph-sh-latn.tex)note: downloading hyph-sh-cyrl.tex
+ (hyph-sh-cyrl.tex))note: downloading loadhyph-sr-cyrl.tex
+ (loadhyph-sr-cyrl.tex
+UTF-8 Serbian hyphenation patterns (hyph-sh-latn.tex) (hyph-sh-cyrl.tex))note: downloading loadhyph-sk.tex
+
+(loadhyph-sk.tex UTF-8 Slovak hyphenation patternsnote: downloading hyph-sk.tex
+ (hyph-sk.tex))note: downloading loadhyph-sl.tex
+
+(loadhyph-sl.tex UTF-8 Slovenian hyphenation patternsnote: downloading hyph-sl.tex
+ (hyph-sl.tex))note: downloading loadhyph-es.tex
+
+(loadhyph-es.tex UTF-8 Spanish hyphenation patternsnote: downloading hyph-es.tex
+ (hyph-es.tex))note: downloading loadhyph-sv.tex
+
+(loadhyph-sv.tex UTF-8 Swedish hyphenation patternsnote: downloading hyph-sv.tex
+ (hyph-sv.tex))note: downloading loadhyph-th.tex
+
+(loadhyph-th.tex UTF-8 Thai hyphenation patternsnote: downloading hyph-th.tex
+ (hyph-th.tex))note: downloading loadhyph-tr.tex
+
+(loadhyph-tr.tex UTF-8 Turkish hyphenation patternsnote: downloading hyph-tr.tex
+ (hyph-tr.tex))note: downloading loadhyph-tk.tex
+
+(loadhyph-tk.tex UTF-8 Turkmen hyphenation patternsnote: downloading hyph-tk.tex
+ (hyph-tk.tex))note: downloading loadhyph-uk.tex
+
+(loadhyph-uk.tex UTF-8 Ukrainian hyphenation patternsnote: downloading hyph-uk.tex
+ (hyph-uk.tex)note: downloading hyph-quote-uk.tex
+
+(hyph-quote-uk.tex))note: downloading loadhyph-hsb.tex
+ (loadhyph-hsb.tex
+UTF-8 Upper Sorbian hyphenation patternsnote: downloading hyph-hsb.tex
+ (hyph-hsb.tex))note: downloading loadhyph-cy.tex
+ (loadhyph-cy.tex
+UTF-8 Welsh hyphenation patternsnote: downloading hyph-cy.tex
+ (hyph-cy.tex)))note: downloading latex2e-first-aid-for-external-files.ltx
+
+(latex2e-first-aid-for-external-files.ltx)
+ ) ) ) )
+Beginning to dump on file texput.fmt
+ (preloaded format=texput 0.0.0)
+88429 strings of total length 387256
+297567 memory locations dumped; current usage is 299&292789
+20858 multiletter control sequences
+\font\nullfont=nullfont
+\font\c__fp_exp_intarray=cmr10 at 0.00002pt
+\font\c__fp_trig_intarray=cmr10 at 0.00003pt
+\font\c_initex_cctab=cmr10 at 0.00005pt
+\font\c_other_cctab=cmr10 at 0.00006pt
+\font\c_str_cctab=cmr10 at 0.00008pt
+\font\g__regex_state_active_intarray=cmr10 at 0.00009pt
+\font\g__regex_thread_info_intarray=cmr10 at 0.0001pt
+\font\g__regex_submatch_prev_intarray=cmr10 at 0.00012pt
+\font\g__regex_submatch_begin_intarray=cmr10 at 0.00014pt
+\font\g__regex_submatch_end_intarray=cmr10 at 0.00015pt
+\font\g__regex_submatch_case_intarray=cmr10 at 0.00017pt
+\font\g__regex_balance_intarray=cmr10 at 0.00018pt
+\font\OMX/cmex/m/n/10=cmex10
+\font\tenln=line10
+\font\tenlnw=linew10
+\font\tencirc=lcircle10
+\font\tencircw=lcirclew10
+\font\OT1/cmr/m/n/5=cmr5
+\font\OT1/cmr/m/n/7=cmr7
+\font\OT1/cmr/m/n/10=cmr10
+\font\OML/cmm/m/it/5=cmmi5
+\font\OML/cmm/m/it/7=cmmi7
+\font\OML/cmm/m/it/10=cmmi10
+\font\OMS/cmsy/m/n/5=cmsy5
+\font\OMS/cmsy/m/n/7=cmsy7
+\font\OMS/cmsy/m/n/10=cmsy10
+\font\c_code_cctab=cmr10 at 0.0002pt
+\font\c_document_cctab=cmr10 at 0.00021pt
+469252 words of font info for 28 preloaded fonts
+1348 hyphenation exceptions
+Hyphenation trie of length 577275 has 9543 ops out of 35111
+  143 for language 86
+  110 for language 85
+  138 for language 84
+  7 for language 83
+  12 for language 82
+  53 for language 81
+  127 for language 80
+  195 for language 79
+  71 for language 78
+  248 for language 77
+  66 for language 76
+  66 for language 75
+  15 for language 74
+  119 for language 73
+  43 for language 72
+  58 for language 71
+  7 for language 70
+  194 for language 69
+  37 for language 68
+  23 for language 67
+  852 for language 66
+  852 for language 65
+  21 for language 64
+  38 for language 63
+  38 for language 62
+  77 for language 61
+  58 for language 60
+  206 for language 59
+  25 for language 58
+  316 for language 57
+  27 for language 56
+  37 for language 55
+  229 for language 54
+  38 for language 53
+  21 for language 52
+  6 for language 51
+  7 for language 50
+  6 for language 49
+  12 for language 48
+  6 for language 47
+  6 for language 46
+  8 for language 45
+  6 for language 44
+  6 for language 43
+  6 for language 42
+  6 for language 41
+  6 for language 40
+  147 for language 39
+  185 for language 38
+  20 for language 37
+  44 for language 36
+  420 for language 35
+  424 for language 34
+  432 for language 33
+  39 for language 32
+  76 for language 31
+  40 for language 30
+  89 for language 29
+  6 for language 28
+  31 for language 27
+  3 for language 25
+  113 for language 24
+  145 for language 23
+  377 for language 22
+  224 for language 21
+  265 for language 20
+  60 for language 19
+  63 for language 18
+  19 for language 17
+  15 for language 16
+  111 for language 15
+  3 for language 14
+  21 for language 13
+  54 for language 12
+  36 for language 11
+  5 for language 10
+  2 for language 9
+  148 for language 7
+  78 for language 6
+  137 for language 5
+  438 for language 4
+  442 for language 3
+  2 for language 1
+  181 for language 0
+No pages of output.
+Transcript written on texput.log.
+note: Running TeX ...
+(theory_correction_comparison.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-02-24>note: downloading ctexart.cls
+ (ctexart.clsnote: downloading ctexbackend.cfg
+ (ctexbackend.cfg)note: downloading expl3.sty
+ (expl3.stynote: downloading l3backend-xetex.def
+
+(l3backend-xetex.def))
+Document Class: ctexart 2021/12/12 v2.5.8 Chinese adapter for class article (CT
+EX)
+note: downloading xparse.sty
+(xparse.sty)note: downloading l3keys2e.sty
+ (l3keys2e.sty)note: downloading ctex-engine-xetex.def
+note: downloading ctexhook.sty
+ (ctexhook.sty)note: downloading ctexpatch.sty
+ (ctexpatch.sty)note: downloading fix-cm.sty
+ (fix-cm.sty
+(ts1enc.def))note: downloading ctexopts.cfg
+ (ctexopts.cfg)note: downloading article.cls
+ (article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+note: downloading size11.clo
+(size11.clonote: downloading lmroman10-regular.otf
+note: downloading tex-text.tec
+)) (ctex-engine-xetex.defnote: downloading xeCJK.sty
+ (xeCJK.stynote: downloading CJKfntef.sty
+note: downloading xeCJKfntef.sty
+note: downloading xtemplate.sty
+ (xtemplate.sty)note: downloading fontspec.sty
+ (fontspec.stynote: downloading fontspec-xetex.sty
+
+(fontspec-xetex.stynote: downloading fontenc.sty
+ (fontenc.sty)note: downloading fontspec.cfg
+ (fontspec.cfg)note: downloading lmroman10-bold.otf
+))note: downloading xeCJK.cfg
+ (xeCJK.cfg))note: downloading hyperref.sty
+)note: downloading zhnumber.sty
+ (zhnumber.stynote: downloading zhnumber-utf8.cfg
+
+(zhnumber-utf8.cfg))note: downloading ctex-scheme-chinese-article.def
+ (ctex-scheme-chinese-article.defnote: downloading ctex-name-utf8.cfg
+ (ctex-name-utf8.cfg))note: downloading lmroman9-regular.otf
+note: downloading ctex-fontset-fandol.def
+
+(ctex-fontset-fandol.defnote: downloading FandolSong-Regular.otf
+note: downloading FandolSong-Bold.otf
+note: downloading FandolKai-Regular.otf
+))note: downloading ctex.cfg
+ (ctex.cfg)note: downloading geometry.sty
+ (geometry.stynote: downloading keyval.sty
+ (keyval.sty)note: downloading ifvtex.sty
+ (ifvtex.stynote: downloading iftex.sty
+
+(iftex.sty)))note: downloading amsmath.sty
+ (amsmath.stynote: downloading amsopn.sty
+
+For additional information on amsmath, use the `?' option.
+note: downloading amstext.sty
+(amstext.stynote: downloading amsgen.sty
+ (amsgen.sty))note: downloading amsbsy.sty
+ (amsbsy.sty) (amsopn.sty))note: downloading amssymb.sty
+ (amssymb.stynote: downloading amsfonts.sty
+
+(amsfonts.sty))note: downloading mathtools.sty
+ (mathtools.stynote: downloading calc.sty
+ (calc.sty)note: downloading mhsetup.sty
+ (mhsetup.sty))note: downloading mathrsfs.sty
+ (mathrsfs.sty)note: downloading booktabs.sty
+
+(booktabs.sty)note: downloading longtable.sty
+ (longtable.sty)note: downloading tabularx.sty
+ (tabularx.stynote: downloading array.sty
+ (array.sty))note: downloading enumitem.sty
+ (enumitem.sty)note: downloading xcolor.sty
+
+(xcolor.stynote: downloading color.cfg
+ (color.cfg)note: downloading xetex.def
+ (xetex.def)) (hyperref.stynote: downloading ltxcmds.sty
+ (ltxcmds.sty)note: downloading pdftexcmds.sty
+
+(pdftexcmds.stynote: downloading infwarerr.sty
+ (infwarerr.sty))note: downloading kvsetkeys.sty
+ (kvsetkeys.sty)note: downloading kvdefinekeys.sty
+ (kvdefinekeys.sty)note: downloading pdfescape.sty
+
+(pdfescape.sty)note: downloading hycolor.sty
+ (hycolor.sty)note: downloading letltxmacro.sty
+ (letltxmacro.sty)note: downloading auxhook.sty
+ (auxhook.sty)note: downloading kvoptions.sty
+ (kvoptions.sty)note: downloading pd1enc.def
+
+(pd1enc.def)note: downloading intcalc.sty
+ (intcalc.sty)note: downloading etexcmds.sty
+ (etexcmds.sty)note: downloading puenc.def
+ (puenc.def)note: downloading url.sty
+ (url.sty)note: downloading pzdr.tfm
+note: downloading bitset.sty
+ (bitset.stynote: downloading bigintcalc.sty
+
+(bigintcalc.sty)) (atbegshi-ltx.sty))note: downloading hxetex.def
+ (hxetex.defnote: downloading stringenc.sty
+ (stringenc.sty)note: downloading rerunfilecheck.sty
+
+(rerunfilecheck.sty (atveryend-ltx.sty)note: downloading uniquecounter.sty
+ (uniquecounter.sty)))note: downloading microtype.sty
+ (microtype.stynote: downloading etoolbox.sty
+
+(etoolbox.sty)note: downloading microtype-xetex.def
+ (microtype-xetex.def)note: downloading microtype.cfg
+ (microtype.cfg))
+No file theory_correction_comparison.aux.
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+note: downloading graphicx.sty
+(graphicx.stynote: downloading graphics.sty
+ (graphics.stynote: downloading trig.sty
+ (trig.sty)note: downloading graphics.cfg
+ (graphics.cfg)))note: downloading nameref.sty
+ (nameref.stynote: downloading refcount.sty
+
+(refcount.sty)note: downloading gettitlestring.sty
+ (gettitlestring.sty))
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
+
+note: downloading mt-LatinModernRoman.cfg
+(mt-LatinModernRoman.cfg)note: downloading lmroman17-regular.otf
+note: downloading FandolFang-Regular.otf
+note: downloading lmmono10-regular.otf
+note: downloading lmmono12-regular.otf
+note: downloading lmroman12-regular.otf
+note: downloading lmroman8-regular.otf
+note: downloading lmroman6-regular.otf
+note: downloading cmmi12.tfm
+note: downloading cmmi8.tfm
+note: downloading cmmi6.tfm
+note: downloading cmsy8.tfm
+note: downloading cmsy6.tfm
+note: downloading cmex8.tfm
+note: downloading cmex7.tfm
+note: downloading umsa.fd
+ (umsa.fd)note: downloading msam10.tfm
+note: downloading mt-msa.cfg
+ (mt-msa.cfg)note: downloading msam7.tfm
+note: downloading umsb.fd
+ (umsb.fd)note: downloading msbm10.tfm
+note: downloading mt-msb.cfg
+ (mt-msb.cfg)note: downloading msbm7.tfm
+note: downloading ursfs.fd
+
+(ursfs.fd)note: downloading rsfs10.tfm
+note: downloading rsfs5.tfm
+note: downloading cmr12.tfm
+note: downloading mt-cmr.cfg
+ (mt-cmr.cfg)note: downloading cmr8.tfm
+note: downloading cmr6.tfm
+note: downloading lmroman7-regular.otf
+note: downloading lmroman5-regular.otf
+note: downloading msam5.tfm
+note: downloading msbm5.tfm
+note: downloading rsfs7.tfm
+note: downloading lmroman12-bold.otf
+note: downloading lmroman10-italic.otf
+ [1]
+Overfull \hbox (9.99344pt too wide) in alignment at lines 84--88
+ [] [] [] [] 
+
+Overfull \hbox (9.99344pt too wide) in alignment at lines 88--92
+ [] [] [] [] 
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--93
+[]|[]\TU/lmr/bx/n/10.95 B\TU/FandolSong-Regular(0)/b/n/10.95 ：|  可 由 中
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--93
+\TU/FandolSong-Regular(0)/b/n/10.95 文 原 稿 完 整
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--94
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--94
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 3826) in paragraph at lines 94--95
+\TU/FandolSong-Regular(0)/m/n/10.95 几 乎 处 处 解 释；|  仅 有 二 元 星 一 致 性
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--95
+\TU/FandolSong-Regular(0)/m/n/10.95 不 足 以 判 定 一 个 既 有 过 程 的 全 部
+
+Underfull \hbox (badness 8170) in paragraph at lines 94--95
+\TU/lmr/m/n/10.95 Kolmogorov \TU/FandolSong-Regular(0)/m/n/10.95 的 双 随 机 核 为 原 
+始 对
+
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--96
+[]|\TU/lmr/m/n/10.95 OU/CIR \TU/FandolSong-Regular(0)/m/n/10.95 定 义 及
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--96
+[]|[]\TU/lmr/bx/n/10.95 B\TU/FandolSong-Regular(0)/b/n/10.95 ：|  可 由 中
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--96
+\TU/FandolSong-Regular(0)/b/n/10.95 文 原 稿 完 整
+
+Underfull \hbox (badness 2310) in paragraph at lines 97--97
+[]|\TU/FandolSong-Regular(0)/m/n/10.95 精 确 有 限 时 距 鞅 条
+
+Underfull \hbox (badness 10000) in paragraph at lines 97--97
+[]|\TU/lmr/m/n/10.95 chap2:51–56\TU/FandolSong-Regular(0)/m/n/10.95 ，| \TU/lmr/
+m/n/10.95 1161–
+
+Underfull \hbox (badness 10000) in paragraph at lines 97--97
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 97--97
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--98
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--98
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
+[]|\TU/FandolSong-Regular(0)/m/n/10.95 可 恢 复 右 生 成 元 思 想；|  不 能 要 求
+
+Underfull \hbox (badness 3333) in paragraph at lines 98--99
+\TU/FandolSong-Regular(0)/m/n/10.95 无 界 \TU/lmr/m/n/10.95 Normal/Gamma \TU/Fand
+olSong-Regular(0)/m/n/10.95 分 位 数 属 于
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--99
+[]|\TU/lmr/m/n/10.95 chap2:112–118\TU/FandolSong-Regular(0)/m/n/10.95 ，|
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--99
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--99
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--100
+[]|\TU/FandolSong-Regular(0)/m/n/10.95 公 式 形 式 正 确；|  证 明 分 母 有 笔 误，|
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--100
+[]|\TU/lmr/m/n/10.95 Brownian/time-
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--100
+[]|\TU/lmr/m/n/10.95 chap2:125–140\TU/FandolSong-Regular(0)/m/n/10.95 ，|
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--100
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--100
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 10000) in paragraph at lines 101--101
+[]|\TU/lmr/m/n/10.95 chap2:154–162\TU/FandolSong-Regular(0)/m/n/10.95 ，|
+
+Underfull \hbox (badness 10000) in paragraph at lines 101--101
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 101--101
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--103
+[]|[]\TU/lmr/bx/n/10.95 B\TU/FandolSong-Regular(0)/b/n/10.95 ：|  可 由 中
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--103
+\TU/FandolSong-Regular(0)/b/n/10.95 文 原 稿 完 整
+
+Overfull \hbox (9.99344pt too wide) in alignment at lines 92--106
+ [] [] [] [] 
+note: downloading lmromanslant10-regular.otf
+[2]
+Overfull \hbox (0.48817pt too wide) in alignment at lines 110--114
+ [] [] [] [] 
+
+Overfull \hbox (0.48817pt too wide) in alignment at lines 114--118
+ [] [] [] [] 
+
+Underfull \hbox (badness 10000) in paragraph at lines 119--119
+[]|\TU/FandolSong-Regular(0)/m/n/10.95 同 时 表 示 均 值 回 复 目
+
+Underfull \hbox (badness 10000) in paragraph at lines 119--119
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 119--119
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 10000) in paragraph at lines 120--120
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 120--120
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 10000) in paragraph at lines 121--121
+[]|[]\TU/lmr/bx/n/10.95 B\TU/FandolSong-Regular(0)/b/n/10.95 ：|  可 由 中
+
+Underfull \hbox (badness 10000) in paragraph at lines 121--121
+\TU/FandolSong-Regular(0)/b/n/10.95 文 原 稿 完 整
+
+Underfull \hbox (badness 10000) in paragraph at lines 122--122
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 122--122
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--123
+[]|[]\TU/lmr/bx/n/10.95 B\TU/FandolSong-Regular(0)/b/n/10.95 ：|  可 由 中
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--123
+\TU/FandolSong-Regular(0)/b/n/10.95 文 原 稿 完 整
+
+Underfull \hbox (badness 10000) in paragraph at lines 124--124
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 124--124
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 10000) in paragraph at lines 125--125
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 125--125
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 10000) in paragraph at lines 125--126
+[]|\TU/FandolSong-Regular(0)/m/n/10.95 使 用 边 缘 分 布 的 拓 扑 支 持 $\OML/cmm/m/it/10.
+95 E[] \OT1/cmr/m/n/10.95 =
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--126
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--126
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 10000) in paragraph at lines 127--127
+[]|[]\TU/lmr/bx/n/10.95 B\TU/FandolSong-Regular(0)/b/n/10.95 ：|  可 由 中
+
+Underfull \hbox (badness 10000) in paragraph at lines 127--127
+\TU/FandolSong-Regular(0)/b/n/10.95 文 原 稿 完 整
+
+Underfull \hbox (badness 10000) in paragraph at lines 128--128
+[]|\TU/FandolSong-Regular(0)/m/n/10.95 同 时 是 正 态 \TU/lmr/m/n/10.95 CDF \TU/Fand
+olSong-Regular(0)/m/n/10.95 和
+
+Underfull \hbox (badness 10000) in paragraph at lines 128--128
+[]|[]\TU/lmr/bx/n/10.95 B\TU/FandolSong-Regular(0)/b/n/10.95 ：|  可 由 中
+
+Underfull \hbox (badness 10000) in paragraph at lines 128--128
+\TU/FandolSong-Regular(0)/b/n/10.95 文 原 稿 完 整
+
+Underfull \hbox (badness 1496) in paragraph at lines 128--129
+[]|\TU/FandolSong-Regular(0)/m/n/10.95 正 态 \TU/lmr/m/n/10.95 CDF \TU/FandolSong
+-Regular(0)/m/n/10.95 保 留 $\OT1/cmr/m/n/10.95 ^^H$\TU/FandolSong-Regular(0)/m/n
+/10.95 ；| \TU/lmr/m/n/10.95 Kummer \TU/FandolSong-Regular(0)/m/n/10.95 解 写
+
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
+[]|[]\TU/lmr/bx/n/10.95 B\TU/FandolSong-Regular(0)/b/n/10.95 ：|  可 由 中
+
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
+\TU/FandolSong-Regular(0)/b/n/10.95 文 原 稿 完 整
+
+Underfull \hbox (badness 10000) in paragraph at lines 130--130
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 130--130
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 2126) in paragraph at lines 131--131
+[]|\TU/FandolSong-Regular(0)/m/n/10.95 连 续 变 量 事 件 通 常 概 率
+
+Underfull \hbox (badness 10000) in paragraph at lines 131--131
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 131--131
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Overfull \hbox (0.48817pt too wide) in alignment at lines 118--133
+ [] [] [] [] 
+[3] [4]
+Overfull \hbox (17.22992pt too wide) in alignment at lines 140--144
+ [] [] [] [] [] 
+
+Overfull \hbox (17.22992pt too wide) in alignment at lines 144--148
+ [] [] [] [] [] 
+
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+[]|\TU/lmr/m/n/10 Definition
+
+Overfull \hbox (36.21918pt too wide) in paragraph at lines 152--152
+[]|\TU/lmtt/m/n/10 mean-reversion-def-cond-1| 
+
+Overfull \hbox (41.46918pt too wide) in paragraph at lines 154--154
+[]|\TU/lmtt/m/n/10 mean-reversion-condition-1| 
+
+Underfull \hbox (badness 10000) in paragraph at lines 158--158
+[]|\TU/lmr/m/n/10 Proposition
+
+Overfull \hbox (9.96918pt too wide) in paragraph at lines 158--158
+\TU/lmtt/m/n/10 mean-reversion-def-1| 
+
+Underfull \hbox (badness 1248) in paragraph at lines 158--159
+\TU/FandolSong-Regular(0)/m/n/10 证 明 第 \TU/lmr/m/n/10 709 \TU/FandolSong-Regula
+r(0)/m/n/10 行 把 漂 移 误 写 成 零；|  正 确 式 为
+
+Overfull \hbox (41.46918pt too wide) in paragraph at lines 159--159
+[]|\TU/lmtt/m/n/10 mean-reversion-condition-2| 
+
+Underfull \hbox (badness 10000) in paragraph at lines 165--165
+[]|\TU/lmr/m/n/10 Proposition
+
+Underfull \hbox (badness 10000) in paragraph at lines 165--165
+\TU/lmtt/m/n/10 stationary
+
+Underfull \hbox (badness 10000) in paragraph at lines 166--166
+[]|\TU/lmr/m/n/10 Proposition
+
+Underfull \hbox (badness 10000) in paragraph at lines 167--167
+[]|\TU/lmtt/m/n/10 mean reversion
+
+Underfull \hbox (badness 10000) in paragraph at lines 169--169
+[]|\TU/lmtt/m/n/10 y martingale
+
+Underfull \hbox (badness 10000) in paragraph at lines 171--171
+[]|\TU/lmtt/m/n/10 mean reversion
+
+Underfull \hbox (badness 10000) in paragraph at lines 172--172
+[]|\TU/lmtt/m/n/10 mean reversion
+
+Underfull \hbox (badness 4378) in paragraph at lines 172--173
+[]|\TU/FandolSong-Regular(0)/m/n/10 这 是 强 均 值 回 复 的 精 确 \TU/lmr/m/n/10 Copula–\
+TU/FandolSong-Regular(0)/m/n/10 分 位 数 条
+
+Underfull \hbox (badness 4913) in paragraph at lines 172--173
+\TU/FandolSong-Regular(0)/m/n/10 件；|  密 度 不 存 在 时 把 $\OML/cmm/m/it/10 c[]\OT1/c
+mr/m/n/10 (\OML/cmm/m/it/10 u; v\OT1/cmr/m/n/10 ) []\OML/cmm/m/it/10 v$ \TU/Fan
+dolSong-Regular(0)/m/n/10 改 为 核
+
+Underfull \hbox (badness 10000) in paragraph at lines 175--175
+[]|\TU/lmtt/m/n/10 mean reversion
+
+Underfull \hbox (badness 10000) in paragraph at lines 176--176
+[]|\TU/lmtt/m/n/10 OU copula
+
+Underfull \hbox (badness 10000) in paragraph at lines 180--180
+[]|\TU/lmtt/m/n/10 OU example-2
+
+Underfull \hbox (badness 10000) in paragraph at lines 184--184
+[]|\TU/lmr/m/n/10 Example \TU/lmtt/m/n/10 CIR
+
+Underfull \hbox (badness 10000) in paragraph at lines 188--188
+[]|\TU/lmtt/m/n/10 CIR example-2
+
+Underfull \hbox (badness 10000) in paragraph at lines 190--190
+[]|\TU/lmtt/m/n/10 CIR example-3
+
+Underfull \hbox (badness 6559) in paragraph at lines 193--193
+[]|\TU/lmr/m/n/10 CIR \TU/FandolSong-Regular(0)/m/n/10 第 二 变 量 变 换
+
+Underfull \hbox (badness 10000) in paragraph at lines 195--195
+[]|\TU/lmtt/m/n/10 mix copula
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
+[]|\TU/lmr/m/n/10 Proposition \TU/lmtt/m/n/10 mix
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
+\TU/lmtt/m/n/10 copula mean
+
+Underfull \hbox (badness 10000) in paragraph at lines 198--198
+[]|\TU/lmr/m/n/10 Proposition \TU/lmtt/m/n/10 mix
+
+Underfull \hbox (badness 10000) in paragraph at lines 198--198
+\TU/lmtt/m/n/10 mean reversion
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--199
+[]|\TU/lmtt/m/n/10 mean reversion
+
+Underfull \hbox (badness 10000) in paragraph at lines 201--201
+[]|\TU/lmtt/m/n/10 mean reversion OU
+
+Underfull \hbox (badness 10000) in paragraph at lines 202--202
+[]|\TU/lmr/m/n/10 Proposition \TU/lmtt/m/n/10 mix
+
+Underfull \hbox (badness 10000) in paragraph at lines 203--203
+[]|\TU/lmtt/m/n/10 bond equation
+
+Underfull \hbox (badness 10000) in paragraph at lines 204--204
+[]|\TU/lmtt/m/n/10 mix copula bond
+
+Overfull \hbox (17.22992pt too wide) in alignment at lines 148--206
+ [] [] [] [] [] 
+[5] [6] [7] [8]
+
+LaTeX Warning: Reference `cmp:kck' on page 9 undefined on input line 233.
+
+[9]
+
+LaTeX Warning: Reference `cmp:gamma-root' on page 10 undefined on input line 31
+2.
+
+
+LaTeX Warning: Reference `cmp:gamma-global' on page 10 undefined on input line 
+312.
+
+
+LaTeX Warning: Reference `cmp:gamma-root' on page 10 undefined on input line 31
+2.
+
+
+LaTeX Warning: Reference `cmp:gamma-tv-drift' on page 10 undefined on input lin
+e 327.
+
+[10]
+
+LaTeX Warning: Reference `cmp:jacobian' on page 11 undefined on input line 393.
+
+
+[11]
+
+LaTeX Warning: Reference `cmp:quadratic-window' on page 12 undefined on input l
+ine 415.
+
+[12] [13]
+
+LaTeX Warning: Reference `cmp:square-int' on page 14 undefined on input line 56
+1.
+
+
+LaTeX Warning: Reference `cmp:mixed-mr' on page 14 undefined on input line 562.
+
+
+[14] [15]
+Overfull \hbox (2.85907pt too wide) in alignment at lines 579--583
+ [] [] [] [] 
+
+Overfull \hbox (2.85907pt too wide) in alignment at lines 583--587
+ [] [] [] [] 
+
+Overfull \hbox (17.19907pt too wide) in paragraph at lines 589--589
+[]|\TU/lmr/m/n/8 ThresholdOU_Heteroskedastic| 
+
+Overfull \hbox (7.08705pt too wide) in paragraph at lines 593--593
+[]|\TU/lmr/m/n/8 ExponentialTransformedOU| 
+
+Overfull \hbox (21.23906pt too wide) in paragraph at lines 594--594
+[]|\TU/lmr/m/n/8 SpecialFunctionTransformedOU| 
+
+Overfull \hbox (2.13506pt too wide) in paragraph at lines 596--596
+[]|\TU/lmr/m/n/8 QuadraticTransformedCIR| 
+note: downloading lmroman8-bold.otf
+
+LaTeX Warning: Reference `cmp:quadratic-window' on page 16 undefined on input l
+ine 596.
+
+
+Overfull \hbox (9.56705pt too wide) in paragraph at lines 597--597
+[]|\TU/lmr/m/n/8 ExponentialTransformedCIR| 
+
+LaTeX Warning: Reference `cmp:cir-exp-moment' on page 16 undefined on input lin
+e 597.
+
+
+Overfull \hbox (23.71906pt too wide) in paragraph at lines 598--598
+[]|\TU/lmr/m/n/8 SpecialFunctionTransformedCIR| 
+
+LaTeX Warning: Reference `cmp:mixed-mr' on page 16 undefined on input line 599.
+
+
+
+Overfull \hbox (4.54306pt too wide) in paragraph at lines 606--606
+[]|\TU/lmr/m/n/8 GaussianGammaStationary| 
+
+LaTeX Warning: Reference `cmp:gamma-global' on page 16 undefined on input line 
+606.
+
+
+Overfull \hbox (13.26305pt too wide) in paragraph at lines 607--607
+[]|\TU/lmr/m/n/8 GaussianGammaTimeVarying| 
+
+Underfull \hbox (badness 1210) in paragraph at lines 608--609
+[]|\TU/FandolSong-Regular(0)/m/n/8 必 须 逐 单 元 格 分 类：| \TU/lmr/m/n/8 Gaussian $\O
+ML/cmm/m/it/8 ^^Z\OT1/cmr/m/n/8 (\OML/cmm/m/it/8 h\OT1/cmr/m/n/8 ) = \OML/cmm/m
+/it/8 e[]$ \TU/FandolSong-Regular(0)/m/n/8 及 其 独 立 重 置 混 合 有 精 确 半 群；|
+
+Overfull \hbox (28.73505pt too wide) in paragraph at lines 611--611
+[]|\TU/lmr/m/n/8 FullyTimeVaryingMarginalCopula| 
+
+LaTeX Warning: Reference `cmp:bond-pde' on page 16 undefined on input line 612.
+
+
+
+Overfull \hbox (2.85907pt too wide) in alignment at lines 587--614
+ [] [] [] [] 
+[16]
+Overfull \hbox (2.27905pt too wide) in paragraph at lines 618--624
+\TU/FandolSong-Regular(0)/b/n/10.95 不 能 用 一 个  |“已 实 现”|  字 段 代 替 理 论 判 定。| [] 
+\TU/FandolSong-Regular(0)/m/n/10.95 建 议 以 后 对 每 个 对 象 分 别 记 录 \TU/lmtt/m/n/10.9
+5 theory_embedding_class\TU/FandolSong-Regular(0)/m/n/10.95 、|
+
+Overfull \hbox (73.77156pt too wide) in paragraph at lines 618--624
+\TU/lmtt/m/n/10.95 markov_state_dimension\TU/FandolSong-Regular(0)/m/n/10.95 、|
+ \TU/lmtt/m/n/10.95 observed_process_markov\TU/FandolSong-Regular(0)/m/n/10.95 
+、| \TU/lmtt/m/n/10.95 chapman_kolmogorov_proved\TU/FandolSong-Regular(0)/m/n/10
+.95 、| \TU/lmtt/m/n/10.95 asymptotic_mean_exists\TU/FandolSong-Regular(0)/m/n/1
+0.95 、|
+
+LaTeX Warning: Reference `cmp:quadratic-window' on page 17 undefined on input l
+ine 630.
+
+
+LaTeX Warning: Reference `cmp:correct-cir-reduction' on page 17 undefined on in
+put line 632.
+
+[17] (theory_correction_comparison.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `theory_correction_comparison.out' has cha
+nged.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )
+(see the transcript file for additional information)
+Output written on theory_correction_comparison.xdv (17 pages, 294028 bytes).
+Transcript written on theory_correction_comparison.log.
+note: Rerunning TeX because "theory_correction_comparison.aux" changed ...
+(theory_correction_comparison.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-02-24> (ctexart.cls (ctexbackend.cfg) (expl3.sty
+(l3backend-xetex.def))
+Document Class: ctexart 2021/12/12 v2.5.8 Chinese adapter for class article (CT
+EX)
+(xparse.sty) (l3keys2e.sty) (ctexhook.sty) (ctexpatch.sty) (fix-cm.sty
+(ts1enc.def)) (ctexopts.cfg) (article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(size11.clo)) (ctex-engine-xetex.def (xeCJK.sty (xtemplate.sty) (fontspec.sty
+(fontspec-xetex.sty (fontenc.sty) (fontspec.cfg))) (xeCJK.cfg))) (zhnumber.sty
+(zhnumber-utf8.cfg)) (ctex-scheme-chinese-article.def (ctex-name-utf8.cfg))
+(ctex-fontset-fandol.def)) (ctex.cfg) (geometry.sty (keyval.sty) (ifvtex.sty
+(iftex.sty))) (amsmath.sty
+For additional information on amsmath, use the `?' option.
+(amstext.sty (amsgen.sty)) (amsbsy.sty) (amsopn.sty)) (amssymb.sty
+(amsfonts.sty)) (mathtools.sty (calc.sty) (mhsetup.sty)) (mathrsfs.sty)
+(booktabs.sty) (longtable.sty) (tabularx.sty (array.sty)) (enumitem.sty)
+(xcolor.sty (color.cfg) (xetex.def)) (hyperref.sty (ltxcmds.sty)
+(pdftexcmds.sty (infwarerr.sty)) (kvsetkeys.sty) (kvdefinekeys.sty)
+(pdfescape.sty) (hycolor.sty) (letltxmacro.sty) (auxhook.sty) (kvoptions.sty)
+(pd1enc.def) (intcalc.sty) (etexcmds.sty) (puenc.def) (url.sty) (bitset.sty
+(bigintcalc.sty)) (atbegshi-ltx.sty)) (hxetex.def (stringenc.sty)
+(rerunfilecheck.sty (atveryend-ltx.sty) (uniquecounter.sty))) (microtype.sty
+(etoolbox.sty) (microtype-xetex.def) (microtype.cfg))
+(theory_correction_comparison.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+(graphicx.sty (graphics.sty (trig.sty) (graphics.cfg))) (nameref.sty
+(refcount.sty) (gettitlestring.sty)) (theory_correction_comparison.out)
+(theory_correction_comparison.out) (mt-LatinModernRoman.cfg) (umsa.fd)
+(mt-msa.cfg) (umsb.fd) (mt-msb.cfg) (ursfs.fd) (mt-cmr.cfg) [1]
+Overfull \hbox (9.99344pt too wide) in alignment at lines 84--88
+ [] [] [] [] 
+
+Overfull \hbox (9.99344pt too wide) in alignment at lines 88--92
+ [] [] [] [] 
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--93
+[]|[]\TU/lmr/bx/n/10.95 B\TU/FandolSong-Regular(0)/b/n/10.95 ：|  可 由 中
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--93
+\TU/FandolSong-Regular(0)/b/n/10.95 文 原 稿 完 整
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--94
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--94
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 3826) in paragraph at lines 94--95
+\TU/FandolSong-Regular(0)/m/n/10.95 几 乎 处 处 解 释；|  仅 有 二 元 星 一 致 性
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--95
+\TU/FandolSong-Regular(0)/m/n/10.95 不 足 以 判 定 一 个 既 有 过 程 的 全 部
+
+Underfull \hbox (badness 8170) in paragraph at lines 94--95
+\TU/lmr/m/n/10.95 Kolmogorov \TU/FandolSong-Regular(0)/m/n/10.95 的 双 随 机 核 为 原 
+始 对
+
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--96
+[]|\TU/lmr/m/n/10.95 OU/CIR \TU/FandolSong-Regular(0)/m/n/10.95 定 义 及
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--96
+[]|[]\TU/lmr/bx/n/10.95 B\TU/FandolSong-Regular(0)/b/n/10.95 ：|  可 由 中
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--96
+\TU/FandolSong-Regular(0)/b/n/10.95 文 原 稿 完 整
+
+Underfull \hbox (badness 2310) in paragraph at lines 97--97
+[]|\TU/FandolSong-Regular(0)/m/n/10.95 精 确 有 限 时 距 鞅 条
+
+Underfull \hbox (badness 10000) in paragraph at lines 97--97
+[]|\TU/lmr/m/n/10.95 chap2:51–56\TU/FandolSong-Regular(0)/m/n/10.95 ，| \TU/lmr/
+m/n/10.95 1161–
+
+Underfull \hbox (badness 10000) in paragraph at lines 97--97
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 97--97
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--98
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--98
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
+[]|\TU/FandolSong-Regular(0)/m/n/10.95 可 恢 复 右 生 成 元 思 想；|  不 能 要 求
+
+Underfull \hbox (badness 3333) in paragraph at lines 98--99
+\TU/FandolSong-Regular(0)/m/n/10.95 无 界 \TU/lmr/m/n/10.95 Normal/Gamma \TU/Fand
+olSong-Regular(0)/m/n/10.95 分 位 数 属 于
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--99
+[]|\TU/lmr/m/n/10.95 chap2:112–118\TU/FandolSong-Regular(0)/m/n/10.95 ，|
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--99
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--99
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--100
+[]|\TU/FandolSong-Regular(0)/m/n/10.95 公 式 形 式 正 确；|  证 明 分 母 有 笔 误，|
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--100
+[]|\TU/lmr/m/n/10.95 Brownian/time-
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--100
+[]|\TU/lmr/m/n/10.95 chap2:125–140\TU/FandolSong-Regular(0)/m/n/10.95 ，|
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--100
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--100
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 10000) in paragraph at lines 101--101
+[]|\TU/lmr/m/n/10.95 chap2:154–162\TU/FandolSong-Regular(0)/m/n/10.95 ，|
+
+Underfull \hbox (badness 10000) in paragraph at lines 101--101
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 101--101
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--103
+[]|[]\TU/lmr/bx/n/10.95 B\TU/FandolSong-Regular(0)/b/n/10.95 ：|  可 由 中
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--103
+\TU/FandolSong-Regular(0)/b/n/10.95 文 原 稿 完 整
+
+Overfull \hbox (9.99344pt too wide) in alignment at lines 92--106
+ [] [] [] [] 
+[2]
+Overfull \hbox (0.48817pt too wide) in alignment at lines 110--114
+ [] [] [] [] 
+
+Overfull \hbox (0.48817pt too wide) in alignment at lines 114--118
+ [] [] [] [] 
+
+Underfull \hbox (badness 10000) in paragraph at lines 119--119
+[]|\TU/FandolSong-Regular(0)/m/n/10.95 同 时 表 示 均 值 回 复 目
+
+Underfull \hbox (badness 10000) in paragraph at lines 119--119
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 119--119
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 10000) in paragraph at lines 120--120
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 120--120
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 10000) in paragraph at lines 121--121
+[]|[]\TU/lmr/bx/n/10.95 B\TU/FandolSong-Regular(0)/b/n/10.95 ：|  可 由 中
+
+Underfull \hbox (badness 10000) in paragraph at lines 121--121
+\TU/FandolSong-Regular(0)/b/n/10.95 文 原 稿 完 整
+
+Underfull \hbox (badness 10000) in paragraph at lines 122--122
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 122--122
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--123
+[]|[]\TU/lmr/bx/n/10.95 B\TU/FandolSong-Regular(0)/b/n/10.95 ：|  可 由 中
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--123
+\TU/FandolSong-Regular(0)/b/n/10.95 文 原 稿 完 整
+
+Underfull \hbox (badness 10000) in paragraph at lines 124--124
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 124--124
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 10000) in paragraph at lines 125--125
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 125--125
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 10000) in paragraph at lines 125--126
+[]|\TU/FandolSong-Regular(0)/m/n/10.95 使 用 边 缘 分 布 的 拓 扑 支 持 $\OML/cmm/m/it/10.
+95 E[] \OT1/cmr/m/n/10.95 =
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--126
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--126
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 10000) in paragraph at lines 127--127
+[]|[]\TU/lmr/bx/n/10.95 B\TU/FandolSong-Regular(0)/b/n/10.95 ：|  可 由 中
+
+Underfull \hbox (badness 10000) in paragraph at lines 127--127
+\TU/FandolSong-Regular(0)/b/n/10.95 文 原 稿 完 整
+
+Underfull \hbox (badness 10000) in paragraph at lines 128--128
+[]|\TU/FandolSong-Regular(0)/m/n/10.95 同 时 是 正 态 \TU/lmr/m/n/10.95 CDF \TU/Fand
+olSong-Regular(0)/m/n/10.95 和
+
+Underfull \hbox (badness 10000) in paragraph at lines 128--128
+[]|[]\TU/lmr/bx/n/10.95 B\TU/FandolSong-Regular(0)/b/n/10.95 ：|  可 由 中
+
+Underfull \hbox (badness 10000) in paragraph at lines 128--128
+\TU/FandolSong-Regular(0)/b/n/10.95 文 原 稿 完 整
+
+Underfull \hbox (badness 1496) in paragraph at lines 128--129
+[]|\TU/FandolSong-Regular(0)/m/n/10.95 正 态 \TU/lmr/m/n/10.95 CDF \TU/FandolSong
+-Regular(0)/m/n/10.95 保 留 $\OT1/cmr/m/n/10.95 ^^H$\TU/FandolSong-Regular(0)/m/n
+/10.95 ；| \TU/lmr/m/n/10.95 Kummer \TU/FandolSong-Regular(0)/m/n/10.95 解 写
+
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
+[]|[]\TU/lmr/bx/n/10.95 B\TU/FandolSong-Regular(0)/b/n/10.95 ：|  可 由 中
+
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
+\TU/FandolSong-Regular(0)/b/n/10.95 文 原 稿 完 整
+
+Underfull \hbox (badness 10000) in paragraph at lines 130--130
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 130--130
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Underfull \hbox (badness 2126) in paragraph at lines 131--131
+[]|\TU/FandolSong-Regular(0)/m/n/10.95 连 续 变 量 事 件 通 常 概 率
+
+Underfull \hbox (badness 10000) in paragraph at lines 131--131
+[]|[]\TU/lmr/bx/n/10.95 C\TU/FandolSong-Regular(0)/b/n/10.95 ：|  须 补 充
+
+Underfull \hbox (badness 10000) in paragraph at lines 131--131
+\TU/FandolSong-Regular(0)/b/n/10.95 定 义 或 条 件
+
+Overfull \hbox (0.48817pt too wide) in alignment at lines 118--133
+ [] [] [] [] 
+[3] [4]
+Overfull \hbox (17.22992pt too wide) in alignment at lines 140--144
+ [] [] [] [] [] 
+
+Overfull \hbox (17.22992pt too wide) in alignment at lines 144--148
+ [] [] [] [] [] 
+
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+[]|\TU/lmr/m/n/10 Definition
+
+Overfull \hbox (36.21918pt too wide) in paragraph at lines 152--152
+[]|\TU/lmtt/m/n/10 mean-reversion-def-cond-1| 
+
+Overfull \hbox (41.46918pt too wide) in paragraph at lines 154--154
+[]|\TU/lmtt/m/n/10 mean-reversion-condition-1| 
+
+Underfull \hbox (badness 10000) in paragraph at lines 158--158
+[]|\TU/lmr/m/n/10 Proposition
+
+Overfull \hbox (9.96918pt too wide) in paragraph at lines 158--158
+\TU/lmtt/m/n/10 mean-reversion-def-1| 
+
+Underfull \hbox (badness 1248) in paragraph at lines 158--159
+\TU/FandolSong-Regular(0)/m/n/10 证 明 第 \TU/lmr/m/n/10 709 \TU/FandolSong-Regula
+r(0)/m/n/10 行 把 漂 移 误 写 成 零；|  正 确 式 为
+
+Overfull \hbox (41.46918pt too wide) in paragraph at lines 159--159
+[]|\TU/lmtt/m/n/10 mean-reversion-condition-2| 
+
+Underfull \hbox (badness 10000) in paragraph at lines 165--165
+[]|\TU/lmr/m/n/10 Proposition
+
+Underfull \hbox (badness 10000) in paragraph at lines 165--165
+\TU/lmtt/m/n/10 stationary
+
+Underfull \hbox (badness 10000) in paragraph at lines 166--166
+[]|\TU/lmr/m/n/10 Proposition
+
+Underfull \hbox (badness 10000) in paragraph at lines 167--167
+[]|\TU/lmtt/m/n/10 mean reversion
+
+Underfull \hbox (badness 10000) in paragraph at lines 169--169
+[]|\TU/lmtt/m/n/10 y martingale
+
+Underfull \hbox (badness 10000) in paragraph at lines 171--171
+[]|\TU/lmtt/m/n/10 mean reversion
+
+Underfull \hbox (badness 10000) in paragraph at lines 172--172
+[]|\TU/lmtt/m/n/10 mean reversion
+
+Underfull \hbox (badness 4378) in paragraph at lines 172--173
+[]|\TU/FandolSong-Regular(0)/m/n/10 这 是 强 均 值 回 复 的 精 确 \TU/lmr/m/n/10 Copula–\
+TU/FandolSong-Regular(0)/m/n/10 分 位 数 条
+
+Underfull \hbox (badness 4913) in paragraph at lines 172--173
+\TU/FandolSong-Regular(0)/m/n/10 件；|  密 度 不 存 在 时 把 $\OML/cmm/m/it/10 c[]\OT1/c
+mr/m/n/10 (\OML/cmm/m/it/10 u; v\OT1/cmr/m/n/10 ) []\OML/cmm/m/it/10 v$ \TU/Fan
+dolSong-Regular(0)/m/n/10 改 为 核
+
+Underfull \hbox (badness 10000) in paragraph at lines 175--175
+[]|\TU/lmtt/m/n/10 mean reversion
+
+Underfull \hbox (badness 10000) in paragraph at lines 176--176
+[]|\TU/lmtt/m/n/10 OU copula
+
+Underfull \hbox (badness 10000) in paragraph at lines 180--180
+[]|\TU/lmtt/m/n/10 OU example-2
+
+Underfull \hbox (badness 10000) in paragraph at lines 184--184
+[]|\TU/lmr/m/n/10 Example \TU/lmtt/m/n/10 CIR
+
+Underfull \hbox (badness 10000) in paragraph at lines 188--188
+[]|\TU/lmtt/m/n/10 CIR example-2
+
+Underfull \hbox (badness 10000) in paragraph at lines 190--190
+[]|\TU/lmtt/m/n/10 CIR example-3
+
+Underfull \hbox (badness 6559) in paragraph at lines 193--193
+[]|\TU/lmr/m/n/10 CIR \TU/FandolSong-Regular(0)/m/n/10 第 二 变 量 变 换
+
+Underfull \hbox (badness 10000) in paragraph at lines 195--195
+[]|\TU/lmtt/m/n/10 mix copula
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
+[]|\TU/lmr/m/n/10 Proposition \TU/lmtt/m/n/10 mix
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
+\TU/lmtt/m/n/10 copula mean
+
+Underfull \hbox (badness 10000) in paragraph at lines 198--198
+[]|\TU/lmr/m/n/10 Proposition \TU/lmtt/m/n/10 mix
+
+Underfull \hbox (badness 10000) in paragraph at lines 198--198
+\TU/lmtt/m/n/10 mean reversion
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--199
+[]|\TU/lmtt/m/n/10 mean reversion
+
+Underfull \hbox (badness 10000) in paragraph at lines 201--201
+[]|\TU/lmtt/m/n/10 mean reversion OU
+
+Underfull \hbox (badness 10000) in paragraph at lines 202--202
+[]|\TU/lmr/m/n/10 Proposition \TU/lmtt/m/n/10 mix
+
+Underfull \hbox (badness 10000) in paragraph at lines 203--203
+[]|\TU/lmtt/m/n/10 bond equation
+
+Underfull \hbox (badness 10000) in paragraph at lines 204--204
+[]|\TU/lmtt/m/n/10 mix copula bond
+
+Overfull \hbox (17.22992pt too wide) in alignment at lines 148--206
+ [] [] [] [] [] 
+[5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15]
+Overfull \hbox (2.85907pt too wide) in alignment at lines 579--583
+ [] [] [] [] 
+
+Overfull \hbox (2.85907pt too wide) in alignment at lines 583--587
+ [] [] [] [] 
+
+Overfull \hbox (17.19907pt too wide) in paragraph at lines 589--589
+[]|\TU/lmr/m/n/8 ThresholdOU_Heteroskedastic| 
+
+Overfull \hbox (7.08705pt too wide) in paragraph at lines 593--593
+[]|\TU/lmr/m/n/8 ExponentialTransformedOU| 
+
+Overfull \hbox (21.23906pt too wide) in paragraph at lines 594--594
+[]|\TU/lmr/m/n/8 SpecialFunctionTransformedOU| 
+
+Overfull \hbox (2.13506pt too wide) in paragraph at lines 596--596
+[]|\TU/lmr/m/n/8 QuadraticTransformedCIR| 
+
+Overfull \hbox (9.56705pt too wide) in paragraph at lines 597--597
+[]|\TU/lmr/m/n/8 ExponentialTransformedCIR| 
+
+Overfull \hbox (23.71906pt too wide) in paragraph at lines 598--598
+[]|\TU/lmr/m/n/8 SpecialFunctionTransformedCIR| 
+
+Overfull \hbox (4.54306pt too wide) in paragraph at lines 606--606
+[]|\TU/lmr/m/n/8 GaussianGammaStationary| 
+
+Overfull \hbox (13.26305pt too wide) in paragraph at lines 607--607
+[]|\TU/lmr/m/n/8 GaussianGammaTimeVarying| 
+
+Underfull \hbox (badness 1210) in paragraph at lines 608--609
+[]|\TU/FandolSong-Regular(0)/m/n/8 必 须 逐 单 元 格 分 类：| \TU/lmr/m/n/8 Gaussian $\O
+ML/cmm/m/it/8 ^^Z\OT1/cmr/m/n/8 (\OML/cmm/m/it/8 h\OT1/cmr/m/n/8 ) = \OML/cmm/m
+/it/8 e[]$ \TU/FandolSong-Regular(0)/m/n/8 及 其 独 立 重 置 混 合 有 精 确 半 群；|
+
+Overfull \hbox (28.73505pt too wide) in paragraph at lines 611--611
+[]|\TU/lmr/m/n/8 FullyTimeVaryingMarginalCopula| 
+
+Overfull \hbox (2.85907pt too wide) in alignment at lines 587--614
+ [] [] [] [] 
+[16]
+Overfull \hbox (2.27905pt too wide) in paragraph at lines 618--624
+\TU/FandolSong-Regular(0)/b/n/10.95 不 能 用 一 个  |“已 实 现”|  字 段 代 替 理 论 判 定。| [] 
+\TU/FandolSong-Regular(0)/m/n/10.95 建 议 以 后 对 每 个 对 象 分 别 记 录 \TU/lmtt/m/n/10.9
+5 theory_embedding_class\TU/FandolSong-Regular(0)/m/n/10.95 、|
+
+Overfull \hbox (73.77156pt too wide) in paragraph at lines 618--624
+\TU/lmtt/m/n/10.95 markov_state_dimension\TU/FandolSong-Regular(0)/m/n/10.95 、|
+ \TU/lmtt/m/n/10.95 observed_process_markov\TU/FandolSong-Regular(0)/m/n/10.95 
+、| \TU/lmtt/m/n/10.95 chapman_kolmogorov_proved\TU/FandolSong-Regular(0)/m/n/10
+.95 、| \TU/lmtt/m/n/10.95 asymptotic_mean_exists\TU/FandolSong-Regular(0)/m/n/1
+0.95 、|
+[17] (theory_correction_comparison.aux) )
+(see the transcript file for additional information)
+Output written on theory_correction_comparison.xdv (17 pages, 298708 bytes).
+Transcript written on theory_correction_comparison.log.
+note: Running xdvipdfmx ...
+note: downloading pdftex.map
+note: downloading kanjix.map
+note: downloading ckx.map
+note: downloading texglyphlist.txt
+note: downloading pdfglyphlist.txt
+note: downloading glyphlist.txt
+[1note: downloading cmmi10.pfb
+note: downloading cmr10.pfb
+][2note: downloading msbm10.pfb
+note: downloading cmmi8.pfb
+note: downloading cmsy10.pfb
+note: downloading cmsy8.pfb
+note: downloading cmr8.pfb
+note: downloading cmex10.pfb
+][3][4][5note: downloading cmmi7.pfb
+note: downloading cmr7.pfb
+note: downloading cmsy7.pfb
+][6][7][8][9][10note: downloading rsfs10.pfb
+][11note: downloading cmr6.pfb
+][12][13][14note: downloading cmmi6.pfb
+note: downloading cmex8.pfb
+][15][16note: downloading cmsy6.pfb
+][17note: downloading cmmi5.pfb
+]495567 bytes written
+note: Writing `.\output\tex_compile_check\after\theory_correction_comparison.out` (2.8251953125 KiB)
+note: Writing `.\output\tex_compile_check\after\theory_correction_comparison.pdf` (483.9521484375 KiB)
+note: Writing `.\output\tex_compile_check\after\theory_correction_comparison.log` (43.146484375 KiB)
+note: Writing `.\output\tex_compile_check\after\theory_correction_comparison.aux` (7.0751953125 KiB)

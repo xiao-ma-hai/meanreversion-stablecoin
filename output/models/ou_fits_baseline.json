@@ -1,0 +1,241 @@
+[
+  {
+    "model_name": "OU0",
+    "params": {
+      "theta": 0.0,
+      "kappa": 1.6793675367360021,
+      "sigma": 0.0013551207295999796
+    },
+    "loglik": 4207015.019475044,
+    "nobs": 524610,
+    "aic": -8414026.038950088,
+    "bic": -8414003.69812927,
+    "converged": true,
+    "optimizer_message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH",
+    "gradient_norm": 1.776356830474485e-07,
+    "hessian_condition": 788.0007094946264,
+    "covariance": [
+      [
+        0.0007913672905778975,
+        5.490286425677675e-06
+      ],
+      [
+        5.490286425677676e-06,
+        1.042459189657179e-06
+      ]
+    ],
+    "robust_covariance": null,
+    "start_values": {
+      "theta": 0.0,
+      "kappa": 1.6932467599786638,
+      "sigma": 0.0013551372584547174
+    },
+    "metadata": {
+      "half_life_minutes": 594.34990743377,
+      "stationary_sd": 0.000739418162656321,
+      "multistart": 12,
+      "repeated_best_solutions": 12,
+      "boundary_hit": false,
+      "weak_identification": false
+    }
+  },
+  {
+    "model_name": "OUF",
+    "params": {
+      "theta": 6.645310882805937e-05,
+      "kappa": 1.6932405042087457,
+      "sigma": 0.0013551371515619851
+    },
+    "loglik": 4207021.247905773,
+    "nobs": 524610,
+    "aic": -8414036.495811546,
+    "bic": -8414002.984580321,
+    "converged": true,
+    "optimizer_message": "CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_<=_PGTOL",
+    "gradient_norm": 0.0,
+    "hessian_condition": 2050255.4980561163,
+    "covariance": [
+      [
+        3.4137853249911403e-10,
+        3.897329260458921e-08,
+        -4.5980424923600876e-10
+      ],
+      [
+        3.897329260459133e-08,
+        0.0006952884944608725,
+        -3.2184120415703114e-06
+      ],
+      [
+        -4.598042492361307e-10,
+        -3.218412041570418e-06,
+        1.2385966116219127e-06
+      ]
+    ],
+    "robust_covariance": null,
+    "start_values": {
+      "theta": 6.645813169280216e-05,
+      "kappa": 1.6932467599786638,
+      "sigma": 0.0013551372584547174
+    },
+    "metadata": {
+      "half_life_minutes": 589.4803115832325,
+      "stationary_sd": 0.000736391775844082,
+      "multistart": 12,
+      "repeated_best_solutions": 12,
+      "boundary_hit": false,
+      "weak_identification": false
+    }
+  },
+  {
+    "model_name": "ThresholdOU",
+    "params": {
+      "theta": 0.0,
+      "kappa_plus": 1.5673188754488505,
+      "kappa_minus": 1.810385708780814,
+      "sigma_plus": 0.001351168621068576,
+      "sigma_minus": 0.001351168621068576
+    },
+    "loglik": 4207018.9844676955,
+    "nobs": 524610,
+    "aic": -8414031.968935391,
+    "bic": -8413998.457704166,
+    "converged": true,
+    "optimizer_message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH",
+    "gradient_norm": 9.7295071541089e-07,
+    "hessian_condition": 1281.1406265720655,
+    "covariance": [
+      [
+        0.0011019491109287973,
+        -0.00023168494551538817,
+        9.911560677202977e-07
+      ],
+      [
+        -0.0002316849455153882,
+        0.0008379752156684855,
+        -4.9501688305584245e-06
+      ],
+      [
+        9.911560677202909e-07,
+        -4.9501688305584245e-06,
+        9.946590982012985e-07
+      ]
+    ],
+    "robust_covariance": null,
+    "start_values": {
+      "kappa_plus": 50.0,
+      "kappa_minus": 50.0,
+      "sigma": 0.0013531455864400825
+    },
+    "metadata": {
+      "half_life_plus_minutes": 636.84037475812,
+      "half_life_minus_minutes": 551.3366213426989,
+      "repeated_best_solutions": 8,
+      "weak_identification": false,
+      "likelihood_type": "Euler_Gaussian_QMLE"
+    }
+  },
+  {
+    "model_name": "ThresholdOU_Heteroskedastic",
+    "params": {
+      "theta": 0.0,
+      "kappa_plus": 1.567353813535048,
+      "kappa_minus": 1.8102835982555174,
+      "sigma_plus": 0.0012479547852071048,
+      "sigma_minus": 0.001514978158094251
+    },
+    "loglik": 4211719.532593743,
+    "nobs": 524610,
+    "aic": -8423431.065187486,
+    "bic": -8423386.383545853,
+    "converged": true,
+    "optimizer_message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH",
+    "gradient_norm": 7.105427400784031e-07,
+    "hessian_condition": 957.3827494599498,
+    "covariance": [
+      [
+        0.0011119300472094014,
+        2.177611487643162e-05,
+        6.381665310632394e-07,
+        -5.573278137193242e-07
+      ],
+      [
+        2.1776114876431497e-05,
+        0.001425776437655425,
+        2.0111344780998576e-06,
+        -3.1554825646129172e-06
+      ],
+      [
+        6.381665310632385e-07,
+        2.0111344780998627e-06,
+        1.4942015825976381e-06,
+        1.021696618543526e-08
+      ],
+      [
+        -5.573278137193268e-07,
+        -3.1554825646129172e-06,
+        1.0216966185435367e-08,
+        2.5920179912365624e-06
+      ]
+    ],
+    "robust_covariance": null,
+    "start_values": {
+      "kappa_plus": 50.0,
+      "kappa_minus": 50.0,
+      "sigma": 0.0013531455864400825
+    },
+    "metadata": {
+      "half_life_plus_minutes": 636.8261788671124,
+      "half_life_minus_minutes": 551.367719935248,
+      "repeated_best_solutions": 7,
+      "weak_identification": false,
+      "likelihood_type": "Euler_Gaussian_QMLE"
+    }
+  },
+  {
+    "model_name": "OUF_irregular_G0_G2",
+    "params": {
+      "theta": 6.698429227246481e-05,
+      "kappa": 1.6989371606552137,
+      "sigma": 0.001356426482685726
+    },
+    "loglik": 4208182.839943858,
+    "nobs": 524833,
+    "aic": -8416359.679887716,
+    "bic": -8416326.167381529,
+    "converged": true,
+    "optimizer_message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH",
+    "gradient_norm": 0.00011173468084613515,
+    "hessian_condition": 35242133.11196397,
+    "covariance": [
+      [
+        5.509281607617544e-09,
+        -8.71621674916962e-06,
+        -1.9617842850645057e-07
+      ],
+      [
+        -8.71621674916962e-06,
+        0.015070402992125385,
+        0.0003272176483376476
+      ],
+      [
+        -1.9617842850645054e-07,
+        0.0003272176483376476,
+        8.296102740143543e-06
+      ]
+    ],
+    "robust_covariance": null,
+    "start_values": {
+      "theta": 6.706731069264594e-05,
+      "kappa": 1.7002232303756935,
+      "sigma": 0.0013570781678507538
+    },
+    "metadata": {
+      "half_life_minutes": 587.5037424111558,
+      "stationary_sd": 0.0007358556090021254,
+      "multistart": 6,
+      "repeated_best_solutions": 6,
+      "boundary_hit": false,
+      "weak_identification": false
+    }
+  }
+]

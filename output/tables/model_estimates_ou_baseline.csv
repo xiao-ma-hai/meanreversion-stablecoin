@@ -1,0 +1,20 @@
+sample,category,model,parameter,estimate,ordinary_se,sandwich_se,bootstrap_se,bootstrap_ci_lower,bootstrap_ci_upper,converged,gradient_norm,hessian_condition,weak_identification,half_life_minutes,effective_half_life_minutes,inference_note
+baseline,OU,OU0,theta,0.0,,,0.0,0.0,0.0,True,1.776356830474485e-07,788.0007094946264,False,594.34990743377,,Observed Hessian; UTC-day cluster sandwich; UTC-day block bootstrap
+baseline,OU,OU0,kappa,1.6793675367360021,0.043088332765807924,0.21112645605279265,0.19714518783102467,1.3231539587570937,2.060506767869626,True,1.776356830474485e-07,788.0007094946264,False,594.34990743377,,Observed Hessian; UTC-day cluster sandwich; UTC-day block bootstrap
+baseline,OU,OU0,sigma,0.0013551207295999796,1.326816796719326e-06,0.00014558712726683355,0.0001459595024443511,0.0011236552320471424,0.0016931053826978108,True,1.776356830474485e-07,788.0007094946264,False,594.34990743377,,Observed Hessian; UTC-day cluster sandwich; UTC-day block bootstrap
+baseline,OU,OUF,theta,6.645310882805937e-05,1.8751818077771792e-05,1.6609015710396017e-05,1.6953382286547516e-05,3.369209834375673e-05,0.00010064877877258078,True,0.0,2050255.4980561163,False,589.4803115832325,,Observed Hessian; UTC-day cluster sandwich; UTC-day block bootstrap
+baseline,OU,OUF,kappa,1.6932405042087457,0.043268904151890795,0.20988358726154344,0.19714518783102467,1.3231539587570937,2.060506767869626,True,0.0,2050255.4980561163,False,589.4803115832325,,Observed Hessian; UTC-day cluster sandwich; UTC-day block bootstrap
+baseline,OU,OUF,sigma,0.0013551371515619851,1.3268652251115577e-06,0.00014558592210163097,0.0001459595024443511,0.0011236552320471424,0.0016931053826978108,True,0.0,2050255.4980561163,False,589.4803115832325,,Observed Hessian; UTC-day cluster sandwich; UTC-day block bootstrap
+baseline,OU,ThresholdOU,theta,0.0,,,,,,True,9.7295071541089e-07,1281.1406265720655,False,,,SE unavailable unless populated by model-specific inference
+baseline,OU,ThresholdOU,kappa_plus,1.5673188754488505,,,,,,True,9.7295071541089e-07,1281.1406265720655,False,,,SE unavailable unless populated by model-specific inference
+baseline,OU,ThresholdOU,kappa_minus,1.810385708780814,,,,,,True,9.7295071541089e-07,1281.1406265720655,False,,,SE unavailable unless populated by model-specific inference
+baseline,OU,ThresholdOU,sigma_plus,0.001351168621068576,,,,,,True,9.7295071541089e-07,1281.1406265720655,False,,,SE unavailable unless populated by model-specific inference
+baseline,OU,ThresholdOU,sigma_minus,0.001351168621068576,,,,,,True,9.7295071541089e-07,1281.1406265720655,False,,,SE unavailable unless populated by model-specific inference
+baseline,OU,ThresholdOU_Heteroskedastic,theta,0.0,,,,,,True,7.105427400784031e-07,957.3827494599498,False,,,SE unavailable unless populated by model-specific inference
+baseline,OU,ThresholdOU_Heteroskedastic,kappa_plus,1.567353813535048,,,,,,True,7.105427400784031e-07,957.3827494599498,False,,,SE unavailable unless populated by model-specific inference
+baseline,OU,ThresholdOU_Heteroskedastic,kappa_minus,1.8102835982555174,,,,,,True,7.105427400784031e-07,957.3827494599498,False,,,SE unavailable unless populated by model-specific inference
+baseline,OU,ThresholdOU_Heteroskedastic,sigma_plus,0.0012479547852071048,,,,,,True,7.105427400784031e-07,957.3827494599498,False,,,SE unavailable unless populated by model-specific inference
+baseline,OU,ThresholdOU_Heteroskedastic,sigma_minus,0.001514978158094251,,,,,,True,7.105427400784031e-07,957.3827494599498,False,,,SE unavailable unless populated by model-specific inference
+baseline,OU,OUF_irregular_G0_G2,theta,6.698429227246481e-05,,,,,,True,0.00011173468084613515,35242133.11196397,False,587.5037424111558,,SE unavailable unless populated by model-specific inference
+baseline,OU,OUF_irregular_G0_G2,kappa,1.6989371606552137,,,,,,True,0.00011173468084613515,35242133.11196397,False,587.5037424111558,,SE unavailable unless populated by model-specific inference
+baseline,OU,OUF_irregular_G0_G2,sigma,0.001356426482685726,,,,,,True,0.00011173468084613515,35242133.11196397,False,587.5037424111558,,SE unavailable unless populated by model-specific inference

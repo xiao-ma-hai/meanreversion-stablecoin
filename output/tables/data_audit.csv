@@ -1,0 +1,20 @@
+metric,observed,expected,match
+sha256,417ea3aa71f86c4476c30568f251f3f873ae8b0d44c5f480f5ad2f35fc6acc22,417ea3aa71f86c4476c30568f251f3f873ae8b0d44c5f480f5ad2f35fc6acc22,True
+rows,797178,797178,True
+first_timestamp,1490807100,1490807100,True
+last_timestamp,1767225300,1767225300,True
+first_utc,2017-03-29 17:05:00,,True
+last_utc,2025-12-31 23:55:00,,True
+duplicate_timestamps,0,0,True
+missing_fields,0,0,True
+exact_300s_pairs,750220,750220,True
+greater_than_300s_pairs,46957,46957,True
+theoretical_grid_rows,921395,921395,True
+missing_grid_rows,124217,124217,True
+coverage_pct,86.51859408831174,86.5186,True
+timestamp_grid_violations,0,0,True
+strictly_increasing,True,True,True
+ohlc_violations,0,0,True
+negative_value_rows,0,0,True
+raw_readonly,True,True,True
+memory_mb,42.57402420043945,,True

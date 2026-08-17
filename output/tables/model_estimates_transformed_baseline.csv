@@ -1,0 +1,14 @@
+sample,category,model,parameter,estimate,ordinary_se,sandwich_se,bootstrap_se,bootstrap_ci_lower,bootstrap_ci_upper,converged,gradient_norm,hessian_condition,weak_identification,half_life_minutes,effective_half_life_minutes,inference_note
+baseline,Transformed,AffineTransformedOU,A0,1.0,,,,,,True,4.689716638603837e-06,8164.976406310979,False,,,SE unavailable unless populated by model-specific inference
+baseline,Transformed,AffineTransformedOU,B0,0.0,,,,,,True,4.689716638603837e-06,8164.976406310979,False,,,SE unavailable unless populated by model-specific inference
+baseline,Transformed,AffineTransformedOU,kappa,0.8757534835571565,,,,,,True,4.689716638603837e-06,8164.976406310979,False,,,SE unavailable unless populated by model-specific inference
+baseline,Transformed,AffineTransformedOU,d,0.876513611570394,,,,,,True,4.689716638603837e-06,8164.976406310979,False,,,SE unavailable unless populated by model-specific inference
+baseline,Transformed,AffineTransformedOU,sigma,0.0023885765299399,,,,,,True,4.689716638603837e-06,8164.976406310979,False,,,SE unavailable unless populated by model-specific inference
+baseline,Transformed,AffineTransformedOU,gamma_kappa_minus_d,-0.0007601280132374377,,,,,,True,4.689716638603837e-06,8164.976406310979,False,,,SE unavailable unless populated by model-specific inference
+baseline,Transformed,AffineTransformedCIR,A0,1.0,,,,,,True,,,True,,,SE unavailable unless populated by model-specific inference
+baseline,Transformed,AffineTransformedCIR,B0,0.0,,,,,,True,,,True,,,SE unavailable unless populated by model-specific inference
+baseline,Transformed,AffineTransformedCIR,theta,1.0000989581702744,,,,,,True,,,True,,,SE unavailable unless populated by model-specific inference
+baseline,Transformed,AffineTransformedCIR,kappa,1.9371513287575681,,,,,,True,,,True,,,SE unavailable unless populated by model-specific inference
+baseline,Transformed,AffineTransformedCIR,d,1.937351328757568,,,,,,True,,,True,,,SE unavailable unless populated by model-specific inference
+baseline,Transformed,AffineTransformedCIR,sigma,0.001274113245701976,,,,,,True,,,True,,,SE unavailable unless populated by model-specific inference
+baseline,Transformed,AffineTransformedCIR,gamma_kappa_minus_d,-0.00019999999999999998,,,,,,True,,,True,,,SE unavailable unless populated by model-specific inference

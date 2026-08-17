@@ -1,0 +1,420 @@
+<!doctype html><meta charset='utf-8'><title>USDT/USD mean reversion report</title><style>body{font-family:Arial,'Microsoft YaHei',sans-serif;max-width:1100px;margin:2rem auto;line-height:1.55}pre{overflow:auto;background:#f5f5f5;padding:1rem}</style><pre># USDT/USD 五分钟数据均值回复实证报告
+
+生成日期：2026-08-09  
+数据：Kraken `USDTUSD_5.csv`，UTC，2017-03-29 至 2025-12-31。  
+主样本：2021-2025；训练/验证/测试：2021-2023 / 2024 / 2025。
+
+## 1. 执行结论
+
+本项目按两份 TeX 方法论建立了只读原始数据审计、精确时间匹配、非参数漂移、OU/阈值 OU、CIR、全部有限维理论变换、MOU/MCIR、全部声明的边际--copula 组合、强基准、边界 bootstrap、统一验证排名、滚动预测、脱锚事件和首次回复时间流程。只有 `pytest`、原 MVP 与更新后全模型阶段门槛均为 PASS 时，manifest 才会标记项目完成。
+
+环境采用 `D:/Anaconda/envs/meanreversion-stablecoin`。由于本机 classic 与 libmamba 求解器均长期停留在索引阶段，最终环境通过对现有 Python 3.11 科学栈进行只读离线克隆到新名称，再仅向新环境补装 PyYAML、pytest、arch 与本项目包；没有修改或删除任何原有环境。离线克隆带入的少数非项目包存在既有 `pip check` 冲突，已原样记录在环境审计中；它们不属于本项目依赖且未被实证代码导入。`environment.yml` 是干净重建规范，两个导出文件记录实际运行环境。
+
+## 2. 数据审计与样本
+
+```text
+                   metric                                                         observed                                                         expected  match
+                   sha256 417ea3aa71f86c4476c30568f251f3f873ae8b0d44c5f480f5ad2f35fc6acc22 417ea3aa71f86c4476c30568f251f3f873ae8b0d44c5f480f5ad2f35fc6acc22   True
+                     rows                                                           797178                                                           797178   True
+          first_timestamp                                                       1490807100                                                       1490807100   True
+           last_timestamp                                                       1767225300                                                       1767225300   True
+                first_utc                                              2017-03-29 17:05:00                                                              NaN   True
+                 last_utc                                              2025-12-31 23:55:00                                                              NaN   True
+     duplicate_timestamps                                                                0                                                                0   True
+           missing_fields                                                                0                                                                0   True
+         exact_300s_pairs                                                           750220                                                           750220   True
+  greater_than_300s_pairs                                                            46957                                                            46957   True
+    theoretical_grid_rows                                                           921395                                                           921395   True
+        missing_grid_rows                                                           124217                                                           124217   True
+             coverage_pct                                                86.51859408831174                                                          86.5186   True
+timestamp_grid_violations                                                                0                                                                0   True
+      strictly_increasing                                                             True                                                             True   True
+          ohlc_violations                                                                0                                                                0   True
+      negative_value_rows                                                                0                                                                0   True
+             raw_readonly                                                             True                                                             True   True
+                memory_mb                                                42.57402420043945                                                              NaN   True
+```
+
+```text
+    sample                 start_utc                   end_utc  observations  theoretical_bars  coverage_pct  exact_5min_pairs  hard_anomalies
+  baseline 2021-01-01 00:00:00+00:00 2025-12-31 23:55:00+00:00        524835            525888     99.799767            524610               0
+  extended 2020-01-01 00:05:00+00:00 2025-12-31 23:55:00+00:00        627782            631296     99.443367            625690               0
+      full 2017-03-29 17:05:00+00:00 2025-12-31 23:55:00+00:00        797178            921395     86.518594            750220               3
+     train 2021-01-01 00:00:00+00:00 2023-12-31 23:55:00+00:00        314759            315360     99.809424            314590               0
+validation 2024-01-01 00:00:00+00:00 2024-12-31 23:55:00+00:00        105153            105408     99.758083            105118               0
+      test 2025-01-01 00:00:00+00:00 2025-12-31 23:55:00+00:00        104923            105120     99.812595            104900               0
+```
+
+三条 2019 年候选异常始终保留原值并显式标记；全样本稳健性同时报告保留和排除标记记录。主模型只把时间差严格等于 300 秒的观测组成五分钟转移对，不把相邻 CSV 行无条件当作相邻 K 线。
+
+## 3. 非参数均值回复证据
+
+```text
+theta_definition    theta      SCR  SCR_bootstrap_ci_lower  SCR_bootstrap_ci_upper  Tn_equal_weight  Tn_density_weight
+  anchor_theta_0 0.000000 0.777778                0.767677                0.878788     6.971976e-17       9.260814e-17
+sample_theta_hat 0.000067 0.878788                0.858586                0.969697     6.707696e-18       8.922287e-18
+```
+
+局部线性漂移使用按 UTC 日分块的交叉验证与 1,000 次最终 bootstrap；逐点区间和同时置信带均已保存。SCR 是有限网格上的方向一致率，不能被解释成对连续时间极限或全状态空间均值回复的证明。
+
+## 4. 参数模型与诊断
+
+```text
+                      model parameter  estimate  ordinary_se  sandwich_se  bootstrap_se  bootstrap_ci_lower  bootstrap_ci_upper  weak_identification  half_life_minutes  effective_half_life_minutes
+                  CIR_Price     theta  1.000099          NaN          NaN           NaN                 NaN                 NaN                 True         515.257598                          NaN
+                  CIR_Price     kappa  1.937151          NaN          NaN           NaN                 NaN                 NaN                 True         515.257598                          NaN
+                  CIR_Price     sigma  0.001274          NaN          NaN           NaN                 NaN                 NaN                 True         515.257598                          NaN
+          CIR_DepegPressure     theta  0.000446          NaN          NaN           NaN                 NaN                 NaN                False         366.249996                          NaN
+          CIR_DepegPressure     kappa  2.725275          NaN          NaN           NaN                 NaN                 NaN                False         366.249996                          NaN
+          CIR_DepegPressure     sigma  0.096849          NaN          NaN           NaN                 NaN                 NaN                False         366.249996                          NaN
+                       MOU0     theta  0.000000          NaN          NaN           NaN                 NaN                 NaN                False       41453.655377                   523.826211
+                       MOU0     kappa  0.024078          NaN          NaN           NaN                 NaN                 NaN                False       41453.655377                   523.826211
+                       MOU0     sigma  0.000963          NaN          NaN           NaN                 NaN                 NaN                False       41453.655377                   523.826211
+                       MOU0    lambda  1.881386          NaN          NaN           NaN                 NaN                 NaN                False       41453.655377                   523.826211
+                       MOUF     theta  0.000725 7.445427e-05     0.000650           NaN                 NaN                 NaN                False       40190.441574                   522.265088
+                       MOUF     kappa  0.024835 6.410763e-04     0.014187           NaN                 NaN                 NaN                False       40190.441574                   522.265088
+                       MOUF     sigma  0.000963 9.926209e-07     0.000010           NaN                 NaN                 NaN                False       40190.441574                   522.265088
+                       MOUF    lambda  1.886325 3.537213e-02     0.188347           NaN                 NaN                 NaN                False       40190.441574                   522.265088
+                       MCIR     theta  1.000099          NaN          NaN           NaN                 NaN                 NaN                 True                NaN                   348.868414
+                       MCIR     kappa  1.937151          NaN          NaN           NaN                 NaN                 NaN                 True                NaN                   348.868414
+                       MCIR     sigma  0.001274          NaN          NaN           NaN                 NaN                 NaN                 True                NaN                   348.868414
+                       MCIR    lambda  0.923904          NaN          NaN           NaN                 NaN                 NaN                 True                NaN                   348.868414
+                        OU0     theta  0.000000          NaN          NaN      0.000000            0.000000            0.000000                False         594.349907                          NaN
+                        OU0     kappa  1.679368 4.308833e-02     0.211126      0.197145            1.323154            2.060507                False         594.349907                          NaN
+                        OU0     sigma  0.001355 1.326817e-06     0.000146      0.000146            0.001124            0.001693                False         594.349907                          NaN
+                        OUF     theta  0.000066 1.875182e-05     0.000017      0.000017            0.000034            0.000101                False         589.480312                          NaN
+                        OUF     kappa  1.693241 4.326890e-02     0.209884      0.197145            1.323154            2.060507                False         589.480312                          NaN
+                        OUF     sigma  0.001355 1.326865e-06     0.000146      0.000146            0.001124            0.001693                False         589.480312                          NaN
+                ThresholdOU     theta  0.000000          NaN          NaN           NaN                 NaN                 NaN                False                NaN                          NaN
+ThresholdOU_Heteroskedastic     theta  0.000000          NaN          NaN           NaN                 NaN                 NaN                False                NaN                          NaN
+        OUF_irregular_G0_G2     theta  0.000067          NaN          NaN           NaN                 NaN                 NaN                False         587.503742                          NaN
+        OUF_irregular_G0_G2     kappa  1.698937          NaN          NaN           NaN                 NaN                 NaN                False         587.503742                          NaN
+        OUF_irregular_G0_G2     sigma  0.001356          NaN          NaN           NaN                 NaN                 NaN                False         587.503742                          NaN
+        AffineTransformedOU     kappa  0.875753          NaN          NaN           NaN                 NaN                 NaN                False                NaN                          NaN
+        AffineTransformedOU     sigma  0.002389          NaN          NaN           NaN                 NaN                 NaN                False                NaN                          NaN
+       AffineTransformedCIR     theta  1.000099          NaN          NaN           NaN                 NaN                 NaN                 True                NaN                          NaN
+       AffineTransformedCIR     kappa  1.937151          NaN          NaN           NaN                 NaN                 NaN                 True                NaN                          NaN
+       AffineTransformedCIR     sigma  0.001274          NaN          NaN           NaN                 NaN                 NaN                 True                NaN                          NaN
+```
+
+```text
+                      model     nobs       loglik           aic           bic  converged  weak_identification acceptance_pass  pit_ks_pvalue  ljung_box_z_p20
+                  CIR_Price      NaN 4.239569e+06 -8.479132e+06 -8.479098e+06       True                 True           False            0.0     1.575010e-15
+          CIR_DepegPressure      NaN 4.351170e+06 -8.702335e+06 -8.702301e+06       True                False            True            0.0     5.863338e-26
+                       MOU0      NaN 4.351515e+06 -8.703025e+06 -8.702991e+06       True                False            True            NaN              NaN
+                       MOUF      NaN 4.351562e+06 -8.703116e+06 -8.703071e+06       True                False            True            0.0     0.000000e+00
+                       MCIR      NaN 4.291487e+06 -8.582965e+06 -8.582921e+06       True                 True           False            NaN              NaN
+                        OU0      NaN 4.207015e+06 -8.414026e+06 -8.414004e+06       True                False            True            0.0     0.000000e+00
+                        OUF      NaN 4.207021e+06 -8.414036e+06 -8.414003e+06       True                False            True            0.0     0.000000e+00
+                ThresholdOU      NaN 4.207019e+06 -8.414032e+06 -8.413998e+06       True                False            True            NaN              NaN
+ThresholdOU_Heteroskedastic      NaN 4.211720e+06 -8.423431e+06 -8.423386e+06       True                False            True            NaN              NaN
+        OUF_irregular_G0_G2      NaN 4.208183e+06 -8.416360e+06 -8.416326e+06       True                False           False            NaN              NaN
+        AffineTransformedOU 120000.0 9.774370e+05 -1.954868e+06 -1.954839e+06       True                False            True            NaN              NaN
+       AffineTransformedCIR 120000.0 9.666950e+05 -1.933382e+06 -1.933343e+06       True                 True           False            NaN              NaN
+```
+
+普通似然模型的 AIC/BIC 可在相同观测与似然口径下比较；半参数复合似然不与普通似然直接按原始 AIC/BIC 排名。CIR 和仿射变换若 Hessian/轮廓显示弱识别，报告保留估计但不作精确结构解释。
+
+CIR 数值密度诊断：
+
+```text
+            model                                                 density_backend  scipy_exact_failure_rate  gradient_norm  weak_identification
+        CIR_Price scipy_ncx2_exact_with_high_noncentrality_moment_normal_fallback                       1.0       0.000096                 True
+CIR_DepegPressure scipy_ncx2_exact_with_high_noncentrality_moment_normal_fallback                       0.0       0.000001                False
+```
+
+价格 CIR 在极高非中心参数区间出现 SciPy 非中心卡方对数密度数值失效，故以 CIR 条件一、二阶矩的 Gaussian 极限作数值回退，并把高回退率强制标成弱识别；这不是“精确 CIR 似然”的证据。脱锚压力 CIR 未触发该回退。
+
+## 5. 混合 copula 与边界检验
+
+```text
+null_model       alternative_model  observed_lambda   observed_lr  replications  bootstrap_nobs  raw_pvalue  finite_sample_corrected_pvalue  critical_90  critical_95  critical_99  fixed_interval_design  parameters_reestimated_each_replication  alternative_base_parameters_reestimated_then_fixed_for_lambda_profile
+       OUF MOUF_conditional_lambda         0.767804 153693.544165           200           25000         0.0                        0.004975          0.0          0.0          0.0                   True                                     True                                                                   True
+```
+
+## 5A. Article-core extensions (2026-08-07)
+
+Primary matched-design joint-MOUF boundary bootstrap:
+```text
+ matched_pairs  replications  observed_lr  finite_replication_corrected_pvalue  bootstrap_alternative_convergence_rate  bootstrap_lambda_boundary_share
+         25000           500  12722.80446                             0.001996                                   0.982                            0.994
+```
+
+Prespecified model hierarchy:
+```text
+              tier                                                       models                                                                      article_relation                                      claim_scope
+              core                                                    OUF; MOUF                            exact stationary OU and constant-intensity mixed-OU kernel                    primary structural comparison
+    main_extension                                  ThresholdOU_Heteroskedastic                                                         empirical asymmetry extension                conditional volatility robustness
+        diagnostic SingleGaussian; SingleMixed; TwoScaleGaussian; TwoScaleMixed copula dependence diagnostics; two-scale observed state is not one-dimensional Markov multi-horizon fit and out-of-sample copula score
+forecast_benchmark                                   RandomWalk; NestedOU_proxy                                                              not article propositions                       predictive benchmarks only
+          appendix                         CIR; MCIR; affine transformed OU/CIR                                          article examples with restricted calibration  feasibility and weak-identification diagnostics
+```
+
+Single- versus two-scale copula comparison:
+```text
+           model  n_parameters  objective_mean_log_copula  dependence_rmse    kappa  kappa_slow  kappa_fast  weight_fast   lambda
+   TwoScaleMixed             4                   1.595032         0.032229      NaN    0.136118  225.023714     0.012149 0.507818
+TwoScaleGaussian             3                   1.526627         0.003773      NaN    0.334802  251.008855     0.012440 0.000000
+     SingleMixed             2                   1.469914         0.070184 0.888904         NaN         NaN          NaN 0.250458
+  SingleGaussian             1                   1.420511         0.070223 1.139818         NaN         NaN          NaN 0.000000
+```
+
+Frozen-training-model equal-horizon out-of-sample scores:
+```text
+            period            model  n_pairs  mean_log_copula_score
+training_2021_2023   SingleGaussian  1885945               1.273851
+training_2021_2023      SingleMixed  1885945               1.311641
+training_2021_2023 TwoScaleGaussian  1885945               1.407841
+training_2021_2023    TwoScaleMixed  1885945               1.478992
+   validation_2024   SingleGaussian   630166               1.546371
+   validation_2024      SingleMixed   630166               1.598606
+   validation_2024 TwoScaleGaussian   630166               1.610731
+   validation_2024    TwoScaleMixed   630166               1.666404
+         test_2025   SingleGaussian   628932               1.389389
+         test_2025      SingleMixed   628932               1.435957
+         test_2025 TwoScaleGaussian   628932               1.506375
+         test_2025    TwoScaleMixed   628932               1.571158
+```
+
+The two-scale latent state is Markov, but its observed scalar sum is generally
+not one-dimensional Markov. These models are dependence diagnostics, not new
+instances of the article&#x27;s scalar Markov proposition.
+
+```text
+ horizon_minutes  n_pairs  empirical_gaussian_rho  fitted_base_rho  fitted_mixed_linear_dependence  reset_weight
+               5   524610                0.991283         0.996917                        0.996033      0.000887
+              10   524494                0.988680         0.993844                        0.992081      0.001774
+              30   524279                0.980673         0.981646                        0.976432      0.005312
+              60   524143                0.971600         0.963630                        0.953419      0.010596
+             120   524017                0.956644         0.928582                        0.909008      0.021080
+             360   523734                0.916301         0.800683                        0.751109      0.061915
+```
+
+MOU 的 `kappa` 是基础依赖衰减，`lambda` 是 Poisson 型独立重置强度；有效条件均值半衰期由 `kappa+lambda` 决定。二者只靠条件均值不可分别识别，因此使用完整混合密度、多滞后 copula 和边界 bootstrap。`lambda` 不自动对应某个唯一经济事件。
+
+## 6. 样本外预测、脱锚概率与回复时间
+
+验证期选择：
+
+```text
+         model  mean_NLS  mean_CRPS  mean_RMSE  validation_rank_NLS  selected_by_validation  test_hyperparameter_retuning
+           OUF -7.187593   0.000131   0.000237                    1                    True                         False
+    RandomWalk -7.131445   0.000133   0.000214                    2                   False                         False
+NestedOU_proxy -7.130057   0.000145   0.000264                    3                   False                         False
+          MOUF -7.104238   0.000159   0.000297                    4                   False                         False
+```
+
+2025 测试期评分：
+
+```text
+         model  horizon_minutes  threshold   nobs      MAE     RMSE       NLS     CRPS        Brier  event_log_score      AUC
+    RandomWalk                5     0.0010 104900 0.000022 0.000039 -8.701462 0.000019 2.366585e-03     9.215227e-03 0.999555
+    RandomWalk                5     0.0025 104900 0.000022 0.000039 -8.701462 0.000019 2.187442e-05     5.182270e-04 0.954505
+    RandomWalk                5     0.0050 104900 0.000022 0.000039 -8.701462 0.000019 1.906578e-05     5.268071e-04 0.833329
+    RandomWalk                5     0.0100 104900 0.000022 0.000039 -8.701462 0.000019 1.000000e-24     1.000000e-12      NaN
+NestedOU_proxy                5     0.0010 104900 0.000022 0.000039 -8.702313 0.000019 2.395609e-03     9.258215e-03 0.999554
+NestedOU_proxy                5     0.0025 104900 0.000022 0.000039 -8.702313 0.000019 2.082700e-05     4.963427e-04 0.954507
+NestedOU_proxy                5     0.0050 104900 0.000022 0.000039 -8.702313 0.000019 1.906578e-05     5.268071e-04 0.833329
+NestedOU_proxy                5     0.0100 104900 0.000022 0.000039 -8.702313 0.000019 1.000000e-24     1.000000e-12      NaN
+           OUF                5     0.0010 104900 0.000022 0.000039 -8.702482 0.000019 2.383331e-03     9.232172e-03 0.999554
+           OUF                5     0.0025 104900 0.000022 0.000039 -8.702482 0.000019 2.101225e-05     5.009189e-04 0.954507
+           OUF                5     0.0050 104900 0.000022 0.000039 -8.702482 0.000019 1.906578e-05     5.268071e-04 0.833329
+           OUF                5     0.0100 104900 0.000022 0.000039 -8.702482 0.000019 1.000000e-24     1.000000e-12      NaN
+          MOUF                5     0.0010 104900 0.000023 0.000039 -8.763179 0.000019 2.387054e-03     8.942379e-03 0.999110
+          MOUF                5     0.0025 104900 0.000023 0.000039 -8.763179 0.000019 2.084258e-05     2.312259e-04 0.923062
+          MOUF                5     0.0050 104900 0.000023 0.000039 -8.763179 0.000019 1.892149e-05     3.099969e-04 0.833327
+          MOUF                5     0.0100 104900 0.000023 0.000039 -8.763179 0.000019 1.000000e-24     1.000000e-12      NaN
+    RandomWalk               60     0.0010 104836 0.000058 0.000094 -7.650482 0.000053 6.529101e-03     2.569205e-02 0.996193
+    RandomWalk               60     0.0025 104836 0.000058 0.000094 -7.650482 0.000053 2.221816e-04     4.197905e-03 0.767101
+    RandomWalk               60     0.0050 104836 0.000058 0.000094 -7.650482 0.000053 5.710129e-05     1.365305e-03 0.499986
+    RandomWalk               60     0.0100 104836 0.000058 0.000094 -7.650482 0.000053 1.000000e-24     1.000000e-12      NaN
+NestedOU_proxy               60     0.0010 104836 0.000060 0.000096 -7.663453 0.000053 6.927807e-03     2.578997e-02 0.996156
+NestedOU_proxy               60     0.0025 104836 0.000060 0.000096 -7.663453 0.000053 2.065972e-04     3.981936e-03 0.677877
+NestedOU_proxy               60     0.0050 104836 0.000060 0.000096 -7.663453 0.000053 5.211379e-05     1.211350e-03 0.499986
+NestedOU_proxy               60     0.0100 104836 0.000060 0.000096 -7.663453 0.000053 1.000000e-24     1.000000e-12      NaN
+           OUF               60     0.0010 104836 0.000059 0.000094 -7.664402 0.000053 6.601556e-03     2.517120e-02 0.996191
+           OUF               60     0.0025 104836 0.000059 0.000094 -7.664402 0.000053 2.087783e-04     4.031495e-03 0.677556
+           OUF               60     0.0050 104836 0.000059 0.000094 -7.664402 0.000053 5.424544e-05     1.244494e-03 0.499986
+           OUF               60     0.0100 104836 0.000059 0.000094 -7.664402 0.000053 1.000000e-24     1.000000e-12      NaN
+          MOUF               60     0.0010 104836 0.000068 0.000103 -7.637374 0.000056 7.035120e-03     3.073507e-02 0.994740
+          MOUF               60     0.0025 104836 0.000068 0.000103 -7.637374 0.000056 1.912807e-04     1.814354e-03 0.340430
+          MOUF               60     0.0050 104836 0.000068 0.000103 -7.637374 0.000056 4.992851e-05     8.504833e-04 0.499986
+          MOUF               60     0.0100 104836 0.000068 0.000103 -7.637374 0.000056 1.000000e-24     1.000000e-12      NaN
+    RandomWalk              360     0.0010 104662 0.000113 0.000173 -6.833116 0.000117 1.808911e-02     8.474502e-02 0.977036
+    RandomWalk              360     0.0025 104662 0.000113 0.000173 -6.833116 0.000117 3.249349e-04     3.887700e-03 0.485933
+    RandomWalk              360     0.0050 104662 0.000113 0.000173 -6.833116 0.000117 5.452571e-05     9.816537e-04 0.498357
+    RandomWalk              360     0.0100 104662 0.000113 0.000173 -6.833116 0.000117 1.000000e-24     1.000000e-12      NaN
+NestedOU_proxy              360     0.0010 104662 0.000141 0.000202 -6.908571 0.000118 2.001420e-02     7.224316e-02 0.969529
+NestedOU_proxy              360     0.0025 104662 0.000141 0.000202 -6.908571 0.000118 1.417430e-04     3.400323e-03 0.404712
+NestedOU_proxy              360     0.0050 104662 0.000141 0.000202 -6.908571 0.000118 2.881834e-05     7.934186e-04 0.499986
+NestedOU_proxy              360     0.0100 104662 0.000141 0.000202 -6.908571 0.000118 1.000000e-24     1.000000e-12      NaN
+           OUF              360     0.0010 104662 0.000123 0.000181 -6.915554 0.000112 1.717515e-02     6.469176e-02 0.976600
+           OUF              360     0.0025 104662 0.000123 0.000181 -6.915554 0.000112 1.530342e-04     3.455940e-03 0.407179
+           OUF              360     0.0050 104662 0.000123 0.000181 -6.915554 0.000112 3.194903e-05     8.016253e-04 0.499981
+           OUF              360     0.0100 104662 0.000123 0.000181 -6.915554 0.000112 1.000000e-24     1.000000e-12      NaN
+          MOUF              360     0.0010 104662 0.000191 0.000262 -6.718204 0.000148 2.203555e-02     9.542195e-02 0.972167
+          MOUF              360     0.0025 104662 0.000191 0.000262 -6.718204 0.000148 1.209493e-04     1.594463e-03 0.157118
+          MOUF              360     0.0050 104662 0.000191 0.000262 -6.718204 0.000148 2.975000e-05     7.966839e-04 0.499981
+          MOUF              360     0.0100 104662 0.000191 0.000262 -6.718204 0.000148 1.000000e-24     1.000000e-12      NaN
+    RandomWalk             1440     0.0010 104439 0.000183 0.000269 -6.177581 0.000216 7.273069e-02     3.039855e-01 0.931954
+    RandomWalk             1440     0.0025 104439 0.000183 0.000269 -6.177581 0.000216 7.237319e-04     8.095783e-03 0.488730
+    RandomWalk             1440     0.0050 104439 0.000183 0.000269 -6.177581 0.000216 5.087059e-05     7.097357e-04 0.468480
+    RandomWalk             1440     0.0100 104439 0.000183 0.000269 -6.177581 0.000216 1.638155e-16     4.195776e-11      NaN
+NestedOU_proxy             1440     0.0010 104439 0.000269 0.000369 -6.434500 0.000204 3.159294e-02     1.472783e-01 0.516927
+NestedOU_proxy             1440     0.0025 104439 0.000269 0.000369 -6.434500 0.000204 1.053315e-04     1.802359e-03 0.259682
+NestedOU_proxy             1440     0.0050 104439 0.000269 0.000369 -6.434500 0.000204 2.872490e-05     7.936984e-04 0.500000
+NestedOU_proxy             1440     0.0100 104439 0.000269 0.000369 -6.434500 0.000204 1.000000e-24     1.000000e-12      NaN
+           OUF             1440     0.0010 104439 0.000229 0.000314 -6.469366 0.000187 2.975027e-02     1.346096e-01 0.822085
+           OUF             1440     0.0025 104439 0.000229 0.000314 -6.469366 0.000187 1.065751e-04     1.577859e-03 0.265677
+           OUF             1440     0.0050 104439 0.000229 0.000314 -6.469366 0.000187 2.872490e-05     7.936984e-04 0.499986
+           OUF             1440     0.0100 104439 0.000229 0.000314 -6.469366 0.000187 1.000000e-24     1.000000e-12      NaN
+          MOUF             1440     0.0010 104439 0.000306 0.000403 -6.317943 0.000230 3.341388e-02     1.597901e-01 0.556314
+          MOUF             1440     0.0025 104439 0.000306 0.000403 -6.317943 0.000230 1.053400e-04     1.457543e-03 0.207124
+          MOUF             1440     0.0050 104439 0.000306 0.000403 -6.317943 0.000230 2.872490e-05     7.936984e-04 0.499986
+          MOUF             1440     0.0100 104439 0.000306 0.000403 -6.317943 0.000230 1.000000e-24     1.000000e-12      NaN
+```
+
+基准 50/25bp 事件数：8。
+
+```text
+  distribution    n  recovered_within_7d  median_minutes  p75_minutes  p90_minutes  p95_minutes
+     Empirical    8             1.000000           155.0       323.75        606.5       695.75
+ OUF_simulated 3000             1.000000           665.0       840.00       1020.0      1150.25
+MOUF_simulated 3000             0.998333          1085.0      2070.00       3485.0      4486.50
+```
+
+随机游走是无回复强基准；`NestedOU_proxy` 使用慢变指数均值加快 OU 偏离，是辅助文档要求的多层 OU 思路的可复现代理，但不是完整状态空间 Kalman 多层 OU，因而不应把它的表现当作对所有嵌套 OU 模型的最终否定。
+
+## 7. 稳健性
+
+```text
+  sample                  anomaly_policy  frequency_minutes  n_pairs     theta      kappa   lambda  half_life_minutes  effective_half_life_minutes
+baseline flagged_not_present_or_retained                  5   524610  0.000066   1.693247 0.696892         589.478134                   417.604138
+baseline flagged_not_present_or_retained                 15   174578  0.000067   1.850413 0.178357         539.410214                   491.988547
+baseline flagged_not_present_or_retained                 30    87068  0.000065   1.399177 0.132315         713.370500                   651.738254
+baseline flagged_not_present_or_retained                 60    43322  0.000066   1.131061 0.078536         882.473678                   825.177127
+extended flagged_not_present_or_retained                  5   625690  0.000114   5.846852 0.344991         170.712699                   161.201102
+extended flagged_not_present_or_retained                 15   206458  0.000117   4.684813 0.095984         213.056964                   208.779411
+extended flagged_not_present_or_retained                 30   102077  0.000118   3.617769 0.060226         275.897083                   271.379368
+extended flagged_not_present_or_retained                 60    50187  0.000119   3.435137 0.038450         290.565408                   287.349083
+    full              retain_raw_flagged                  5   750220 -0.000104 303.089735 0.000006           3.293190                     3.293189
+    full                 exclude_flagged                  5   750216  0.000002   2.741810 1.713905         364.041261                   224.011642
+```
+
+UTC 日移动块长度稳健性：
+
+```text
+ block_length_days parameter  replications_requested  replications_valid  bootstrap_mean  bootstrap_se  ci_lower  ci_upper
+                 1     theta                     200                 200        0.000068      0.000017  0.000040  0.000106
+                 1     kappa                     200                 200        1.675906      0.202113  1.309353  2.060628
+                 1     sigma                     200                 200        0.001338      0.000133  0.001141  0.001616
+                 3     theta                     200                 200        0.000064      0.000027  0.000010  0.000111
+                 3     kappa                     200                 200        1.748410      0.229998  1.279745  2.157189
+                 3     sigma                     200                 200        0.001342      0.000147  0.001107  0.001654
+                 7     theta                     200                 200        0.000065      0.000036 -0.000006  0.000134
+                 7     kappa                     200                 200        1.747733      0.262213  1.250053  2.212848
+                 7     sigma                     200                 200        0.001337      0.000150  0.001075  0.001648
+```
+
+稳健性覆盖 2020-2025 扩展样本、15/30/60 分钟完整聚合区间的精确滞后、1/3/7 日移动块，以及 2017-2025 全样本的异常保留/排除口径。频率变化不仅改变抽样误差，也可能降低微观结构噪声；若 `kappa` 随降频明显下降，应优先解释为高频噪声偏误风险。
+
+## 8. 对数学模型与实证方法的独立评估
+
+### 合理且可执行的部分
+
+1. 以 `log(P)` 表示相对一美元锚的有符号偏离是自然且可解释的；OU 有精确不规则间隔转移密度，是最强的首要基准。
+2. 直接检验 `(theta-x)mu(x)&gt;0` 比只报告 ADF/AR(1) 更贴近文档的均值回复定义；时间哈希配对避免了缺失 K 线造成的伪五分钟转移。
+3. 若基础核 `P_h` 以稳态边缘 `F` 为不变分布，则 `Q_h=exp(-lambda h)P_h+[1-exp(-lambda h)]Pi_F` 对应 Poisson 重置过程，并保持 Markov 半群，数学构造成立。Gaussian copula 的 `rho_h=exp(-kappa h)` 加经验单调边缘也可由潜在 Gaussian OU 变换实现。
+4. 训练、验证、测试按时间切分，测试伪观测用训练期经验分布映射，配合密度评分和脱锚概率，能防止最明显的未来信息泄漏。
+
+### 必须谨慎解释或需要后续改进的部分
+
+1. 有限的五分钟漂移符号和样本均值稳定性只是连续时间定义的代理，不能证明 `t→∞` 的矩收敛，也不能排除结构突变、状态切换或非 Markov 记忆。
+2. 成交收盘价的最小报价单位、买卖价差和 bid-ask bounce 相对 USDT 的真实波动很大，可能显著高估 `kappa`。当前数据没有中间价/订单簿，降频稳健性只能缓解、不能识别有效价格与测量误差；正式论文应加入噪声状态空间 OU。
+3. CIR 直接拟合约 1 的价格时 `sqrt(P)` 几乎常数，和 OU 很难区分；CIR 拟合绝对偏离又丢失方向，且绝对值过程未必本身满足 CIR。它适合作为比较/风险幅度模型，不宜成为核心价格机制。
+4. 仿射变换的 `A0`—潜在波动缩放、`d`—`kappa` 方差趋势和 `B0`—长期均值均可能近共线；多年样本的指数尺度还依赖时间原点。固定 `A0=1`、先固定 `B0=0` 与报告 profile likelihood 是必要但未必充分的识别约束。
+5. MOU 的重置从稳态边缘独立抽样，能描述依赖中断或数据跳变，但真实脱锚往往是状态依赖、方向不对称且持续的冲击。常数 `lambda` 可能把数据错误、微观噪声、套利断裂和新闻跳跃混为一体；下一版宜估计状态依赖 `lambda(x,z_t)`、非对称重置边缘或跳跃/状态切换基准。
+6. `kappa` 与 `lambda` 的条件均值只识别其和；小间隔下重置概率很低，边界附近的有限样本分布非标准。参数 bootstrap、多滞后信息和本项目的 1/3/7 日块结果是必要诊断，但 capped bootstrap 和复合似然仍应在论文定稿前用更大算力及模拟识别实验复核。
+7. 365 日滚动窗口和每 30 日重估是合理的预注册折衷，但会平滑短危机并制造高度重叠估计；结构变化结论必须与成交量、交易笔数和外部事件共同验证，不能只看滚动参数跳动。
+8. 单一 Kraken USDT/USD 无法支持跨稳定币、跨交易所或因果机制外推。它足以完成模型可估计性与预测比较，但不能把 `lambda` 解释为赎回、储备或链上行为的因果效应。
+
+### 总体可行性判断
+
+MVP 在现有 OHLCVT 数据上可行，最可信的结果层级依次为：数据事实与精确配对 → 非参数方向检验与 OU/阈值 OU → 样本外概率预测 → MOU/半参数 copula 的统计增益 → CIR/仿射变换的结构解释。前四层可形成论文主实证；最后一层只有在识别诊断、噪声模型和外部数据补齐后才适合作强经济解释。
+
+## 8A. Full-model registry and validation selection (2026-08-09)
+
+All finite-dimensional article models and all methodology benchmarks are
+estimated or retain a terminal failure diagnostic before validation ranking.
+
+```text
+                                  gate  pass                                                                                       criterion
+                   legacy_mvp_complete  True                                   existing baseline pipeline and original acceptance tests pass
+                       registry_frozen  True                                                      25 prespecified theory/methodology objects
+              no_silent_model_omission  True                         every registry row estimated or carries an explicit retained diagnostic
+    all_methodology_models_implemented  True all finite-dimensional article models and all methodology benchmarks are estimated or diagnosed
+  all_successful_dynamic_models_scored  True        every successfully fitted comparable dynamic model has a finite primary validation score
+      all_declared_copulas_implemented  True                                   base and independence-mixed version for every declared family
+    all_declared_marginals_implemented  True                                         Normal, Student-t, skew Student-t, GED, monotone spline
+  uniform_validation_ranking_available  True                                 same log-price density measure and five-minute validation score
+     complete_margin_copula_score_grid  True                                               all 960 period-horizon-margin-copula cells scored
+paired_selection_uncertainty_available  True           selected model compared with runner-up and core benchmarks using 2000 day-block draws
+                failed_models_retained  True                  non-monotone, support-failed, weak, and non-observable cases remain in outputs
+            no_complexity_preselection  True                         complexity does not remove a registered model before validation ranking
+           test_not_used_for_selection  True                              selection uses 2024 only; 2025 labelled post-extension exploratory
+```
+
+Top unified 2024 five-minute conditional-density scores:
+
+```text
+ validation_log_score_rank                       model  mean_log_score  finite_score_coverage
+                       1.0           MarkovSwitchingOU        8.824686                    1.0
+                       2.0           StudentT_StudentT        8.781202                    1.0
+                       3.0      StudentT_StudentTMixed        8.781201                    1.0
+                       4.0       SkewStudentT_StudentT        8.778521                    1.0
+                       5.0  SkewStudentT_StudentTMixed        8.778521                    1.0
+                       6.0           GED_StudentTMixed        8.757247                    1.0
+                       7.0                GED_StudentT        8.757247                    1.0
+                       8.0        Normal_StudentTMixed        8.697312                    1.0
+                       9.0             Normal_StudentT        8.697306                    1.0
+                      10.0     StudentT_SurvivalGumbel        8.659575                    1.0
+                      11.0 SkewStudentT_SurvivalGumbel        8.656823                    1.0
+                      12.0          GED_SurvivalGumbel        8.616729                    1.0
+                      13.0      StudentT_GaussianMixed        8.511625                    1.0
+                      14.0  SkewStudentT_GaussianMixed        8.507423                    1.0
+                      15.0            StudentT_Clayton        8.501299                    1.0
+```
+
+Paired day-block uncertainty for the selected model:
+
+```text
+   selected_model   reference_model  mean_log_score_difference  day_block_bootstrap_ci_lower  day_block_bootstrap_ci_upper  daily_win_share  n_pairs  n_days  bootstrap_replications
+MarkovSwitchingOU StudentT_StudentT                   0.043484                      0.018242                      0.065954         0.655738    40000     366                    2000
+MarkovSwitchingOU              MOUF                   0.393266                      0.355106                      0.429977         0.915301    40000     366                    2000
+MarkovSwitchingOU               OUF                   0.603368                      0.566379                      0.640416         0.956284    40000     366                    2000
+MarkovSwitchingOU        RandomWalk                   0.603922                      0.564066                      0.642485         0.959016    40000     366                    2000
+```
+
+Retained weak/failure diagnoses:
+
+```text
+                        model              implementation_status  weak_identification                                                                                 failure_reason
+                    CIR_Price                          estimated                 True                                                                                            NaN
+     ExponentialTransformedOU                          estimated                 True                                                                                            NaN
+ SpecialFunctionTransformedOU         failed_diagnostic_retained                 True                   dependence on latent squared state makes the map even and non-injective on R
+         AffineTransformedCIR                          estimated                 True                                                                                            NaN
+      QuadraticTransformedCIR         failed_diagnostic_retained                 True                                                    no globally monotone/support-valid solution
+    ExponentialTransformedCIR         failed_diagnostic_retained                 True                                                               no support-valid finite solution
+SpecialFunctionTransformedCIR         failed_diagnostic_retained                 True      no prespecified finite monotone special-function branch covers the observed price support
+                         MCIR                          estimated                 True                                                                                            NaN
+         SeasonalIntensityMOU                          estimated                 True                                                                                            NaN
+            MarkovSwitchingOU                          estimated                 True                                                                                            NaN
+     GaussianGammaTimeVarying         failed_diagnostic_retained                 True Case 2 requires a finite stationary endpoint satisfying Case 1; no finite shape root was found
+         ParametricCopulaGrid                          estimated                 True                                                                                            NaN
+           MixedCopulaBondPDE not_observable_diagnostic_retained                 True                          no bond-price cross section or risk-neutral measure in USDT spot data
+```
+
+## 9. 复现与产物
+
+最终 CSV 位于 `output/tables`，PNG/PDF 图位于 `output/figures`，模型 JSON/NPZ 位于 `output/models`，UTF-8 日志位于 `output/logs`。运行状态见 `output/run_status.json` 与 `output/manifest.json`。
+</pre>

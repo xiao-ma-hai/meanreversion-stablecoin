@@ -1,0 +1,41 @@
+{
+  "summary": {
+    "test_name": "matched_fixed_design_joint_MOUF_boundary_bootstrap",
+    "null_model": "OUF",
+    "alternative_model": "MOUF_joint_theta_kappa_sigma_lambda",
+    "total_available_pairs": 524610,
+    "matched_pairs": 25000,
+    "pair_selection": "deterministic_systematic_over_full_baseline",
+    "bootstrap_design": "fixed_observed_x_prev_conditional_OU_simulation",
+    "replications": 500,
+    "same_sample_size_observed_and_bootstrap": true,
+    "same_null_refit_observed_and_bootstrap": true,
+    "same_joint_alternative_fit_observed_and_bootstrap": true,
+    "observed_lr": 12722.80446023983,
+    "raw_pvalue": 0.0,
+    "finite_replication_corrected_pvalue": 0.001996007984031936,
+    "critical_90": 1.1641532182693481e-10,
+    "critical_95": 1.1641532182693481e-10,
+    "critical_99": 1.7462298274040222e-10,
+    "bootstrap_alternative_convergence_rate": 0.982,
+    "bootstrap_lambda_boundary_share": 0.994,
+    "multistart": 4,
+    "parallel_jobs": 4,
+    "random_seed": 20260806,
+    "interpretation_scope": "conditional composite likelihood on the prespecified matched systematic design"
+  },
+  "observed_fit": {
+    "null_loglik": 201061.1919628327,
+    "alternative_loglik": 207422.59419295262,
+    "lr": 12722.80446023983,
+    "theta_null": -6.922599896822229e-05,
+    "kappa_null": 1.1172745097859076,
+    "sigma_null": 0.0013228490288186834,
+    "theta_alt": 0.0005689106475057823,
+    "kappa_alt": 0.02527157542240998,
+    "sigma_alt": 0.000960514964453571,
+    "lambda_alt": 1.918505570769261,
+    "alternative_converged": true,
+    "alternative_gradient_norm": 5.117634420024335e-06
+  }
+}

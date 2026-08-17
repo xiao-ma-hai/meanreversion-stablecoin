@@ -1,0 +1,510 @@
+\documentclass[UTF8,11pt]{ctexart}
+\usepackage[a4paper,margin=2.35cm]{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs,longtable,array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\E}{\mathbb E}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\Normal}{\mathcal N}
+\newcommand{\cmark}{\textcolor{green!45!black}{\ensuremath{\checkmark}}}
+\newcommand{\wmark}{\textcolor{orange!80!black}{\ensuremath{\triangle}}}
+\newcommand{\xmark}{\textcolor{red!70!black}{\ensuremath{\times}}}
+
+\title{均值回复与混合 Copula 理论模型：解、推导与适用条件审计}
+\author{可复核数学审计}
+\date{2026年8月9日}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+本文逐项核验 \path{../meanreversion_article_main.tex} 中的均值回复定义、
+Gaussian--Gamma 构造、OU/CIR 单调变换、混合 Copula 构造及债券定价
+PDE。核验分为三个层次：代数残差是否为零；随机过程结论所需的可积性、
+边界和真鞅条件是否齐备；模型能否产生唯一且有限的观测转移密度。结论是：
+仿射 OU、指数 OU、仿射 CIR、二次 CIR 和指数 CIR 的显式系数解在定义域内
+代数正确；二次 CIR 在标准参数 $k>0$ 下不能在无限时域保持全局单调；
+OU 特殊函数解虽满足 PDE，却因关于状态为偶函数而不能作为全实轴上的单调
+变换；CIR 的 Kummer 分离解正确但分支、归一化和可积性条件没有给全；
+文中另一个把 CIR 方程化为 $u_\tau=zu_{zz}$ 的变量替换不能通过反代；
+Gamma 两个例子只验证了均值点处的零点条件，并未证明全状态空间的符号条件。
+混合 Copula 的 Poisson 重置构造和非局部债券 PDE 在补充标准条件后成立。
+\end{abstract}
+
+\section{审计范围、符号与判定标准}
+
+为避免原文中同一个 $\theta$ 同时表示基础扩散的长期水平与变换后过程的
+目标均值，本文用 $\theta_r$ 表示基础扩散参数，用 $\vartheta$ 表示变换后
+过程的目标均值；核对原文公式时再令 $\theta_r=\vartheta=\theta$。标准 CIR
+写为
+\begin{equation}
+ \dd r_t=k(\theta_r-r_t)\dd t+\sigma\sqrt{r_t}\dd W_t,
+ \qquad r_t\in[0,\infty).
+ \label{eq:cir}
+\end{equation}
+原文的变换 PDE 在 $\alpha(t)=-d$ 时为
+\begin{equation}
+ f_t+\mathcal L f+d(f-\vartheta)=0,
+ \label{eq:master-pde}
+\end{equation}
+其中 $\mathcal L$ 是基础扩散的生成元。
+
+本文使用以下判定：
+\begin{enumerate}[label=(\roman*)]
+ \item \textbf{代数正确}：把候选解反代 ODE/PDE 后恒等残差为零；
+ \item \textbf{随机过程有效}：还要求 It\^o 积分为真鞅、所需矩有限且
+       状态空间不被破坏；
+ \item \textbf{观测密度有效}：对 $Y_t=f(t,r_t)$，还要求每个观测时刻
+       $x\mapsto f(t,x)$ 在基础状态空间上单射、观测落在其像集内，且
+       Jacobian 有限。此时
+ \begin{equation}
+ q_Y(y_t\mid y_s)=p_r\!\left(f^{-1}(t,y_t)\mid f^{-1}(s,y_s)\right)
+ \left|\frac{\partial f^{-1}(t,y_t)}{\partial y_t}\right|.
+ \label{eq:change-density}
+ \end{equation}
+\end{enumerate}
+
+\section{二次 CIR 中 $k<0$ 的精确结论}
+
+原文二次变换为
+\[
+ f(t,x)=A(t)x^2+B(t)x+C(t),
+\]
+其中
+\begin{align}
+ A(t)&=A_0e^{(2k-d)t},\\
+ B(t)&=e^{(k-d)t}\left[B_0+
+ \eta\bigl(1-e^{kt}\bigr)\right],
+ &\eta&=\frac{A_0(\sigma^2+2k\theta_r)}{k}.
+ \label{eq:B-factor}
+\end{align}
+因为
+\[
+ f_x(t,x)=2A(t)x+B(t),\qquad x\geq0,
+\]
+当 $A_0>0$ 时，$x\mapsto f(t,x)$ 在 $x\geq0$ 上单调不减的充要条件是
+$B(t)\geq0$。
+
+\subsection{$k>0$：标准 CIR 下只能做有限时域变换}
+
+若 $k>0,\theta_r\geq0,\sigma>0,A_0>0$，则 $\eta>0$，而
+$1-e^{kt}\to-\infty$。所以对任意有限 $B_0$，存在有限 $t_\star$ 使
+$B(t)<0$。因此原文的 $A(t)>0,B(t)\geq0$ 不能在 $t\in[0,\infty)$ 上
+同时成立。固定有限样本窗 $0\leq t\leq T$ 时，单调性等价于
+\begin{equation}
+ B_0\geq \eta(e^{kT}-1).
+ \label{eq:finite-window-monotonicity}
+\end{equation}
+所以二次变换可以作为有限时域模型，但不能按原文表述直接作为全时域模型。
+
+\subsection{$k<0$：映射可以单调，但基础过程不再是标准 CIR}
+
+当 $k<0$ 时，$e^{kt}$ 从 $1$ 单调下降到 $0$。式 \eqref{eq:B-factor}
+中括号的取值位于 $B_0$ 与 $B_0+\eta$ 之间，故全时域单调条件恰为
+\begin{equation}
+ A_0>0,\qquad \min\{B_0,B_0+\eta\}\geq0.
+ \label{eq:knegative-monotonicity}
+\end{equation}
+所以，若只问“二次映射的单调性假定能否满足”，答案是\textbf{可以}。
+但若“模型假定”包括原文的标准均值回复 CIR、Gamma 稳态和正的长期水平，
+答案是\textbf{不可以}。
+
+由 \eqref{eq:cir} 得
+\begin{equation}
+ \E[r_t\mid r_s]
+ =\theta_r+(r_s-\theta_r)e^{-k(t-s)}.
+ \label{eq:cir-mean}
+\end{equation}
+标准 CIR 的均值回复、非退化 Gamma 稳态及文中所用参数化要求
+$k>0,\theta_r>0,\sigma>0$。若强行令 $k<0$：
+\begin{enumerate}
+ \item $\theta_r>0$ 时，边界漂移 $k\theta_r<0$，在 $r=0$ 处把过程推出
+       非负状态空间，不能作为全局非负 CIR；
+ \item $\theta_r=0$ 时可得到超临界分枝型平方根扩散，但
+       $\E r_t=r_s e^{|k|(t-s)}$，不均值回复，且转移律一般含边界原子；
+ \item $\theta_r<0$ 时 $k\theta_r>0$，可定义非负的\emph{超临界平方根
+       扩散}，但漂移在整个 $x\geq0$ 上向上，式 \eqref{eq:cir-mean}
+       发散，也不存在原文使用的 Gamma 稳态。若仍共用参数，目标水平还会
+       变成负数。
+\end{enumerate}
+在第三种放宽解释下，时间依赖变换本身仍可能使 $Y_t=f(t,r_t)$ 满足以
+$d>0$ 为速率的条件均值回复；但这应重新命名为“基于超临界平方根扩散的
+变换模型”，并将基础参数 $\theta_r$ 与目标均值 $\vartheta$ 分开。其理论、
+转移密度、稳态叙述和实证参数空间均不同于原文，不能仅把现有 CIR 估计中的
+$k$ 改成允许负值。
+
+\section{统一验证引理}
+
+对任意满足 \eqref{eq:master-pde} 的 $C^{1,2}$ 函数，It\^o 公式给出
+\begin{equation}
+ \dd Y_t=-d(Y_t-\vartheta)\dd t+
+ \sigma(r_t)f_x(t,r_t)\dd W_t.
+ \label{eq:transformed-sde}
+\end{equation}
+若局部鞅项在任意有限区间上是真鞅，则
+\begin{equation}
+ \E[Y_t-\vartheta\mid\mathcal F_s]
+ =e^{-d(t-s)}(Y_s-\vartheta).
+ \label{eq:conditional-mr}
+\end{equation}
+因此原文变换方法的核心正确；但 $f\in C^{1,2}$ 本身只保证局部 It\^o
+分解，并不足以保证真鞅、有限一阶矩或 $t\to\infty$ 时可交换极限。至少
+还要给出增长条件，或直接验证随机积分的一致可积性。
+
+原文一般扩散部分写“$\alpha(t)$ 是正常数 $\alpha>0$”并推出
+$\mu(x)=\alpha(x-\theta)$，与前文假定 $\alpha(t)<0$ 冲突。正确写法应为
+$\alpha<0$，或令 $d=-\alpha>0$，从而 $\mu(x)=d(\theta-x)$。
+
+\section{基础模型与一般命题}
+
+\subsection{OU 与 CIR}
+
+对 $\dd r_t=k(\theta_r-r_t)\dd t+\sigma\dd W_t$，当 $k>0$ 时
+\begin{align*}
+ r_t\mid r_s&\sim \Normal\left(
+ \theta_r+(r_s-\theta_r)e^{-k\Delta},
+ \frac{\sigma^2}{2k}(1-e^{-2k\Delta})\right),\\
+ r_\infty&\sim\Normal\left(\theta_r,\frac{\sigma^2}{2k}\right).
+\end{align*}
+两式均正确。对 CIR，令
+\[
+ c_\Delta=\frac{\sigma^2(1-e^{-k\Delta})}{4k},\quad
+ \nu=\frac{4k\theta_r}{\sigma^2},\quad
+ \lambda_\Delta=
+ \frac{4ke^{-k\Delta}r_s}{\sigma^2(1-e^{-k\Delta})}.
+\]
+标准参数下
+\[
+ r_t\mid r_s\overset d=c_\Delta\chi'^2_\nu(\lambda_\Delta),\qquad
+ r_\infty\sim\Gamma\!\left(\frac{2k\theta_r}{\sigma^2},
+ \frac{\sigma^2}{2k}\right).
+\]
+非负弱解需要 $k\theta_r\geq0$；原文的均值回复和非退化稳态还要求
+$k>0,\theta_r>0$。Feller 条件 $2k\theta_r\geq\sigma^2$ 保证零边界
+不可达，但不是在正观测点写出转移密度的必要条件。
+
+\subsection{定义、生成元与鞅变换}
+
+原文用
+\[
+ \lim_{h\downarrow0}\frac{\E[X_t\mid X_{t-h}=x]-x}{h}
+\]
+定义局部漂移。这是从 $t-h$ 到 $t$ 的前向漂移，只是以终点 $t$ 记时。
+若要与时变生成元 $A_t$ 完全一致，应统一为
+$\lim_{h\downarrow0}\{\E[X_{t+h}\mid X_t=x]-x\}/h$，或者明确使用
+原文假设 \texttt{hyp2 relation} 把左右极限接合。当前定义中的
+$x\in\operatorname{Ran}(X_t)$ 也应相应改为起点时刻的状态空间。
+
+条件
+\[
+ \E[X_t-\vartheta\mid X_s]
+ =R_{s,t}(X_s-\vartheta),\qquad
+ R_{s,t}=\exp\left\{\int_s^t\alpha(u)\dd u\right\},
+\]
+在 $\alpha<0,R_{s,t}\to0$ 和可积条件下确实推出均值回复。变换
+$M_t=(X_t-\vartheta)/R_{0,t}$ 为鞅的代数也正确。需要补充：条件期望应
+以 $\mathcal F_s$ 或 Markov 性明确连接；$X_t$ 必须可积；
+$R_{0,t}>0$ 使变换可逆，因而保留 Markov 性与 Copula。
+
+\subsection{Gaussian Copula 生成元}
+
+令标准化 OU 满足
+$\dd Z_t=-aZ_t\dd t+\sqrt{2a}\dd W_t$，并令 $U_t=\Phi(Z_t)$。It\^o
+公式给出
+\[
+ \mathcal A g(u)=-2a z\phi(z)g'(u)+a\phi(z)^2g''(u),
+ \qquad z=\Phi^{-1}(u),
+\]
+与原文式 (OU generator) 一致。若 $Q=F^{-1}$ 且
+$g_F(z)=Q(\Phi(z))$，则
+\[
+ \mathcal A Q(\Phi(z))=a\{g_F''(z)-zg_F'(z)\}.
+\]
+所以原文稳态边缘命题给出的全局符号条件确为充分条件。问题在于原文要求
+$F^{-1}\in C_0^2([0,1])$，而 Normal 和 Gamma 等无界分布的分位数及其
+导数在端点通常发散。应改用开区间上的扩展生成元定义域，并增加端点可积或
+局部化论证。
+
+\section{Gaussian Copula--Gamma 两个例子}
+
+设 $Q_\alpha$ 为 $\Gamma(\alpha,\theta_s)$ 的分位数，
+$x_\alpha=F_{\alpha,\theta_s}(\alpha\theta_s)$，
+$z_\alpha=\Phi^{-1}(x_\alpha)$。原文推导出的
+\begin{equation}
+ \Gamma(\alpha)\left(\frac e\alpha\right)^\alpha
+ \phi(z_\alpha)-2z_\alpha=0
+ \label{eq:gamma-root}
+\end{equation}
+代数上正确：它等价于在边缘均值处令 $\mathcal A Q_\alpha=0$。但是
+均值回复要求
+\begin{equation}
+ \sgn\{\mathcal A Q_\alpha(u)\}
+ =\sgn\{\alpha\theta_s-Q_\alpha(u)\}
+ \quad\text{对所有 }u\in(0,1),
+ \label{eq:global-gamma-sign}
+\end{equation}
+而式 \eqref{eq:gamma-root} 只检查一个点。原文没有证明
+$\mathcal A Q_\alpha$ 只有一个零点，也没有证明零点两侧的符号，所以把
+\eqref{eq:gamma-root} 称为充分条件不严格。高精度数值扫描显示式
+\eqref{eq:gamma-root} 两边移项后的残差在预先设定的
+$\alpha\in[10^{-2},10^3]$、2,000 个对数网格点上保持正值；扩大范围的附加
+高精度检查也只显示残差趋近于零。它们都是“未发现有限根”的数值证据，
+不是解析不存在证明。
+
+时变尺度例子的 ODE
+\[
+ \frac{\theta_s'(t)}{\theta_s(t)}
+ =\frac{aG(x_t)}{G_\alpha(x_t)}
+\]
+也只是在移动的目标均值分位点令漂移为零，仍未验证全局符号条件。更强的
+必要条件是：若 $\theta_s(t)\to\theta_s^*\in(0,\infty)$，则自治 ODE
+右端的极限必须为零，因而端点仍必须满足稳态根条件
+\eqref{eq:gamma-root}。所以 Case 2 不能绕开 Case 1 的端点可行性问题。
+
+\section{OU 变换逐项核验}
+
+以下令 $k>0,d>0$，基础 OU 的长期均值为零。
+
+\subsection{仿射 OU}
+
+\[
+ f(t,x)=A_0e^{(k-d)t}x+B_0e^{-dt}
+\]
+反代原文 PDE 后 $x$ 项与常数项残差均为零。$A_0>0$ 保证严格单调；
+在基础 OU 平稳时，原文给出的 Normal 均值与方差正确。若 $k>d$，方差
+随日历时间增长并不妨碍一阶条件均值回复，但说明 $Y_t$ 不是平稳过程。
+
+\subsection{指数 OU}
+
+原文
+\begin{align*}
+ A(t)&=A_0e^{kt},\\
+ B(t)&=B_0-\frac{\sigma^2A_0^2}{4k}(e^{2kt}-1)-dt,\\
+ C(t)&=C_0e^{-dt}
+\end{align*}
+的三个 ODE 残差均为零。$A_0>0$ 保证单调，Normal 指数矩保证有限时域
+可积。若要支持集严格位于正实数，还需 $C_0\geq0$；仅有 $A(t)>0$ 不能
+推出这一点。原文的对数正态密度和 Jacobian 正确，支持为 $y>C(t)$。
+
+\subsection{OU 特殊函数}
+
+令 $z=kx^2/\sigma^2$，分离解
+\[
+ f(t,x)=e^{-ct}J\!\left(\frac{c-d}{2k},\frac12;z\right)
+\]
+确实把 PDE 化为 Kummer 方程
+$zJ_{zz}+(\tfrac12-z)J_z-pJ=0$，所以它是正确的 PDE 解。但是它只依赖
+$x^2$，故对每个非零 $x$ 有 $f(t,x)=f(t,-x)$。任何非恒定分支都不可能
+在 OU 的全状态空间上单射或全局单调。因此该项不能按原文命题直接宣称为
+“OU 的单调递增变换”，也不能用单根 Jacobian 构造观测密度；若引入两个
+逆像分支，Copula 保持结论也随之改变。
+
+\section{CIR 变换逐项核验}
+
+\subsection{仿射 CIR}
+
+\begin{align*}
+ A(t)&=A_0e^{(k-d)t},\\
+ B(t)&=\vartheta\{1-A_0e^{(k-d)t}\}+B_0e^{-dt}
+\end{align*}
+在原文令 $\vartheta=\theta_r=\theta$ 时两个 ODE 残差为零。
+$A_0>0,d>0$ 和标准 CIR 条件足以得到单调、可积及
+\eqref{eq:conditional-mr}。观测支持为 $y\geq B(t)$，因此实证中仍须
+逐点检查支持。
+
+\subsection{二次 CIR}
+
+原文 $A,B,C$ 三个显式系数反代后全部为零残差；其代数解正确，且
+$k\ne0$ 是隐含条件。严格问题是单调性：标准 $k>0$ 下只能满足有限窗条件
+\eqref{eq:finite-window-monotonicity}。逆变换在 $A>0,B\geq0$ 时取唯一
+非负根
+\[
+ x=\frac{2(y-C)}{B+\sqrt{B^2+4A(y-C)}},\qquad
+ \left|\frac{\partial x}{\partial y}\right|=\frac{1}{2Ax+B},
+\]
+并要求 $y\geq C(t)$。当 $B(t)=0,y=C(t)$ 时 Jacobian 奇异，连续密度的
+端点处理需单独说明。
+
+\subsection{指数 CIR}
+
+Riccati 方程的解
+\begin{align*}
+ A(t)&=\frac{2k}{\sigma^2+(2k/A_0-\sigma^2)e^{-kt}},\\
+ C(t)&=\vartheta+(C_0-\vartheta)e^{-dt}
+\end{align*}
+以及原文 $B(t)$ 的对数表达式反代后均为零残差。对标准
+$k>0,A_0>0$，分母为正且 $A(t)>0$。若基础 CIR 从平稳 Gamma 分布启动，
+为使 $\E e^{A_0r_0}<\infty$，还需
+\begin{equation}
+ 0<A_0<\frac{2k}{\sigma^2}.
+ \label{eq:cir-exp-integrability}
+\end{equation}
+若从确定初值启动，则每个有限时点的临界指数更宽，但仍须说明初始分布。
+观测支持为 $y>C(t)+e^{B(t)}$。公式正确不代表稳定币价格必然覆盖该支持；
+当前实证失败主要属于这一层，而不是 ODE 解错误。
+
+若纯代数上讨论 $k<0$，原文把两个对数分开写会出现负数对数；可将它们合并
+为一个正比值的对数后继续。但这对应超临界平方根扩散，不是标准 CIR。
+
+\subsection{CIR 的 Kummer 分离解}
+
+令
+\[
+ z=\frac{2kx}{\sigma^2},\qquad
+ p=\frac{c-d}{k},\qquad q=\frac{2k\theta_r}{\sigma^2}.
+\]
+则
+\[
+ f(t,x)=\vartheta+e^{-ct}J(p,q;z)
+\]
+反代后恰好要求
+\[
+ zJ_{zz}+(q-z)J_z-pJ=0.
+\]
+所以 Kummer 分离推导正确。问题是 $J=C_1M+C_2U$ 并未指定分支、常数、
+边界条件和归一化，不能据此得到唯一模型。并非所有分支都失败：当
+$k>0,q>0,p>0,C_1>0,C_2=0$ 时
+\[
+ \frac{\partial}{\partial z}M(p,q,z)
+ =\frac pq M(p+1,q+1,z)>0,
+\]
+故存在全局递增的 PDE 分支。但是
+$M(p,q,z)\sim e^zz^{p-q}\Gamma(q)/\Gamma(p)$，它对平稳
+$z\sim\Gamma(q,1)$ 不可积；从确定初值启动时每个有限时点可积，并可通过
+半群特征函数关系获得 \eqref{eq:conditional-mr}。严格结论是：
+“该族没有被充分规定，某些分支在某些初始条件下有效”，而不是“特殊函数
+模型在数学上不可能”。当前实证中预先给定的有限分支没有同时通过单调、支持
+和数值稳定检查，只能说明这些分支失败。
+
+\subsection{声称化为 $u_\tau=zu_{zz}$ 的第二个变量替换}
+
+原文随后给出
+\[
+ f=\vartheta+e^{-dt}u(\tau,z)
+ \exp\!\left\{\sqrt{2k/\sigma^2}\,x-k\theta_r t\right\}
+\]
+及相应 $z,\tau$，并声称得到 $u_\tau=zu_{zz}$。该变换不正确。
+例如取其声称的解 $u=z$，反代原 CIR PDE；除去非零公共指数因子后，残差为
+\begin{align*}
+ R(x)={}&k\theta_r+
+ \left[2\sqrt{2k\sigma^2}-k-k\theta_r
+ +k\theta_r\sqrt{2k/\sigma^2}\right]x\\
+ &+k\left(1-\sqrt{2k/\sigma^2}\right)x^2.
+\end{align*}
+一般不为零；例如 $k=2,\sigma=1,\theta_r=1,x=1$ 时 $R=4$。因此其后
+列出的三组 $u$ 虽然各自满足 $u_\tau=zu_{zz}$，却没有被这个错误变换证明
+为原 CIR PDE 的解。
+
+一个直接的正确降维是令 $v=f-\vartheta=e^{-dt}u(\tau,z)$、
+\[
+ z=xe^{kt},\qquad
+ \tau=\frac{\sigma^2}{2k}(1-e^{kt}).
+\]
+反代得到
+\[
+ u_\tau=zu_{zz}+\frac{2k\theta_r}{\sigma^2}u_z,
+\]
+仍保留一阶项；只有特殊参数退化时才化为原文所写的无一阶项方程。
+
+\section{混合 Copula、Poisson 构造与债券 PDE}
+
+设基础 Markov 转移核为 $P_{s,t}$，平稳边缘核为
+$\Pi(y,\dd z)=F(\dd z)$，并定义
+\[
+ P^{\mathrm{mix}}_{s,t}=a_{s,t}P_{s,t}+(1-a_{s,t})\Pi,\qquad
+ a_{s,t}=e^{-\int_s^tc(u)\dd u}.
+\]
+因为 $a_{s,u}=a_{s,t}a_{t,u}$、$P_{s,t}P_{t,u}=P_{s,u}$，且
+$P\Pi=\Pi P=\Pi$，直接相乘得到
+\[
+ P^{\mathrm{mix}}_{s,t}P^{\mathrm{mix}}_{t,u}
+ =P^{\mathrm{mix}}_{s,u}.
+\]
+因此混合 Copula 的一致性结论正确，前提是原文的“consistent”指
+Markov Chapman--Kolmogorov 一致性，并且基础核保持同一个平稳边缘。
+
+对独立平稳副本 $Y^{(i)}$ 与强度 $\lambda$ 的 Poisson 过程，
+$Y_t=Y_t^{(N_t)}$ 在区间 $(s,t]$ 无跳时沿原核演化，至少一次跳时终值来自
+独立平稳边缘。因此
+\[
+ P^{\mathrm{mix}}_\Delta(y,\dd z)
+ =e^{-\lambda\Delta}P_\Delta(y,\dd z)
+ +(1-e^{-\lambda\Delta})F(\dd z),
+\]
+原文的概率构造和 Copula 权重正确。若基础过程的平稳均值为 $\vartheta$，
+混合过程的局部漂移为
+\[
+ \mu_{\mathrm{mix}}(y)=\mu_0(y)+\lambda(\vartheta-y),
+\]
+故保留均值回复符号。
+
+以 OU 为基础时，混合过程生成元为
+\[
+ \mathcal Gg(y)=k(\vartheta-y)g_y+\frac12\sigma^2g_{yy}
+ +\lambda\left\{\int g(z)F(\dd z)-g(y)\right\}.
+\]
+Feynman--Kac 方程 $g_t+\mathcal Gg-yg=0,\ g(T,y)=1$ 与原文债券 PDE
+一致。严格版本需说明风险中性测度、指数泛函可积性，以及采用经典解还是
+黏性解；这些是定理条件的缺失，不是 PDE 符号错误。
+
+\section{汇总结论与修正级别}
+
+\begin{longtable}{p{0.25\textwidth}p{0.16\textwidth}p{0.50\textwidth}}
+\toprule
+对象 & 判定 & 核验结论\\
+\midrule
+\endhead
+基础 OU/CIR & \cmark 条件成立 & 解、条件均值和标准转移律正确；需显式写出参数与边界条件。\\
+Gaussian Copula 生成元 & \cmark & It\^o 推导正确；分位数函数的生成元定义域需重写。\\
+Gamma Case 1 & \wmark 不充分 & 标量方程只是一点处必要条件，没有证明全局符号。\\
+Gamma Case 2 & \wmark 不充分 & ODE 只是一点处必要条件，且收敛端点必须满足 Case 1。\\
+鞅与一般扩散变换 & \wmark 条件成立 & 核心 PDE 正确；“当且仅当”需要真鞅、增长和可积条件。\\
+仿射 OU & \cmark & 显式解正确，补 $A_0>0,d>0$。\\
+指数 OU & \cmark 条件成立 & 显式解和密度正确；正支持需 $C_0\geq0$。\\
+OU 特殊函数 & \xmark 非单射 & PDE 解正确，但偶函数结构导致全实轴非单射。\\
+仿射 CIR & \cmark & 显式解正确，需标准 CIR、单调和支持条件。\\
+二次 CIR & \wmark 仅有限时域 & 系数解正确；标准 $k>0$ 下全时域单调不可能。\\
+指数 CIR & \cmark 条件成立 & Riccati 解正确；必须补指数矩和随时间支持条件。\\
+CIR Kummer 分离解 & \wmark 未充分规定 & 分离推导正确，存在单调分支；需指定分支、归一化、初始分布和可积性。\\
+CIR 第二变量替换 & \xmark 错误 & 反代残差非零，其后三个 $u$ 不能据此视为 CIR 解。\\
+混合 Copula/Poisson 重置 & \cmark & 核组合和概率构造正确，依赖平稳与独立假设。\\
+混合 OU 债券 PDE & \cmark 条件成立 & 生成元与 Feynman--Kac 符号正确，需补解存在性条件。\\
+\bottomrule
+\end{longtable}
+
+对实证的直接影响是：
+\begin{enumerate}
+ \item 二次 CIR 的现有失败诊断应保留；它反映标准 $k>0$ 下的全时域单调
+       障碍。允许 $k<0$ 会改变基础模型类别，不能作为同一模型的简单扩展。
+ \item 指数 CIR 的理论 ODE 解可以保留，其实证失败应表述为支持、数值条件
+       与识别失败，而不是解析解错误。
+ \item CIR 特殊函数模型应从“结构上不可能”改为“当前预设分支未通过”；
+       若继续估计，应先固定有限分支族及归一化，再证明相应初始分布下可积。
+ \item OU 特殊函数分支是真正的全局单射失败；若改成双分支隐藏状态模型，
+       已不再是原文的单调 Copula 保持变换。
+ \item Gamma 两个模型不应进入“已证明均值回复”的集合，只能作为必要条件
+       诊断，直到全局符号与端点存在性被证明。
+ \item 混合 Copula 的核心 Poisson 重置模型及债券 PDE 没有发现代数错误；
+       其理论主线可以保留并补全条件。
+\end{enumerate}
+
+\section{可复核材料与文档完整性}
+
+符号核验脚本为 \path{scripts/15_verify_theory_derivations.py}；机器可读结论为
+\path{output/tables/theory_derivation_audit.csv}；零残差和反例为
+\path{output/models/theory_symbolic_checks.json}。
+
+原理论文第 691 行开始的 “Proofs” 章节为空，且正文主动引用但未在当前文件
+定义的关键标签包括 \texttt{copula-generator}、\texttt{time change copula}、
+\texttt{time change generator}、\texttt{dynamic martingale condition}、
+\texttt{E1} 和 \texttt{diffusion copula}。因此即使本审计补做了主要推导，
+当前 \path{../meanreversion_article_main.tex} 仍不是一份自包含、可逐定理
+核查的完整理论稿。正式投稿前应补入这些定义、定理及全部证明，并按本报告
+修正条件。
+
+\end{document}

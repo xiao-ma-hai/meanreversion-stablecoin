@@ -1,0 +1,51 @@
+sample,category,model,parameter,estimate,ordinary_se,sandwich_se,bootstrap_se,bootstrap_ci_lower,bootstrap_ci_upper,converged,gradient_norm,hessian_condition,weak_identification,half_life_minutes,effective_half_life_minutes,inference_note
+baseline,CIR,CIR_Price,theta,1.0000989581702744,,,,,,True,9.592853246280356e-05,51784368.48230651,True,515.2575976841694,,Observed optimizer Hessian only; weak-identification flag governs interpretation
+baseline,CIR,CIR_Price,kappa,1.937151328757568,,,,,,True,9.592853246280356e-05,51784368.48230651,True,515.2575976841694,,Observed optimizer Hessian only; weak-identification flag governs interpretation
+baseline,CIR,CIR_Price,sigma,0.0012741132457019,,,,,,True,9.592853246280356e-05,51784368.48230651,True,515.2575976841694,,Observed optimizer Hessian only; weak-identification flag governs interpretation
+baseline,CIR,CIR_DepegPressure,theta,0.0004459576039503,,,,,,True,1.2560739745807732e-06,5382.317850266308,False,366.2499961741896,,Observed optimizer Hessian only; weak-identification flag governs interpretation
+baseline,CIR,CIR_DepegPressure,kappa,2.725274949986912,,,,,,True,1.2560739745807732e-06,5382.317850266308,False,366.2499961741896,,Observed optimizer Hessian only; weak-identification flag governs interpretation
+baseline,CIR,CIR_DepegPressure,sigma,0.0968492957448491,,,,,,True,1.2560739745807732e-06,5382.317850266308,False,366.2499961741896,,Observed optimizer Hessian only; weak-identification flag governs interpretation
+baseline,Mixed,MOU0,theta,0.0,,,,,,True,7.536443847484639e-07,560.262512917018,False,41453.65537691567,523.8262105090929,SE unavailable unless populated by model-specific inference
+baseline,Mixed,MOU0,kappa,0.0240782611552792,,,,,,True,7.536443847484639e-07,560.262512917018,False,41453.65537691567,523.8262105090929,SE unavailable unless populated by model-specific inference
+baseline,Mixed,MOU0,sigma,0.0009634711497955,,,,,,True,7.536443847484639e-07,560.262512917018,False,41453.65537691567,523.8262105090929,SE unavailable unless populated by model-specific inference
+baseline,Mixed,MOU0,lambda,1.881385650313112,,,,,,True,7.536443847484639e-07,560.262512917018,False,41453.65537691567,523.8262105090929,SE unavailable unless populated by model-specific inference
+baseline,Mixed,MOUF,theta,0.000724759768491,7.445426954186451e-05,0.0006495732798412,,,,True,1.3053503640027926e-06,167773.6514778487,False,40190.44157448647,522.2650875873254,Observed Hessian; UTC-day cluster sandwich; UTC-day block bootstrap; lambda boundary significance uses parametric LR bootstrap
+baseline,Mixed,MOUF,kappa,0.0248350578123518,0.0006410763486478,0.0141871756431595,,,,True,1.3053503640027926e-06,167773.6514778487,False,40190.44157448647,522.2650875873254,Observed Hessian; UTC-day cluster sandwich; UTC-day block bootstrap; lambda boundary significance uses parametric LR bootstrap
+baseline,Mixed,MOUF,sigma,0.0009633663515152,9.92620930204143e-07,9.504235434577493e-06,,,,True,1.3053503640027926e-06,167773.6514778487,False,40190.44157448647,522.2650875873254,Observed Hessian; UTC-day cluster sandwich; UTC-day block bootstrap; lambda boundary significance uses parametric LR bootstrap
+baseline,Mixed,MOUF,lambda,1.8863245500743773,0.0353721314913004,0.188346749138339,,,,True,1.3053503640027926e-06,167773.6514778487,False,40190.44157448647,522.2650875873254,Observed Hessian; UTC-day cluster sandwich; UTC-day block bootstrap; lambda boundary significance uses parametric LR bootstrap
+baseline,Mixed,MCIR,theta,1.0000989581702744,,,,,,True,,,True,,348.8684142208948,SE unavailable unless populated by model-specific inference
+baseline,Mixed,MCIR,kappa,1.937151328757568,,,,,,True,,,True,,348.8684142208948,SE unavailable unless populated by model-specific inference
+baseline,Mixed,MCIR,sigma,0.0012741132457019,,,,,,True,,,True,,348.8684142208948,SE unavailable unless populated by model-specific inference
+baseline,Mixed,MCIR,lambda,0.9239042994379066,,,,,,True,,,True,,348.8684142208948,SE unavailable unless populated by model-specific inference
+baseline,OU,OU0,theta,0.0,,,0.0,0.0,0.0,True,1.776356830474485e-07,788.0007094946264,False,594.34990743377,,Observed Hessian; UTC-day cluster sandwich; UTC-day block bootstrap
+baseline,OU,OU0,kappa,1.679367536736002,0.0430883327658079,0.2111264560527926,0.1971451878310246,1.3231539587570935,2.060506767869626,True,1.776356830474485e-07,788.0007094946264,False,594.34990743377,,Observed Hessian; UTC-day cluster sandwich; UTC-day block bootstrap
+baseline,OU,OU0,sigma,0.0013551207295999,1.326816796719326e-06,0.0001455871272668,0.0001459595024443,0.0011236552320471,0.0016931053826978,True,1.776356830474485e-07,788.0007094946264,False,594.34990743377,,Observed Hessian; UTC-day cluster sandwich; UTC-day block bootstrap
+baseline,OU,OUF,theta,6.645310882805937e-05,1.8751818077771792e-05,1.6609015710396017e-05,1.6953382286547516e-05,3.369209834375673e-05,0.0001006487787725,True,0.0,2050255.4980561165,False,589.4803115832325,,Observed Hessian; UTC-day cluster sandwich; UTC-day block bootstrap
+baseline,OU,OUF,kappa,1.6932405042087455,0.0432689041518907,0.2098835872615434,0.1971451878310246,1.3231539587570935,2.060506767869626,True,0.0,2050255.4980561165,False,589.4803115832325,,Observed Hessian; UTC-day cluster sandwich; UTC-day block bootstrap
+baseline,OU,OUF,sigma,0.0013551371515619,1.3268652251115575e-06,0.0001455859221016,0.0001459595024443,0.0011236552320471,0.0016931053826978,True,0.0,2050255.4980561165,False,589.4803115832325,,Observed Hessian; UTC-day cluster sandwich; UTC-day block bootstrap
+baseline,OU,ThresholdOU,theta,0.0,,,,,,True,9.7295071541089e-07,1281.1406265720657,False,,,SE unavailable unless populated by model-specific inference
+baseline,OU,ThresholdOU,kappa_plus,1.5673188754488503,,,,,,True,9.7295071541089e-07,1281.1406265720657,False,,,SE unavailable unless populated by model-specific inference
+baseline,OU,ThresholdOU,kappa_minus,1.810385708780814,,,,,,True,9.7295071541089e-07,1281.1406265720657,False,,,SE unavailable unless populated by model-specific inference
+baseline,OU,ThresholdOU,sigma_plus,0.0013511686210685,,,,,,True,9.7295071541089e-07,1281.1406265720657,False,,,SE unavailable unless populated by model-specific inference
+baseline,OU,ThresholdOU,sigma_minus,0.0013511686210685,,,,,,True,9.7295071541089e-07,1281.1406265720657,False,,,SE unavailable unless populated by model-specific inference
+baseline,OU,ThresholdOU_Heteroskedastic,theta,0.0,,,,,,True,7.105427400784031e-07,957.3827494599498,False,,,SE unavailable unless populated by model-specific inference
+baseline,OU,ThresholdOU_Heteroskedastic,kappa_plus,1.567353813535048,,,,,,True,7.105427400784031e-07,957.3827494599498,False,,,SE unavailable unless populated by model-specific inference
+baseline,OU,ThresholdOU_Heteroskedastic,kappa_minus,1.8102835982555172,,,,,,True,7.105427400784031e-07,957.3827494599498,False,,,SE unavailable unless populated by model-specific inference
+baseline,OU,ThresholdOU_Heteroskedastic,sigma_plus,0.0012479547852071,,,,,,True,7.105427400784031e-07,957.3827494599498,False,,,SE unavailable unless populated by model-specific inference
+baseline,OU,ThresholdOU_Heteroskedastic,sigma_minus,0.0015149781580942,,,,,,True,7.105427400784031e-07,957.3827494599498,False,,,SE unavailable unless populated by model-specific inference
+baseline,OU,OUF_irregular_G0_G2,theta,6.698429227246481e-05,,,,,,True,0.0001117346808461,35242133.11196397,False,587.5037424111558,,SE unavailable unless populated by model-specific inference
+baseline,OU,OUF_irregular_G0_G2,kappa,1.6989371606552135,,,,,,True,0.0001117346808461,35242133.11196397,False,587.5037424111558,,SE unavailable unless populated by model-specific inference
+baseline,OU,OUF_irregular_G0_G2,sigma,0.0013564264826857,,,,,,True,0.0001117346808461,35242133.11196397,False,587.5037424111558,,SE unavailable unless populated by model-specific inference
+baseline,Transformed,AffineTransformedOU,A0,1.0,,,,,,True,4.689716638603837e-06,8164.976406310979,False,,,SE unavailable unless populated by model-specific inference
+baseline,Transformed,AffineTransformedOU,B0,0.0,,,,,,True,4.689716638603837e-06,8164.976406310979,False,,,SE unavailable unless populated by model-specific inference
+baseline,Transformed,AffineTransformedOU,kappa,0.8757534835571565,,,,,,True,4.689716638603837e-06,8164.976406310979,False,,,SE unavailable unless populated by model-specific inference
+baseline,Transformed,AffineTransformedOU,d,0.876513611570394,,,,,,True,4.689716638603837e-06,8164.976406310979,False,,,SE unavailable unless populated by model-specific inference
+baseline,Transformed,AffineTransformedOU,sigma,0.0023885765299399,,,,,,True,4.689716638603837e-06,8164.976406310979,False,,,SE unavailable unless populated by model-specific inference
+baseline,Transformed,AffineTransformedOU,gamma_kappa_minus_d,-0.0007601280132374,,,,,,True,4.689716638603837e-06,8164.976406310979,False,,,SE unavailable unless populated by model-specific inference
+baseline,Transformed,AffineTransformedCIR,A0,1.0,,,,,,True,,,True,,,SE unavailable unless populated by model-specific inference
+baseline,Transformed,AffineTransformedCIR,B0,0.0,,,,,,True,,,True,,,SE unavailable unless populated by model-specific inference
+baseline,Transformed,AffineTransformedCIR,theta,1.0000989581702744,,,,,,True,,,True,,,SE unavailable unless populated by model-specific inference
+baseline,Transformed,AffineTransformedCIR,kappa,1.937151328757568,,,,,,True,,,True,,,SE unavailable unless populated by model-specific inference
+baseline,Transformed,AffineTransformedCIR,d,1.937351328757568,,,,,,True,,,True,,,SE unavailable unless populated by model-specific inference
+baseline,Transformed,AffineTransformedCIR,sigma,0.0012741132457019,,,,,,True,,,True,,,SE unavailable unless populated by model-specific inference
+baseline,Transformed,AffineTransformedCIR,gamma_kappa_minus_d,-0.0001999999999999,,,,,,True,,,True,,,SE unavailable unless populated by model-specific inference

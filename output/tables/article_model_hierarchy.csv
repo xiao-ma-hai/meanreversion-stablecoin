@@ -1,0 +1,6 @@
+tier,models,article_relation,claim_scope
+core,OUF; MOUF,exact stationary OU and constant-intensity mixed-OU kernel,primary structural comparison
+main_extension,ThresholdOU_Heteroskedastic,empirical asymmetry extension,conditional volatility robustness
+diagnostic,SingleGaussian; SingleMixed; TwoScaleGaussian; TwoScaleMixed,copula dependence diagnostics; two-scale observed state is not one-dimensional Markov,multi-horizon fit and out-of-sample copula score
+forecast_benchmark,RandomWalk; NestedOU_proxy,not article propositions,predictive benchmarks only
+appendix,CIR; MCIR; affine transformed OU/CIR,article examples with restricted calibration,feasibility and weak-identification diagnostics

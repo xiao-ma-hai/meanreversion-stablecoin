@@ -1,0 +1,3 @@
+model,density_backend,scipy_exact_failure_rate,gradient_norm,weak_identification
+CIR_Price,scipy_ncx2_exact_with_high_noncentrality_moment_normal_fallback,1.0,9.592853246280355e-05,True
+CIR_DepegPressure,scipy_ncx2_exact_with_high_noncentrality_moment_normal_fallback,0.0,1.2560739745807732e-06,False

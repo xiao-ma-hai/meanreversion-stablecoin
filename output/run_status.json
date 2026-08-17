@@ -1,0 +1,174 @@
+{
+  "sample": "baseline",
+  "started_utc": "2026-08-09T08:37:01.537543+00:00",
+  "steps": [
+    {
+      "step": "00_pytest",
+      "status": "PASS",
+      "seconds": 12.164096,
+      "result": {
+        "returncode": 0,
+        "junit": "D:\\pku\\博士期间\\启研\\均值回复\\稳定币实证\\meanreversion-stablecoin\\output\\logs\\pytest.xml"
+      }
+    },
+    {
+      "step": "01_audit_data",
+      "status": "PASS",
+      "seconds": 3.445743,
+      "result": {
+        "sha256": "417ea3aa71f86c4476c30568f251f3f873ae8b0d44c5f480f5ad2f35fc6acc22",
+        "rows": 797178,
+        "first_timestamp": 1490807100,
+        "last_timestamp": 1767225300,
+        "first_utc": "2017-03-29 17:05:00",
+        "last_utc": "2025-12-31 23:55:00",
+        "duplicate_timestamps": 0,
+        "missing_fields": 0,
+        "exact_300s_pairs": 750220,
+        "greater_than_300s_pairs": 46957,
+        "theoretical_grid_rows": 921395,
+        "missing_grid_rows": 124217,
+        "coverage_pct": 86.51859408831174,
+        "timestamp_grid_violations": 0,
+        "strictly_increasing": true,
+        "ohlc_violations": 0,
+        "negative_value_rows": 0,
+        "raw_readonly": true,
+        "memory_mb": 42.57402420043945,
+        "hard_anomalies_found": 3,
+        "audit_pass": true
+      }
+    },
+    {
+      "step": "02_prepare_data",
+      "status": "PASS",
+      "seconds": 0.007014,
+      "result": {
+        "cached": true,
+        "path": "D:\\pku\\博士期间\\启研\\均值回复\\稳定币实证\\meanreversion-stablecoin\\data\\processed\\full.parquet"
+      }
+    },
+    {
+      "step": "03_descriptive_analysis",
+      "status": "PASS",
+      "seconds": 0.011578,
+      "result": {
+        "cached": true,
+        "path": "D:\\pku\\博士期间\\启研\\均值回复\\稳定币实证\\meanreversion-stablecoin\\output\\tables\\descriptive_statistics_baseline.csv"
+      }
+    },
+    {
+      "step": "04_nonparametric_drift",
+      "status": "PASS",
+      "seconds": 0.01302,
+      "result": {
+        "cached": true,
+        "path": "D:\\pku\\博士期间\\启研\\均值回复\\稳定币实证\\meanreversion-stablecoin\\output\\tables\\sign_test_baseline.csv"
+      }
+    },
+    {
+      "step": "05_fit_ou_models",
+      "status": "PASS",
+      "seconds": 0.017004,
+      "result": {
+        "cached": true,
+        "path": "D:\\pku\\博士期间\\启研\\均值回复\\稳定币实证\\meanreversion-stablecoin\\output\\models\\ou_fits_baseline.json"
+      }
+    },
+    {
+      "step": "06_fit_cir_models",
+      "status": "PASS",
+      "seconds": 0.012003,
+      "result": {
+        "cached": true,
+        "path": "D:\\pku\\博士期间\\启研\\均值回复\\稳定币实证\\meanreversion-stablecoin\\output\\models\\cir_fits_baseline.json"
+      }
+    },
+    {
+      "step": "07_fit_transformed_models",
+      "status": "PASS",
+      "seconds": 0.016025,
+      "result": {
+        "cached": true,
+        "path": "D:\\pku\\博士期间\\启研\\均值回复\\稳定币实证\\meanreversion-stablecoin\\output\\models\\transformed_fits_baseline.json"
+      }
+    },
+    {
+      "step": "08_fit_mixed_copula_models",
+      "status": "PASS",
+      "seconds": 0.558958,
+      "result": {
+        "cached": true,
+        "path": "D:\\pku\\博士期间\\启研\\均值回复\\稳定币实证\\meanreversion-stablecoin\\output\\models\\mixed_fits_baseline.json"
+      }
+    },
+    {
+      "step": "09_fit_semiparametric_copula",
+      "status": "PASS",
+      "seconds": 0.010003,
+      "result": {
+        "cached": true,
+        "path": "D:\\pku\\博士期间\\启研\\均值回复\\稳定币实证\\meanreversion-stablecoin\\output\\models\\semiparametric_copula_baseline.json"
+      }
+    },
+    {
+      "step": "09b_article_core_extensions",
+      "status": "PASS",
+      "seconds": 0.018014,
+      "result": {
+        "cached": true,
+        "bootstrap": "D:\\pku\\博士期间\\启研\\均值回复\\稳定币实证\\meanreversion-stablecoin\\output\\tables\\matched_joint_mou_lr_bootstrap.csv",
+        "copula": "D:\\pku\\博士期间\\启研\\均值回复\\稳定币实证\\meanreversion-stablecoin\\output\\tables\\copula_scale_model_comparison.csv"
+      }
+    },
+    {
+      "step": "09c_full_model_suite",
+      "status": "PASS",
+      "seconds": 0.072365,
+      "result": {
+        "cached": true,
+        "stage_gate_pass": true,
+        "path": "D:\\pku\\博士期间\\启研\\均值回复\\稳定币实证\\meanreversion-stablecoin\\output\\tables\\updated_stage_gate.csv"
+      }
+    },
+    {
+      "step": "10_forecast_comparison",
+      "status": "PASS",
+      "seconds": 0.022349,
+      "result": {
+        "cached": true,
+        "path": "D:\\pku\\博士期间\\启研\\均值回复\\稳定币实证\\meanreversion-stablecoin\\output\\tables\\forecast_scores.csv"
+      }
+    },
+    {
+      "step": "11_rolling_and_events",
+      "status": "PASS",
+      "seconds": 0.028832,
+      "result": {
+        "cached": true,
+        "path": "D:\\pku\\博士期间\\启研\\均值回复\\稳定币实证\\meanreversion-stablecoin\\output\\tables\\rolling_parameters.csv"
+      }
+    },
+    {
+      "step": "robustness",
+      "status": "PASS",
+      "seconds": 0.036,
+      "result": {
+        "cached": true,
+        "path": "D:\\pku\\博士期间\\启研\\均值回复\\稳定币实证\\meanreversion-stablecoin\\output\\tables\\robustness_estimates.csv"
+      }
+    },
+    {
+      "step": "12_build_empirical_report",
+      "status": "PASS",
+      "seconds": 6.030052,
+      "result": {
+        "markdown": "D:\\pku\\博士期间\\启研\\均值回复\\稳定币实证\\meanreversion-stablecoin\\output\\empirical_report.md",
+        "html": "D:\\pku\\博士期间\\启研\\均值回复\\稳定币实证\\meanreversion-stablecoin\\output\\empirical_report.html",
+        "manifest_artifacts": 127
+      }
+    }
+  ],
+  "status": "PASS",
+  "finished_utc": "2026-08-09T08:37:24.051095+00:00"
+}

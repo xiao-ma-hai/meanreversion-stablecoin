@@ -1,0 +1,7 @@
+sample,horizon_minutes,exact_pairs
+baseline,5,524610
+baseline,10,524494
+baseline,30,524279
+baseline,60,524143
+baseline,120,524017
+baseline,360,523734

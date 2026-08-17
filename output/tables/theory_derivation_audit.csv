@@ -1,0 +1,20 @@
+object,verdict,algebra_check,missing_condition_or_action
+base_ou,valid_with_conditions,exact solution and Normal transition verified,require k>0; stationary law also requires k>0
+base_cir,valid_with_conditions,exact conditional mean and noncentral-chi-square transition verified,"require k>0, theta>=0, sigma>0 for the article's mean-reverting CIR"
+mean_reversion_definition,needs_revision,backward local drift is usable under the stated matching limit,clarify forward/backward generator convention and state-space indexing
+gaussian_copula_generator,valid,Ito transformation of stationary OU gives the displayed generator,"generator-domain assumptions must be stated on (0,1) with boundary control"
+gamma_stationary_case,insufficient,the displayed scalar equation is necessary at the mean quantile,one zero-point equality does not prove the global sign condition
+gamma_time_varying_case,insufficient,the displayed ODE is necessary at the moving mean quantile,global sign condition and a feasible convergent endpoint are unproved
+martingale_transform,valid_with_conditions,algebra and conditional-expectation scaling verified,requires integrability and R_0t>0
+diffusion_transform_pde,valid_with_conditions,Ito gives the displayed PDE,"C1,2 alone is not enough for the stochastic integral to be a true martingale"
+ou_affine,valid_with_conditions,symbolic residual is zero,require A0>0 and d>0
+ou_exponential,valid_with_conditions,symbolic residual is zero,"require A0>0, d>0; positivity additionally needs C0>=0"
+ou_special,pde_only,Kummer reduction is correct,every stated nonconstant branch is even in x and cannot be globally monotone on R
+cir_affine,valid_with_conditions,symbolic residual is zero,"require standard CIR conditions, A0>0 and d>0"
+cir_quadratic,finite_horizon_only_for_standard_cir,symbolic residual is zero,"for k>0 and A0>0, B(t) eventually becomes negative; global monotonicity fails"
+cir_exponential,valid_with_conditions,symbolic residual is zero,"require real logs, A(t)>0, integrability and observed-support coverage"
+cir_special_kummer,under_specified_but_some_valid_branches,Kummer separation is correct,"choose and normalize a branch; prove monotonicity, integrability and support"
+cir_secondary_change_of_variables,incorrect,a claimed u=z solution gives nonzero residual after back-substitution,replace or delete the displayed change of variables and its three derived solutions
+mixed_copula_family,valid_with_conditions,kernel composition verifies consistency because a_su=a_st a_tu,"base copula family must be Markov-consistent and preserve Uniform(0,1)"
+poisson_reset_process,valid,conditioning on zero versus at least one reset gives the mixture kernel,stationarity and independence assumptions are essential
+mixed_copula_bond_pde,valid_with_conditions,generator plus Feynman-Kac gives the nonlocal PDE,requires risk-neutral integrability and a classical/viscosity solution framework

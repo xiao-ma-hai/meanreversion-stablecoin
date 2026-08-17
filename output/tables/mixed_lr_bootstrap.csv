@@ -1,0 +1,2 @@
+null_model,alternative_model,observed_lambda,observed_lr,replications,bootstrap_nobs,raw_pvalue,finite_sample_corrected_pvalue,critical_90,critical_95,critical_99,fixed_interval_design,parameters_reestimated_each_replication,alternative_base_parameters_reestimated_then_fixed_for_lambda_profile
+OUF,MOUF_conditional_lambda,0.7678044311346806,153693.5441647917,200,25000,0.0,0.004975124378109453,0.0,0.0,0.0,True,True,True

@@ -1,0 +1,655 @@
+{
+  "generated_utc": "2026-08-09T15:35:19.846589+00:00",
+  "raw_sha256": "417ea3aa71f86c4476c30568f251f3f873ae8b0d44c5f480f5ad2f35fc6acc22",
+  "random_seed": 20260806,
+  "artifacts": [
+    {
+      "path": "output/empirical_report.html",
+      "bytes": 46590,
+      "sha256": "9867c3372904095aa50f55d6a446566e7ce17b44faabbaf8cf110c4075c1d670"
+    },
+    {
+      "path": "output/empirical_report.md",
+      "bytes": 46321,
+      "sha256": "e7037363e3e937bba5774fe5bec338037dc849e10ffe2a956ea72b320b3f4e1b"
+    },
+    {
+      "path": "output/figures/coverage_and_gaps.pdf",
+      "bytes": 16174,
+      "sha256": "23dd228f40890a449b65bb18a34db795eb8034840f1c62c61a69cf22ff87e17f"
+    },
+    {
+      "path": "output/figures/coverage_and_gaps.png",
+      "bytes": 58442,
+      "sha256": "10f53c10a25ee83960aea45843608a5ecee5f3ef192df322cd7a62209cbad174"
+    },
+    {
+      "path": "output/figures/depeg_event_paths.pdf",
+      "bytes": 22562,
+      "sha256": "fdb56456939e579d414af49e9bdfb05aa9337e27536d656d8e41387f251a2b48"
+    },
+    {
+      "path": "output/figures/depeg_event_paths.png",
+      "bytes": 148632,
+      "sha256": "9105a482a38ce55da793f11a9f205d7a5c463532b5c6e215e768ac93f2022995"
+    },
+    {
+      "path": "output/figures/deviation_distribution.pdf",
+      "bytes": 27719,
+      "sha256": "6451304de7764b47247e073fcc88c76fb12ded11fdef0db47b96f1becb007158"
+    },
+    {
+      "path": "output/figures/deviation_distribution.png",
+      "bytes": 95773,
+      "sha256": "ff7bb82f16a25d7fd1bc4e7b791246c17f9cd696ff09c2b12ece7e635e670829"
+    },
+    {
+      "path": "output/figures/empirical_asymmetry.pdf",
+      "bytes": 13813,
+      "sha256": "85f0f1b7a91b23816c904af18c548bbc530dd48a10c76943258d062893e428b7"
+    },
+    {
+      "path": "output/figures/empirical_asymmetry.png",
+      "bytes": 54361,
+      "sha256": "8cc4c7ac676fb3a9950db556e98b459d60ea0e7258f53d73f361873d35d27dd1"
+    },
+    {
+      "path": "output/figures/full_price_and_deviation.pdf",
+      "bytes": 15127,
+      "sha256": "b3705afaf80c4e5ec992beb35e62d9b0bfd2fb48e5496e0457db0b9a556baea6"
+    },
+    {
+      "path": "output/figures/full_price_and_deviation.png",
+      "bytes": 56845,
+      "sha256": "2a41b9707d4012d5e2239d363222605b9e83b44caf2def76f75b6f566df0e9ce"
+    },
+    {
+      "path": "output/figures/gaussian_vs_mixed_copula.pdf",
+      "bytes": 117753,
+      "sha256": "1a1fb2def1efb6c905559a17491db60c74e624897497c92c27c2ff29eb473499"
+    },
+    {
+      "path": "output/figures/gaussian_vs_mixed_copula.png",
+      "bytes": 69662,
+      "sha256": "a6e989cf127685c90ac9e35f4d1821d89b16e02af4532039c6250cb9e3e66899"
+    },
+    {
+      "path": "output/figures/multihorizon_dependence.pdf",
+      "bytes": 15370,
+      "sha256": "3f6ea115f91f6f35b72ce829111233ad94b0aac39a1cc1ca286b0b00a460b44a"
+    },
+    {
+      "path": "output/figures/multihorizon_dependence.png",
+      "bytes": 74726,
+      "sha256": "950181030fba7318d36dbbcaff0f572284ad315704278d26bc29207e0c4ab2d0"
+    },
+    {
+      "path": "output/figures/nonparametric_vs_ou_drift.pdf",
+      "bytes": 17185,
+      "sha256": "3d1c391c96785a862a04e132c925423ea9efca9b29474ac8d5903b196801489a"
+    },
+    {
+      "path": "output/figures/nonparametric_vs_ou_drift.png",
+      "bytes": 87734,
+      "sha256": "211b43ce130bb0181b2ee9de38969c7ca46a3216651545c51eb3abe28714ab55"
+    },
+    {
+      "path": "output/figures/pit_and_residual_acf.pdf",
+      "bytes": 16376,
+      "sha256": "23e2d89a21b647a2a81b8f48f68fbdbc392734114f38a6d83ad2becf5f7a15ee"
+    },
+    {
+      "path": "output/figures/pit_and_residual_acf.png",
+      "bytes": 71727,
+      "sha256": "d8f69e4d7a416a97d404bb7e3b48f92be1fa65cf4dcf8fb29142948b7867b02f"
+    },
+    {
+      "path": "output/figures/rolling_parameters.pdf",
+      "bytes": 21960,
+      "sha256": "27670d2c856cbef53a59f2c4ca12c4a158512937af3a2dfdc1cf99cd3e2208b0"
+    },
+    {
+      "path": "output/figures/rolling_parameters.png",
+      "bytes": 327638,
+      "sha256": "fb46f854a93888e10758e844deb39f41db372b166cf44b64faf8fcc268ed936b"
+    },
+    {
+      "path": "output/figures/single_vs_two_scale_dependence.pdf",
+      "bytes": 15908,
+      "sha256": "2504a38024b1de3613e23b85f14920d39dcdddc683df4d36567fbad5a0fc731c"
+    },
+    {
+      "path": "output/figures/single_vs_two_scale_dependence.png",
+      "bytes": 107041,
+      "sha256": "976bd7ef1def4d3cdeee6f9e0e9c7958e0af8243d8d9b4607e02f0fa7be1b314"
+    },
+    {
+      "path": "output/figures/test_depeg_reliability.pdf",
+      "bytes": 20957,
+      "sha256": "ec1395ffa1dd13b3f98cf4bcdcc1d760c3707985ab92d252b0c7159a1ca4f597"
+    },
+    {
+      "path": "output/figures/test_depeg_reliability.png",
+      "bytes": 93651,
+      "sha256": "6b048a167ebd9b2fe046548edbf64ef9a77deb0c7854e57d40ed5cabce49072a"
+    },
+    {
+      "path": "output/logs/01_audit_data.log",
+      "bytes": 1310,
+      "sha256": "46bee46885fb7b1f03b14eab62d02eacc59616f1fc96b0e070f578707240997c"
+    },
+    {
+      "path": "output/logs/02_prepare_data.log",
+      "bytes": 1400,
+      "sha256": "060eb501a454cc3ad2317a2d840b43b748dae057f7de7b5e61380754192f7064"
+    },
+    {
+      "path": "output/logs/03_descriptive_analysis.log",
+      "bytes": 1460,
+      "sha256": "8b8cb9c13cc6207f138a98df10e7c034418d61d79cc691ba925d4b0da4906eda"
+    },
+    {
+      "path": "output/logs/04_nonparametric_drift.log",
+      "bytes": 1592,
+      "sha256": "e394bb84b5bccfa634ba57b360159687393163cd303e92665a4ec3fea05f6425"
+    },
+    {
+      "path": "output/logs/05_fit_ou_models.log",
+      "bytes": 1323,
+      "sha256": "e0552bb9be7fceea7d151e48dacacc093d124d86683d5e87f3a65b8d9703bac2"
+    },
+    {
+      "path": "output/logs/06_fit_cir_models.log",
+      "bytes": 1465,
+      "sha256": "e5f1d3c47cec5247ff5076948452f409250f56cba9b6ed98d3f7af91a43fc5c5"
+    },
+    {
+      "path": "output/logs/07_fit_transformed_models.log",
+      "bytes": 1577,
+      "sha256": "b38d48c1dcabedc7df6f315b0332468295e1401a6a813aa3bebe066eb580ba7c"
+    },
+    {
+      "path": "output/logs/08_fit_mixed_copula_models.log",
+      "bytes": 1426,
+      "sha256": "af58dcf4620df82f396fb122a0ea48fade23b495c843ec4dfacd1a00aa37ea65"
+    },
+    {
+      "path": "output/logs/09_fit_semiparametric_copula.log",
+      "bytes": 1549,
+      "sha256": "8a62e1c947009134ce5a17a163728959f5c43ba1f7d89040f644d2995ffed865"
+    },
+    {
+      "path": "output/logs/10_forecast_comparison.log",
+      "bytes": 1325,
+      "sha256": "d51233aa76c52dea42a4b9ac58946f8f44d581618c4cbd4e6021ad096a71abcc"
+    },
+    {
+      "path": "output/logs/11_rolling_and_events.log",
+      "bytes": 1431,
+      "sha256": "2e2703deaf90417db2fc5d1436c2b2f118a9dcb95608097f0de8afb6fd2f6224"
+    },
+    {
+      "path": "output/logs/12_build_empirical_report.log",
+      "bytes": 2449,
+      "sha256": "d8581e5d8023db74751994ca8444587e4caaa6154679360fc18103c2b98f0746"
+    },
+    {
+      "path": "output/logs/13_article_core_extensions.log",
+      "bytes": 391,
+      "sha256": "7648acd0322488eb051c57946ef763188f66159ba460ccf6f3ecef1db15eaaad"
+    },
+    {
+      "path": "output/logs/14_full_model_suite.log",
+      "bytes": 983,
+      "sha256": "fdc2737c53959c2e28724670c533bcbe16846cf9d2b8c4eeab6368e4d3cd9b9a"
+    },
+    {
+      "path": "output/logs/data_audit.json",
+      "bytes": 709,
+      "sha256": "eac686ed03c2251066ab1fafb03dceecec25d82fd4e6e3bc49d9a82c65dbecae"
+    },
+    {
+      "path": "output/logs/environment_audit.json",
+      "bytes": 1332,
+      "sha256": "e6aa1d44ea9f2d075be39067df4e29df83c47c32e60fc9af4934d3d660a3832a"
+    },
+    {
+      "path": "output/logs/nonparametric_baseline.json",
+      "bytes": 1766,
+      "sha256": "6bd45ec5f66f72ef3f44f433cef0d4f8298c003ce6bd6708ade0284c5061a558"
+    },
+    {
+      "path": "output/logs/preprocess_manifest.json",
+      "bytes": 786,
+      "sha256": "3242f9d172e3443b03d89b5a4b88e3b85230baf8cd2e198a8c354d46512b65ca"
+    },
+    {
+      "path": "output/logs/pytest.log",
+      "bytes": 102,
+      "sha256": "0f49bdfffb1caba4ca716d689f6ea87f6ccf8f635e5aaae986c481d998a0694a"
+    },
+    {
+      "path": "output/logs/pytest.xml",
+      "bytes": 4766,
+      "sha256": "bdb5ec4113ca41afb59e8b44d1ba5563f936e0560ed99c1f07e555477f1e0fd2"
+    },
+    {
+      "path": "output/logs/robustness.log",
+      "bytes": 1294,
+      "sha256": "a647d10f6d11869054c549c32c5b9ddb0ba1e68bffcda7d3e559cef305d11f3a"
+    },
+    {
+      "path": "output/models/base_config_snapshot.yml",
+      "bytes": 2246,
+      "sha256": "5b6b127a15eebb0b3aae0e50acf85e1f55c63b91d7e3c8d334133557fa91ba60"
+    },
+    {
+      "path": "output/models/cir_fits_baseline.json",
+      "bytes": 2984,
+      "sha256": "ebdaf30197472a8ffb778931c012a274a255549e6ab38e1931c807bf3be822d6"
+    },
+    {
+      "path": "output/models/cir_pit_baseline.npz",
+      "bytes": 679383,
+      "sha256": "aec4f9536f1397bc5fe3759999517d81514f287c42abe7d008efa481f10014e5"
+    },
+    {
+      "path": "output/models/copula_scale_models.json",
+      "bytes": 4973,
+      "sha256": "752cf27bf2aaad979f85421bc928a82cc95e3aa583144a8fe5962a4d873e2b5b"
+    },
+    {
+      "path": "output/models/full_copula_fits.json",
+      "bytes": 25415,
+      "sha256": "bc9afe2a269085c4e272d375ca8022cce59431fd7a48fdfa5f0ab63bf4190e38"
+    },
+    {
+      "path": "output/models/full_model_fits.json",
+      "bytes": 63242,
+      "sha256": "116433011fe8f6cb93e3786858b043c0e0465bec8f90e05115a1484183f097cb"
+    },
+    {
+      "path": "output/models/full_model_suite_progress.json",
+      "bytes": 668,
+      "sha256": "1d485869b82f4aac230d27e25f81cbf372506f2f04eebbd4736e142f27b2cf33"
+    },
+    {
+      "path": "output/models/full_suite_copula_family_cache.json",
+      "bytes": 10641,
+      "sha256": "b807286913978351784b3a9f87993e7521b625be8ddcb3b272fe86c32620c91c"
+    },
+    {
+      "path": "output/models/matched_joint_mou_lr_bootstrap.json",
+      "bytes": 1664,
+      "sha256": "04e58c525a1547440de850df99b1e29fcdab9b67a60ffb5cb00c429100119229"
+    },
+    {
+      "path": "output/models/mixed_fits_baseline.json",
+      "bytes": 3863,
+      "sha256": "dcfe7e542471fa40da53b3fdef98c72e75f44161000b2948425a783748ba58e8"
+    },
+    {
+      "path": "output/models/mixed_pit_baseline.npz",
+      "bytes": 968444,
+      "sha256": "3ad1c7205ab8b885bf7960709dd72d444f1a6ae05205abd2f6f478a9024ba0c6"
+    },
+    {
+      "path": "output/models/ou_fits_baseline.json",
+      "bytes": 6603,
+      "sha256": "a439cd0d9bf77fc2dbccc17ad643473ea5294476cfba506484bb357cc1f2369c"
+    },
+    {
+      "path": "output/models/ou_pit_baseline.npz",
+      "bytes": 1954224,
+      "sha256": "15cd85f0e10a33aa385e1663b30fac828a33a63ed0b7631b09739556a1a422dc"
+    },
+    {
+      "path": "output/models/semiparametric_copula_baseline.json",
+      "bytes": 330,
+      "sha256": "6c8ce4db47e435e7e64b5719b929814a8f4ea1a08509e3dfc96c4277c6289d05"
+    },
+    {
+      "path": "output/models/theory_symbolic_checks.json",
+      "bytes": 1488,
+      "sha256": "f6aa702027d5b3053cbd8e887ca2361393dc882def5bf78130cb0d158379dfe6"
+    },
+    {
+      "path": "output/models/transformed_fits_baseline.json",
+      "bytes": 2503,
+      "sha256": "0e495efc7ed91128e71112ce8413faeef54c0e7b00503d10b8650db3a379e989"
+    },
+    {
+      "path": "output/run_status.json",
+      "bytes": 6095,
+      "sha256": "0536fd6ecaec4d41410041fd50c0a599e906341973d87528e071050647987bad"
+    },
+    {
+      "path": "output/tables/annual_coverage.csv",
+      "bytes": 389,
+      "sha256": "831eb1d3f28c38cb5058428636c34ecfaf141835cf3ba687b7ecd615a0482ba8"
+    },
+    {
+      "path": "output/tables/annual_statistics_baseline.csv",
+      "bytes": 522,
+      "sha256": "e7af60ab5360255c0d0ce4cdc24f5cc416f7e803c511d02f332f2bd96097912d"
+    },
+    {
+      "path": "output/tables/anomaly_candidates.csv",
+      "bytes": 303,
+      "sha256": "9376def1257df2481646dd11292baa4afe4ee9664793047b44b8d349fe428be2"
+    },
+    {
+      "path": "output/tables/article_model_hierarchy.csv",
+      "bytes": 702,
+      "sha256": "7082ecd33cdadb2ecc19927b5298c33bdf5f9691fdf15e3fd57ac9fb5940bd94"
+    },
+    {
+      "path": "output/tables/cir_numerical_diagnostics.csv",
+      "bytes": 304,
+      "sha256": "9a5895749fbb8feaa7b2541f06f9c84d5187bf8da061a9f2e28a1edfe89002be"
+    },
+    {
+      "path": "output/tables/copula_conditional_drift_baseline.csv",
+      "bytes": 12607,
+      "sha256": "938571ab5b39e0431c21fb56dc66b66c1b672c5390c682eef119278d44252943"
+    },
+    {
+      "path": "output/tables/copula_horizon_fit.csv",
+      "bytes": 701,
+      "sha256": "b834ae4c9f452f85168509a81fa8a8eebafdbf00f0b82e45c06ca1a5dd970487"
+    },
+    {
+      "path": "output/tables/copula_horizon_fit_baseline.csv",
+      "bytes": 701,
+      "sha256": "b834ae4c9f452f85168509a81fa8a8eebafdbf00f0b82e45c06ca1a5dd970487"
+    },
+    {
+      "path": "output/tables/copula_no_lookahead_audit_baseline.csv",
+      "bytes": 192,
+      "sha256": "3fe5f3ce8a4eb2100e3c197d7ff93830586edf98394563107b4332628ed19c11"
+    },
+    {
+      "path": "output/tables/copula_pair_counts_baseline.csv",
+      "bytes": 157,
+      "sha256": "3c848da04d5a4fdc30cbc61e35776117e2b9c527e1fe1c1d27b9daa3f41d5642"
+    },
+    {
+      "path": "output/tables/copula_scale_horizon_fit.csv",
+      "bytes": 739,
+      "sha256": "3e4c90e7fbbd29af7192d153bddf9754d9c5536535160a2a9a2c64c347867b11"
+    },
+    {
+      "path": "output/tables/copula_scale_model_comparison.csv",
+      "bytes": 1072,
+      "sha256": "2bf72b63c37ab877f7363160ccc9810a1f6c5a44a055e98d11b269da1fceddf6"
+    },
+    {
+      "path": "output/tables/copula_scale_oos_scores.csv",
+      "bytes": 5244,
+      "sha256": "730cecafcad354181c6a2822b67deddfcc574eaa93789f7e177120cefea7ebb2"
+    },
+    {
+      "path": "output/tables/data_audit.csv",
+      "bytes": 812,
+      "sha256": "97698533cf18267b3a8b19c304f9293998de2549e5a158da68b3cfa0be8743b0"
+    },
+    {
+      "path": "output/tables/depeg_events.csv",
+      "bytes": 6597,
+      "sha256": "5401a84a7d807994b0ea3837f4c8c6c4245ebb918baf64d6e55ee0604ccb5a5a"
+    },
+    {
+      "path": "output/tables/descriptive_statistics.csv",
+      "bytes": 1807,
+      "sha256": "1ce3ceb8cdb3ed1b8846e06fc8338a69279b96e829418dc0ab363bb77c5daf23"
+    },
+    {
+      "path": "output/tables/descriptive_statistics_baseline.csv",
+      "bytes": 1807,
+      "sha256": "1ce3ceb8cdb3ed1b8846e06fc8338a69279b96e829418dc0ab363bb77c5daf23"
+    },
+    {
+      "path": "output/tables/drift_grid_baseline.csv",
+      "bytes": 19269,
+      "sha256": "dad3471c85c629402759fc76cb4408c900da336322604e1a011e21b22feb0d42"
+    },
+    {
+      "path": "output/tables/drift_sign_test.csv",
+      "bytes": 19269,
+      "sha256": "dad3471c85c629402759fc76cb4408c900da336322604e1a011e21b22feb0d42"
+    },
+    {
+      "path": "output/tables/drift_sign_test_baseline.csv",
+      "bytes": 19269,
+      "sha256": "dad3471c85c629402759fc76cb4408c900da336322604e1a011e21b22feb0d42"
+    },
+    {
+      "path": "output/tables/first_passage_comparison.csv",
+      "bytes": 282,
+      "sha256": "4b298518aa2fa7ebb8a268dbedfd22ebe952d73160b9d1ef4584d2b5ff6369f7"
+    },
+    {
+      "path": "output/tables/forecast_refit_audit.csv",
+      "bytes": 19845,
+      "sha256": "227933ad99bd8b1dc1631cf9e6cc909a246eaf6b7852466bfa7a10e30204e3ef"
+    },
+    {
+      "path": "output/tables/forecast_reliability_bins.csv",
+      "bytes": 41187,
+      "sha256": "4cafd558b67b3ab6e953c4aaca5f2d4ba5207fb59a7af933bc24957f80b940f3"
+    },
+    {
+      "path": "output/tables/forecast_scores.csv",
+      "bytes": 25602,
+      "sha256": "2f9882f3a4cad69402b78c767808f995610e1e01ae968366f6fe4ecba297f7e3"
+    },
+    {
+      "path": "output/tables/full_affine_cir_profile.csv",
+      "bytes": 2979,
+      "sha256": "28fed5886c27eab79bc8bd1ec3d06caa0245f6d17a8b48cd3c56f25dbe278535"
+    },
+    {
+      "path": "output/tables/full_copula_fits.csv",
+      "bytes": 3388,
+      "sha256": "4b99f62d6dabc91366b48ede7b369d8e04b40942136a35febc7603e03a20f24f"
+    },
+    {
+      "path": "output/tables/full_copula_oos_scores.csv",
+      "bytes": 107103,
+      "sha256": "f5c41cf380fd8cf819f6b9499525e8a1e8a99f6c7587f6307628abcd1446d048"
+    },
+    {
+      "path": "output/tables/full_marginal_fits.csv",
+      "bytes": 822,
+      "sha256": "f50374b5c681582000c51b3df7630168865bc52f9c54cc1eafa4dfa095bb944c"
+    },
+    {
+      "path": "output/tables/full_mixture_incremental_scores.csv",
+      "bytes": 107958,
+      "sha256": "abdbdb9ca308dc4448eb6d2a9c624d0327505604374011109a40ee6c178233d0"
+    },
+    {
+      "path": "output/tables/full_model_implementation_status.csv",
+      "bytes": 7606,
+      "sha256": "493e24aa67fcfbb1a8343739d9449f7b7247fcd6906db33a84dbc2136789a9e3"
+    },
+    {
+      "path": "output/tables/full_model_oos_scores.csv",
+      "bytes": 123225,
+      "sha256": "ea26ce85796e8427c260ab0a8419fea56b5fdd25c7b377cac82d9e23f486dc05"
+    },
+    {
+      "path": "output/tables/full_model_pairwise_validation.csv",
+      "bytes": 653,
+      "sha256": "f187bc8b8b16793657552eb7045953eb35a5b0fa7047764e8dbe1afae4caab83"
+    },
+    {
+      "path": "output/tables/full_model_parameters.csv",
+      "bytes": 4160,
+      "sha256": "22f61d2391f17b7883c7f62b08a516c8c4bf41215e16af85dc571ffbd3d36c7f"
+    },
+    {
+      "path": "output/tables/full_model_registry.csv",
+      "bytes": 3635,
+      "sha256": "499766252cf75311d4c43e07b2eefdc30a09acd4dd1161fdcbbcfc601a54efa0"
+    },
+    {
+      "path": "output/tables/full_model_validation_ranking.csv",
+      "bytes": 19842,
+      "sha256": "400cd009b11cbc21e8e9af011681d510e4d8a6356463e0504b9b41452cbaff63"
+    },
+    {
+      "path": "output/tables/full_sample_anomaly_robustness.csv",
+      "bytes": 462,
+      "sha256": "8b83c2cbc4caa24fd483fafae252a1ad3755bfc421185ae3620cd059fd5bbac2"
+    },
+    {
+      "path": "output/tables/gap_summary.csv",
+      "bytes": 168,
+      "sha256": "6de3342e163587d994a451661e3744408522c309380d8adb6bd3fc3cf3067dd5"
+    },
+    {
+      "path": "output/tables/matched_joint_mou_lr_bootstrap.csv",
+      "bytes": 1367,
+      "sha256": "be2e09ad8f74624672b31c03d0ef719732a0081061df5be9d3f184a558fcabfb"
+    },
+    {
+      "path": "output/tables/matched_joint_mou_lr_bootstrap_draws.csv",
+      "bytes": 104686,
+      "sha256": "99cb6b70d8103881978f7e9b404e2d96d280cf753672d9715d11e571df4c38aa"
+    },
+    {
+      "path": "output/tables/mixed_lr_bootstrap.csv",
+      "bytes": 424,
+      "sha256": "ec367b167102bea52e7840ac0097d657034b0e24a0abcf879376f68bdf23d098"
+    },
+    {
+      "path": "output/tables/mixed_lr_bootstrap_baseline.csv",
+      "bytes": 424,
+      "sha256": "ec367b167102bea52e7840ac0097d657034b0e24a0abcf879376f68bdf23d098"
+    },
+    {
+      "path": "output/tables/model_comparison.csv",
+      "bytes": 3002,
+      "sha256": "03bf298f4e072c15285c34a4a0e737bd0e2b5b69b922d6632f54ccb93c497af5"
+    },
+    {
+      "path": "output/tables/model_comparison_cir_baseline.csv",
+      "bytes": 939,
+      "sha256": "2a0620dec048e8a109738b1169e17bd18a71cf0d3df45731520527bef122bade"
+    },
+    {
+      "path": "output/tables/model_comparison_mixed_baseline.csv",
+      "bytes": 885,
+      "sha256": "87cfb22f0fe9fd41b1218300f00ad3bcb422941a73f518dd26b1a09d9f2283f5"
+    },
+    {
+      "path": "output/tables/model_comparison_ou_baseline.csv",
+      "bytes": 1386,
+      "sha256": "e45cdd239c337bcc7f962fd38811b898cd6ec689922837595bfe47568cfad800"
+    },
+    {
+      "path": "output/tables/model_comparison_transformed_baseline.csv",
+      "bytes": 426,
+      "sha256": "11f61fd80b4d3dd72069f53095c1e21d9566d2025261c5afe4cb91e63aee88bd"
+    },
+    {
+      "path": "output/tables/model_estimates.csv",
+      "bytes": 9993,
+      "sha256": "18fea3d08dad3bb0093e620aee89cb63272c18cbd397d75ecf6b9b289efe18d4"
+    },
+    {
+      "path": "output/tables/model_estimates_cir_baseline.csv",
+      "bytes": 1503,
+      "sha256": "279c7c751c1283a5befa2c964f13ea7d0baea4652b037de9af645e700d64d3f9"
+    },
+    {
+      "path": "output/tables/model_estimates_mixed_baseline.csv",
+      "bytes": 2823,
+      "sha256": "afb0aa1ce8eceaf20523a844780ca7e5013c90ce03b19fa25942355d945f6946"
+    },
+    {
+      "path": "output/tables/model_estimates_ou_baseline.csv",
+      "bytes": 4167,
+      "sha256": "16dc8ef567aa8990beda80b2e8aa1af68b83e4df022bb1ee0c4063faad9a488f"
+    },
+    {
+      "path": "output/tables/model_estimates_transformed_baseline.csv",
+      "bytes": 2336,
+      "sha256": "a5ca80080359a3e3d6892c8768df99768a5f10ddf376d333b983eec1e8bc9d30"
+    },
+    {
+      "path": "output/tables/mou_generator_validation_baseline.csv",
+      "bytes": 889,
+      "sha256": "845f108a72ef5a00206599d1edbfbf5c970eb16c9a27c831c009648c7a266df7"
+    },
+    {
+      "path": "output/tables/ou_block_length_robustness.csv",
+      "bytes": 1033,
+      "sha256": "126a8bdbf4c95a065f46b9d6e4c889c63ac8d62cdf8ba97f4815a9dc1cf66eb6"
+    },
+    {
+      "path": "output/tables/ou_daily_bootstrap_baseline.csv",
+      "bytes": 63534,
+      "sha256": "8132c8c0215a76ca8a49868c46d4eb30bd514f4277845f287b28a4ab275b6236"
+    },
+    {
+      "path": "output/tables/pit_liquidity_ou_baseline.csv",
+      "bytes": 1720,
+      "sha256": "9e1ce3ac5a270c07cc9170948b26fa7c3d544942c3ba7294b604568d194591cc"
+    },
+    {
+      "path": "output/tables/robustness_estimates.csv",
+      "bytes": 1867,
+      "sha256": "35b86b1fd18f6b7cba25ee7b148cea119e27e525def4b2fb6fd5c8c5b6847cec"
+    },
+    {
+      "path": "output/tables/rolling_likelihood_surface_final365d.csv",
+      "bytes": 54311,
+      "sha256": "9799152b391552ee709899fc71658d81395334600c7eb30d1a5c6cc6e95b9160"
+    },
+    {
+      "path": "output/tables/rolling_parameters.csv",
+      "bytes": 48019,
+      "sha256": "6281b997698b9db3f89879d92071e8198bda0296eb2230ce3af59a47cb405c6c"
+    },
+    {
+      "path": "output/tables/sample_summary.csv",
+      "bytes": 710,
+      "sha256": "8c4040c6d665f8b5046db8d3e96ec8a30598a56eab2901dd03d63be030bb85c3"
+    },
+    {
+      "path": "output/tables/sign_test_baseline.csv",
+      "bytes": 388,
+      "sha256": "d4d5c3d75065988284a64d49ac2b8637602d29df0c028c04eece818a626b96e7"
+    },
+    {
+      "path": "output/tables/theory_derivation_audit.csv",
+      "bytes": 2936,
+      "sha256": "9a3d0ff633a1025b93122e43700a8fdcfed8c7ddaeadab99ac8a2e8e2d6f100b"
+    },
+    {
+      "path": "output/tables/transformed_cir_profile_baseline.csv",
+      "bytes": 2947,
+      "sha256": "7e44d1915829f7364c335a2a0b01c8f1451aa61928ebca403aaa67e435fc47d5"
+    },
+    {
+      "path": "output/tables/transformed_support_report_baseline.csv",
+      "bytes": 117,
+      "sha256": "663bbde36d23a9209cb8752b7ed4f4e0b244f97d3286e6cb228e3a440d094182"
+    },
+    {
+      "path": "output/tables/updated_stage_gate.csv",
+      "bytes": 1390,
+      "sha256": "7835358d2dcb84eaf4ded8724536f34aa40f6de94376b27bd184789d767ed032"
+    },
+    {
+      "path": "output/tables/validation_model_selection.csv",
+      "bytes": 456,
+      "sha256": "456a1b359a9d03e460f329ac21f7c9176ec8f5110cc7226648685da55f144da6"
+    }
+  ],
+  "tables_count": 65,
+  "png_count": 12,
+  "pdf_count": 12
+}

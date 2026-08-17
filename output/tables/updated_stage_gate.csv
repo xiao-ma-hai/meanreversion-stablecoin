@@ -1,0 +1,14 @@
+gate,pass,criterion
+legacy_mvp_complete,True,existing baseline pipeline and original acceptance tests pass
+registry_frozen,True,25 prespecified theory/methodology objects
+no_silent_model_omission,True,every registry row estimated or carries an explicit retained diagnostic
+all_methodology_models_implemented,True,all finite-dimensional article models and all methodology benchmarks are estimated or diagnosed
+all_successful_dynamic_models_scored,True,every successfully fitted comparable dynamic model has a finite primary validation score
+all_declared_copulas_implemented,True,base and independence-mixed version for every declared family
+all_declared_marginals_implemented,True,"Normal, Student-t, skew Student-t, GED, monotone spline"
+uniform_validation_ranking_available,True,same log-price density measure and five-minute validation score
+complete_margin_copula_score_grid,True,all 960 period-horizon-margin-copula cells scored
+paired_selection_uncertainty_available,True,selected model compared with runner-up and core benchmarks using 2000 day-block draws
+failed_models_retained,True,"non-monotone, support-failed, weak, and non-observable cases remain in outputs"
+no_complexity_preselection,True,complexity does not remove a registered model before validation ranking
+test_not_used_for_selection,True,selection uses 2024 only; 2025 labelled post-extension exploratory

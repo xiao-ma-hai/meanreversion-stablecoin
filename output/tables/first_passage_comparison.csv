@@ -1,0 +1,4 @@
+distribution,n,recovered_within_7d,median_minutes,p75_minutes,p90_minutes,p95_minutes
+Empirical,8,1.0,155.0,323.75,606.5,695.7499999999999
+OUF_simulated,3000,1.0,665.0,840.0,1020.0,1150.2499999999986
+MOUF_simulated,3000,0.9983333333333333,1085.0,2070.0,3485.0,4486.499999999998

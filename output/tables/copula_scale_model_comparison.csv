@@ -1,0 +1,5 @@
+model,family,mixed_reset,n_parameters,objective_mean_log_copula,converged,gradient_norm,repeated_best_solutions,max_pairs_per_horizon,latent_state_note,dependence_rmse,kappa,lambda,kappa_slow,kappa_fast,weight_fast
+TwoScaleMixed,two_scale,True,4,1.5950324962491746,True,5.4389598148408044e-08,18,100000,sum of two latent OU factors; Markov only in the two-dimensional latent state,0.032228713573065185,,0.507818262296086,0.13611777206653833,225.02371354400105,0.012149490633671293
+TwoScaleGaussian,two_scale,False,3,1.526626616512308,True,5.438959855097195e-08,9,100000,sum of two latent OU factors; Markov only in the two-dimensional latent state,0.0037734988547984036,,0.0,0.33480184709322564,251.0088547956437,0.012439800036541434
+SingleMixed,single_scale,True,2,1.4699143929455547,True,2.2204460627450097e-08,8,100000,one-dimensional Markov,0.07018449553719074,0.8889043069727658,0.2504577846829606,,,
+SingleGaussian,single_scale,False,1,1.4205110772476355,True,4.4408921008381155e-08,3,100000,one-dimensional Markov,0.07022256808792585,1.1398175146447875,0.0,,,

@@ -1,0 +1,7 @@
+2026-08-09 13:42:24,420Z INFO DRY RUN full model suite
+2026-08-09 15:55:31,187Z INFO Full model suite complete registry=25 covered=25 copulas=14 selected=MarkovSwitchingOU gates=True
+2026-08-09 16:08:06,013Z INFO Full model suite complete registry=25 covered=25 copulas=14 selected=MarkovSwitchingOU gates=True
+2026-08-09 16:21:35,951Z INFO Full model suite complete registry=25 covered=25 copulas=14 selected=MarkovSwitchingOU gates=True
+2026-08-09 16:32:26,726Z INFO Using cached full model suite: D:\pku\博士期间\启研\均值回复\稳定币实证\meanreversion-stablecoin\output\tables\updated_stage_gate.csv
+2026-08-09 16:37:17,904Z INFO Using cached full model suite: D:\pku\博士期间\启研\均值回复\稳定币实证\meanreversion-stablecoin\output\tables\updated_stage_gate.csv
+2026-08-09 23:29:36,763Z INFO Using cached full model suite: D:\pku\博士期间\启研\均值回复\稳定币实证\meanreversion-stablecoin\output\tables\updated_stage_gate.csv

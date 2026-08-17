@@ -1,0 +1,6 @@
+name,params,train_mean_logpdf,converged,weak_identification,message
+Normal,"{'loc': 0.00014367175990866296, 'scale': 0.0008376279029607666}",5.666006386101064,True,False,
+StudentT,"{'df': 2.054839596062891, 'loc': 0.00015171863983236066, 'scale': 0.0003169253716388816}",6.0816135074983215,True,False,scipy Student-t MLE
+SkewStudentT,"{'df': 2.028315638888734, 'skew': 0.9767942681860218, 'loc': 0.00016074917576025573, 'scale': 0.0003156544155654217}",6.0820495522538085,True,False,CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH
+GED,"{'beta': 0.6091626877393614, 'loc': 0.00019998000266615727, 'scale': 0.00015076885071097477}",6.076488813310898,True,False,scipy generalized-normal MLE
+MonotoneSpline,"{'grid_points': 249, 'tail_probability': 0.0001}",6.570678843012058,True,False,PCHIP empirical quantile density

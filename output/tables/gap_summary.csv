@@ -1,0 +1,5 @@
+gap_class,pair_count,missing_bars,median_gap_minutes,max_gap_minutes
+G1_5_to_30m,42297,,,
+G2_30m_to_6h,4653,,,
+G3_over_6h,7,,,
+all_gaps,46957,124217.0,15.0,1930.0

@@ -1,0 +1,26 @@
+name: meanreversion-stablecoin
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - numpy
+  - pandas
+  - scipy
+  - sympy
+  - statsmodels
+  - scikit-learn
+  - matplotlib
+  - pyarrow
+  - numba
+  - joblib
+  - tqdm
+  - pyyaml
+  - jupyterlab
+  - notebook
+  - ipykernel
+  - pytest
+  - openpyxl
+  - pip
+  - pip:
+      - arch

@@ -1,0 +1,67 @@
+{
+  "ou_affine": {
+    "expected": "all_zero",
+    "pass": true,
+    "residuals": [
+      "0",
+      "0"
+    ]
+  },
+  "ou_exponential": {
+    "expected": "all_zero",
+    "pass": true,
+    "residuals": [
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  "ou_special_kummer_reduction": {
+    "expected": "identity_to_2k_times_kummer",
+    "pass": true,
+    "residual_minus_2k_kummer": "0"
+  },
+  "cir_affine": {
+    "expected": "all_zero",
+    "pass": true,
+    "residuals": [
+      "0",
+      "0"
+    ]
+  },
+  "cir_quadratic": {
+    "expected": "all_zero",
+    "pass": true,
+    "residuals": [
+      "0",
+      "0",
+      "0"
+    ],
+    "B_factor": "exp((k-d)t) [B_0 + A_0(sigma^2+2k theta)/k (1-exp(kt))]"
+  },
+  "cir_exponential": {
+    "expected": "all_zero",
+    "pass": true,
+    "residuals": [
+      "0",
+      "0",
+      "0"
+    ]
+  },
+  "cir_special_kummer_reduction": {
+    "expected": "identity_to_k_times_kummer",
+    "pass": true,
+    "residual_minus_k_kummer": "0"
+  },
+  "cir_secondary_change_of_variables": {
+    "expected": "nonzero_counterexample",
+    "pass": true,
+    "normalized_residual": "k*theta + k*x**2*(-sqrt(2)*sqrt(k)/Abs(sigma) + 1) + x*(sqrt(2)*k**(3/2)*theta/Abs(sigma) + 2*sqrt(2)*sqrt(k)*Abs(sigma) - k*theta - k)",
+    "counterexample_k2_sigma1_theta1_x1": "4"
+  },
+  "mixed_kernel_composition": {
+    "expected": "pi_coefficient_equals_1_minus_ab",
+    "pass": true,
+    "residual": "0"
+  }
+}

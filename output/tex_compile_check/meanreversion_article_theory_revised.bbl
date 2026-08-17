@@ -1,0 +1,82 @@
+\begin{thebibliography}{11}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Cont and Tankov(2004)]{ContTankov2004}
+Rama Cont and Peter Tankov.
+\newblock \emph{Financial Modelling with Jump Processes}.
+\newblock Chapman \& Hall/CRC Financial Mathematics Series. Chapman \&
+  Hall/CRC, Boca Raton, 2004.
+\newblock ISBN 978-1-58488-413-2.
+
+\bibitem[Cox et~al.(1985)Cox, Ingersoll, and Ross]{CoxIngersollRoss1985}
+John~C. Cox, Jonathan~E. Ingersoll, Jr., and Stephen~A. Ross.
+\newblock A theory of the term structure of interest rates.
+\newblock \emph{Econometrica}, 53\penalty0 (2):\penalty0 385--407, 1985.
+\newblock \doi{10.2307/1911242}.
+
+\bibitem[Darsow et~al.(1992)Darsow, Nguyen, and Olsen]{DarsowNguyenOlsen1992}
+William~F. Darsow, Bao Nguyen, and Elwood~T. Olsen.
+\newblock Copulas and {Markov} processes.
+\newblock \emph{Illinois Journal of Mathematics}, 36\penalty0 (4):\penalty0
+  600--642, 1992.
+\newblock \doi{10.1215/ijm/1255987328}.
+
+\bibitem[Ethier and Kurtz(1986)]{EthierKurtz1986}
+Stewart~N. Ethier and Thomas~G. Kurtz.
+\newblock \emph{Markov Processes: Characterization and Convergence}.
+\newblock Wiley Series in Probability and Statistics. John Wiley \& Sons, New
+  York, 1986.
+\newblock \doi{10.1002/9780470316658}.
+
+\bibitem[Fang et~al.(2020)Fang, Jiang, Liu, and Yang]{FangJiangLiuYang2020}
+Jun Fang, Fan Jiang, Yong Liu, and Jingping Yang.
+\newblock Copula-based {Markov} process.
+\newblock \emph{Insurance: Mathematics and Economics}, 91:\penalty0 166--187,
+  2020.
+\newblock \doi{10.1016/j.insmatheco.2020.01.006}.
+
+\bibitem[Folland(1999)]{Folland1999}
+Gerald~B. Folland.
+\newblock \emph{Real Analysis: Modern Techniques and Their Applications}.
+\newblock John Wiley \& Sons, New York, 2 edition, 1999.
+\newblock ISBN 978-0-471-31716-6.
+
+\bibitem[Kallenberg(2021)]{Kallenberg2021}
+Olav Kallenberg.
+\newblock \emph{Foundations of Modern Probability}, volume~99 of
+  \emph{Probability Theory and Stochastic Modelling}.
+\newblock Springer, Cham, 3 edition, 2021.
+\newblock \doi{10.1007/978-3-030-61871-1}.
+
+\bibitem[Karatzas and Shreve(1991)]{KaratzasShreve1991}
+Ioannis Karatzas and Steven~E. Shreve.
+\newblock \emph{Brownian Motion and Stochastic Calculus}, volume 113 of
+  \emph{Graduate Texts in Mathematics}.
+\newblock Springer, New York, 2 edition, 1991.
+\newblock \doi{10.1007/978-1-4612-0949-2}.
+
+\bibitem[Nelsen(2006)]{Nelsen2006}
+Roger~B. Nelsen.
+\newblock \emph{An Introduction to Copulas}.
+\newblock Springer Series in Statistics. Springer, New York, 2 edition, 2006.
+\newblock \doi{10.1007/0-387-28678-0}.
+
+\bibitem[Olver et~al.(2010)Olver, Lozier, Boisvert, and Clark]{OlverEtAl2010}
+Frank W.~J. Olver, Daniel~W. Lozier, Ronald~F. Boisvert, and Charles~W. Clark,
+  editors.
+\newblock \emph{{NIST} Handbook of Mathematical Functions}.
+\newblock Cambridge University Press, Cambridge, 2010.
+\newblock ISBN 978-0-521-19225-5.
+
+\bibitem[Protter(2005)]{Protter2005}
+Philip~E. Protter.
+\newblock \emph{Stochastic Integration and Differential Equations}, volume~21
+  of \emph{Stochastic Modelling and Applied Probability}.
+\newblock Springer, Berlin, 2 edition, 2005.
+\newblock \doi{10.1007/978-3-662-10061-5}.
+
+\end{thebibliography}

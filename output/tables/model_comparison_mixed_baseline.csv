@@ -1,0 +1,4 @@
+sample,model,nobs_x,loglik,aic,bic,converged,gradient_norm,hessian_condition,weak_identification,likelihood_type,acceptance_pass,nobs_y,pit_mean,pit_variance,pit_ks_stat,pit_ks_pvalue,ljung_box_z_q20,ljung_box_z_p20,ljung_box_z2_q20,ljung_box_z2_p20,lower_1pct_coverage,upper_99pct_coverage
+baseline,MOU0,524610,4351515.340115358,-8703024.680230716,-8702991.168999491,True,7.536443847484639e-07,560.262512917018,False,exact_transition,True,,,,,,,,,,,
+baseline,MOUF,524610,4351562.036142891,-8703116.072285783,-8703071.39064415,True,1.3053503640027926e-06,167773.6514778487,False,exact_transition,True,524610.0,0.4997790244611893,0.0636952544372007,0.20417917526776536,0.0,50325.53292572991,0.0,630100.8271051195,0.0,0.013366119593602867,0.012348220582909209
+baseline,MCIR,524610,4291486.674615513,-8582965.349231025,-8582920.667589393,True,,,True,exact_transition,False,,,,,,,,,,,

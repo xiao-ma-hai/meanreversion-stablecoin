@@ -1,0 +1,10 @@
+{
+  "kappa": 0.8891604201451624,
+  "lambda": 0.25565983044335033,
+  "objective_mean_log_copula": 1.4692303613538253,
+  "converged": true,
+  "optimizer_message": "CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_<=_PGTOL",
+  "gradient_norm": 2.9205407973303306e-07,
+  "repeated_best_solutions": 12,
+  "weak_identification": false
+}

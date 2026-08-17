@@ -1,0 +1,2 @@
+sample,model,support_errors,A0_fixed,B0_fixed,profile_boundary_hit
+baseline,AffineTransformedCIR,0,True,True,False

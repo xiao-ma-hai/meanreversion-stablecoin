@@ -1,0 +1,12 @@
+.conda-env/
+.venv/
+.pytest_cache/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+data/raw/*.csv
+data/interim/*.parquet
+data/processed/*.parquet
+output/models/*.joblib
+output/models/*.npz

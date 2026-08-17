@@ -1,0 +1,28 @@
+name: meanreversion-stablecoin
+channels:
+  - defaults
+dependencies:
+  - python=3.11
+  - numpy
+  - scipy
+  - sympy
+  - matplotlib
+  - ipython
+  - pandas
+  - statsmodels
+  - line_profiler
+  - ipykernel
+  - numpy-financial
+  - openpyxl
+  - networkx
+  - graphviz
+  - seaborn
+  - pydot
+  - scikit-learn
+  - notebook
+  - pyzmq[version='<25']
+  - jupyter_client[version='<8']
+  - pip
+  - numba
+  - selenium
+prefix: D:\Anaconda\envs\meanreversion-stablecoin

@@ -1,0 +1,18 @@
+{
+  "python_executable": "D:\\Anaconda\\envs\\meanreversion-stablecoin\\python.exe",
+  "python_version": "3.11.5",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "numpy": "1.26.4",
+  "pandas": "2.2.3",
+  "scipy": "1.11.1",
+  "statsmodels": "0.14.0",
+  "scikit_learn": "1.2.2",
+  "matplotlib": "3.7.2",
+  "dedicated_environment_path_expected": "D:\\Anaconda\\envs\\meanreversion-stablecoin\\python.exe",
+  "dedicated_environment_verified": true,
+  "environment_creation_note": "Offline read-only clone into a new target; missing packages installed only in target.",
+  "project_required_imports_verified_by_pipeline": true,
+  "pip_check_returncode": 1,
+  "pip_check_output": "pdfminer-six 20260107 requires cryptography, which is not installed.\ntrio-typing 0.10.0 requires importlib-metadata, which is not installed.\ntrio-typing 0.10.0 requires mypy-extensions, which is not installed.\njupyter-server 1.13.5 has requirement pywinpty<2; os_name == \"nt\", but you have pywinpty 2.0.15.\nselenium 4.38.0 has requirement certifi>=2025.10.5, but you have certifi 2024.2.2.\nselenium 4.38.0 has requirement urllib3[socks]<3.0,>=2.5.0, but you have urllib3 2.2.1.",
+  "pip_check_note": "Reported conflicts are inherited packages outside pyproject project dependencies; preserved rather than mutating unrelated packages."
+}

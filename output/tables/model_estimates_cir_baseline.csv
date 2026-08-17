@@ -1,0 +1,7 @@
+sample,category,model,parameter,estimate,ordinary_se,sandwich_se,bootstrap_se,bootstrap_ci_lower,bootstrap_ci_upper,converged,gradient_norm,hessian_condition,weak_identification,half_life_minutes,effective_half_life_minutes,inference_note
+baseline,CIR,CIR_Price,theta,1.0000989581702744,,,,,,True,9.592853246280355e-05,51784368.48230651,True,515.2575976841694,,Observed optimizer Hessian only; weak-identification flag governs interpretation
+baseline,CIR,CIR_Price,kappa,1.9371513287575681,,,,,,True,9.592853246280355e-05,51784368.48230651,True,515.2575976841694,,Observed optimizer Hessian only; weak-identification flag governs interpretation
+baseline,CIR,CIR_Price,sigma,0.001274113245701976,,,,,,True,9.592853246280355e-05,51784368.48230651,True,515.2575976841694,,Observed optimizer Hessian only; weak-identification flag governs interpretation
+baseline,CIR,CIR_DepegPressure,theta,0.00044595760395038273,,,,,,True,1.2560739745807732e-06,5382.317850266308,False,366.24999617418956,,Observed optimizer Hessian only; weak-identification flag governs interpretation
+baseline,CIR,CIR_DepegPressure,kappa,2.725274949986912,,,,,,True,1.2560739745807732e-06,5382.317850266308,False,366.24999617418956,,Observed optimizer Hessian only; weak-identification flag governs interpretation
+baseline,CIR,CIR_DepegPressure,sigma,0.09684929574484913,,,,,,True,1.2560739745807732e-06,5382.317850266308,False,366.24999617418956,,Observed optimizer Hessian only; weak-identification flag governs interpretation

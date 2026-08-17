@@ -1,0 +1,150 @@
+{
+  "full_sample_models": [
+    {
+      "model": "SingleGaussian",
+      "family": "single_scale",
+      "mixed_reset": false,
+      "params": {
+        "kappa": 1.1398175146447875,
+        "lambda": 0.0
+      },
+      "n_parameters": 1,
+      "objective_mean_log_copula": 1.4205110772476355,
+      "converged": true,
+      "gradient_norm": 4.4408921008381155e-08,
+      "repeated_best_solutions": 3,
+      "max_pairs_per_horizon": 100000,
+      "latent_state_note": "one-dimensional Markov",
+      "dependence_rmse": 0.07022256808792585
+    },
+    {
+      "model": "SingleMixed",
+      "family": "single_scale",
+      "mixed_reset": true,
+      "params": {
+        "kappa": 0.8889043069727658,
+        "lambda": 0.2504577846829606
+      },
+      "n_parameters": 2,
+      "objective_mean_log_copula": 1.4699143929455547,
+      "converged": true,
+      "gradient_norm": 2.2204460627450097e-08,
+      "repeated_best_solutions": 8,
+      "max_pairs_per_horizon": 100000,
+      "latent_state_note": "one-dimensional Markov",
+      "dependence_rmse": 0.07018449553719074
+    },
+    {
+      "model": "TwoScaleGaussian",
+      "family": "two_scale",
+      "mixed_reset": false,
+      "params": {
+        "kappa_slow": 0.33480184709322564,
+        "kappa_fast": 251.0088547956437,
+        "weight_fast": 0.012439800036541434,
+        "lambda": 0.0
+      },
+      "n_parameters": 3,
+      "objective_mean_log_copula": 1.526626616512308,
+      "converged": true,
+      "gradient_norm": 5.438959855097195e-08,
+      "repeated_best_solutions": 9,
+      "max_pairs_per_horizon": 100000,
+      "latent_state_note": "sum of two latent OU factors; Markov only in the two-dimensional latent state",
+      "dependence_rmse": 0.0037734988547984036
+    },
+    {
+      "model": "TwoScaleMixed",
+      "family": "two_scale",
+      "mixed_reset": true,
+      "params": {
+        "kappa_slow": 0.13611777206653833,
+        "kappa_fast": 225.02371354400105,
+        "weight_fast": 0.012149490633671293,
+        "lambda": 0.507818262296086
+      },
+      "n_parameters": 4,
+      "objective_mean_log_copula": 1.5950324962491746,
+      "converged": true,
+      "gradient_norm": 5.4389598148408044e-08,
+      "repeated_best_solutions": 18,
+      "max_pairs_per_horizon": 100000,
+      "latent_state_note": "sum of two latent OU factors; Markov only in the two-dimensional latent state",
+      "dependence_rmse": 0.032228713573065185
+    }
+  ],
+  "training_models": [
+    {
+      "model": "SingleGaussian",
+      "family": "single_scale",
+      "mixed_reset": false,
+      "params": {
+        "kappa": 1.5591912479284737,
+        "lambda": 0.0
+      },
+      "n_parameters": 1,
+      "objective_mean_log_copula": 1.2747575857103792,
+      "converged": true,
+      "gradient_norm": 1.7763568403352462e-07,
+      "repeated_best_solutions": 3,
+      "max_pairs_per_horizon": 100000,
+      "latent_state_note": "one-dimensional Markov",
+      "dependence_rmse": 0.09996263606998912
+    },
+    {
+      "model": "SingleMixed",
+      "family": "single_scale",
+      "mixed_reset": true,
+      "params": {
+        "kappa": 1.2758864810132364,
+        "lambda": 0.2274837717261637
+      },
+      "n_parameters": 2,
+      "objective_mean_log_copula": 1.3118714190250007,
+      "converged": true,
+      "gradient_norm": 2.0106994166361838e-07,
+      "repeated_best_solutions": 9,
+      "max_pairs_per_horizon": 100000,
+      "latent_state_note": "one-dimensional Markov",
+      "dependence_rmse": 0.09568320545314554
+    },
+    {
+      "model": "TwoScaleGaussian",
+      "family": "two_scale",
+      "mixed_reset": false,
+      "params": {
+        "kappa_slow": 0.3582652015575463,
+        "kappa_fast": 294.9836272571617,
+        "weight_fast": 0.01727550549158006,
+        "lambda": 0.0
+      },
+      "n_parameters": 3,
+      "objective_mean_log_copula": 1.4096971281650799,
+      "converged": true,
+      "gradient_norm": 1.1322097802817073e-07,
+      "repeated_best_solutions": 9,
+      "max_pairs_per_horizon": 100000,
+      "latent_state_note": "sum of two latent OU factors; Markov only in the two-dimensional latent state",
+      "dependence_rmse": 0.005044320588530276
+    },
+    {
+      "model": "TwoScaleMixed",
+      "family": "two_scale",
+      "mixed_reset": true,
+      "params": {
+        "kappa_slow": 0.11963879838087031,
+        "kappa_fast": 307.0788976673329,
+        "weight_fast": 0.016267975485759527,
+        "lambda": 0.5761695645859649
+      },
+      "n_parameters": 4,
+      "objective_mean_log_copula": 1.4784292655947027,
+      "converged": true,
+      "gradient_norm": 8.005932126792056e-08,
+      "repeated_best_solutions": 17,
+      "max_pairs_per_horizon": 100000,
+      "latent_state_note": "sum of two latent OU factors; Markov only in the two-dimensional latent state",
+      "dependence_rmse": 0.03521423031816517
+    }
+  ]
+}

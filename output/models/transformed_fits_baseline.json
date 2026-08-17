@@ -1,0 +1,89 @@
+[
+  {
+    "model_name": "AffineTransformedOU",
+    "params": {
+      "A0": 1.0,
+      "B0": 0.0,
+      "kappa": 0.8757534835571565,
+      "d": 0.876513611570394,
+      "sigma": 0.0023885765299399,
+      "gamma_kappa_minus_d": -0.0007601280132374377
+    },
+    "loglik": 977436.9775026316,
+    "nobs": 120000,
+    "aic": -1954867.9550052632,
+    "bic": -1954838.869264198,
+    "converged": true,
+    "optimizer_message": "CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_<=_PGTOL",
+    "gradient_norm": 4.689716638603837e-06,
+    "hessian_condition": 8164.976406310979,
+    "covariance": [
+      [
+        0.0085623362309228,
+        1.0575421573338121e-05,
+        3.6439733109187653e-06
+      ],
+      [
+        1.0575421573338165e-05,
+        1.8260312072308524e-05,
+        -8.982753677048617e-06
+      ],
+      [
+        3.6439733109186874e-06,
+        -8.982753677048617e-06,
+        5.746580663642733e-06
+      ]
+    ],
+    "robust_covariance": null,
+    "start_values": {
+      "kappa": 1.3612409135956147,
+      "d": 1.3612409135956147,
+      "sigma": 0.0013621385458782956,
+      "B0": 0.0
+    },
+    "metadata": {
+      "variance_regime": "decaying",
+      "A0_fixed_for_identification": true,
+      "B0_fixed_simplified_version": true,
+      "repeated_best_solutions": 8,
+      "weak_identification": false
+    }
+  },
+  {
+    "model_name": "AffineTransformedCIR",
+    "params": {
+      "A0": 1.0,
+      "B0": 0.0,
+      "theta": 1.0000989581702744,
+      "kappa": 1.9371513287575681,
+      "d": 1.937351328757568,
+      "sigma": 0.001274113245701976,
+      "gamma_kappa_minus_d": -0.00019999999999999998
+    },
+    "loglik": 966695.0310180418,
+    "nobs": 120000,
+    "aic": -1933382.0620360835,
+    "bic": -1933343.2810479966,
+    "converged": true,
+    "optimizer_message": "Profile likelihood with base CIR parameters fixed",
+    "gradient_norm": NaN,
+    "hessian_condition": null,
+    "covariance": null,
+    "robust_covariance": null,
+    "start_values": {
+      "theta": 1.0000989581702744,
+      "kappa": 1.9371513287575681,
+      "d": 1.9371513287575681,
+      "sigma": 0.001274113245701976
+    },
+    "metadata": {
+      "A0_fixed_for_identification": true,
+      "B0_fixed_simplified_version": true,
+      "base_cir_parameters_fixed": true,
+      "profile_curvature": 129739195910.28288,
+      "estimation_nobs": 75000,
+      "weak_identification": true,
+      "variance_regime": "decaying"
+    }
+  }
+]

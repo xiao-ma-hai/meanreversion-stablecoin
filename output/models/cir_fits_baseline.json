@@ -1,0 +1,102 @@
+[
+  {
+    "model_name": "CIR_Price",
+    "params": {
+      "theta": 1.0000989581702744,
+      "kappa": 1.9371513287575681,
+      "sigma": 0.001274113245701976
+    },
+    "loglik": 4239568.923161349,
+    "nobs": 524610,
+    "aic": -8479131.846322699,
+    "bic": -8479098.335091474,
+    "converged": true,
+    "optimizer_message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH",
+    "gradient_norm": 9.592853246280355e-05,
+    "hessian_condition": 51784368.48230651,
+    "covariance": [
+      [
+        9.551914226521656e-08,
+        -8.074665329264061e-05,
+        -6.5804915919048815e-06
+      ],
+      [
+        -8.074665329264061e-05,
+        0.07042821880415975,
+        0.005613970165893643
+      ],
+      [
+        -6.5804915919048815e-06,
+        0.005613970165893644,
+        0.0004606825064356129
+      ]
+    ],
+    "robust_covariance": null,
+    "start_values": {
+      "theta": 1.0000993977612413,
+      "kappa": 1.9116400917500762,
+      "sigma": 0.001272365501920128
+    },
+    "metadata": {
+      "half_life_minutes": 515.2575976841694,
+      "feller_index": 2386824.340035693,
+      "feller_satisfied": true,
+      "scipy_exact_logpdf_failure_rate": 1.0,
+      "transition_density_backend": "scipy_ncx2_exact_with_high_noncentrality_moment_normal_fallback",
+      "estimation_nobs": 150000,
+      "loglik_scaled_from_subsample": true,
+      "repeated_best_solutions": 3,
+      "weak_identification": true
+    }
+  },
+  {
+    "model_name": "CIR_DepegPressure",
+    "params": {
+      "theta": 0.00044595760395038273,
+      "kappa": 2.725274949986912,
+      "sigma": 0.09684929574484913
+    },
+    "loglik": 4351170.262654961,
+    "nobs": 524610,
+    "aic": -8702334.525309922,
+    "bic": -8702301.014078697,
+    "converged": true,
+    "optimizer_message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH",
+    "gradient_norm": 1.2560739745807732e-06,
+    "hessian_condition": 5382.317850266308,
+    "covariance": [
+      [
+        0.01147128614254622,
+        -0.011551212688450567,
+        -3.955614383575387e-05
+      ],
+      [
+        -0.011551212688450524,
+        0.011745612792320613,
+        4.9703433151847454e-05
+      ],
+      [
+        -3.955614383570789e-05,
+        4.970343315180069e-05,
+        5.362652524980915e-06
+      ]
+    ],
+    "robust_covariance": null,
+    "start_values": {
+      "theta": 0.0006031388580348859,
+      "kappa": 0.31231112429933083,
+      "sigma": 0.0013035590565584488
+    },
+    "metadata": {
+      "half_life_minutes": 366.24999617418956,
+      "feller_index": 0.25914388145392014,
+      "feller_satisfied": false,
+      "scipy_exact_logpdf_failure_rate": 0.0,
+      "transition_density_backend": "scipy_ncx2_exact_with_high_noncentrality_moment_normal_fallback",
+      "estimation_nobs": 100000,
+      "loglik_scaled_from_subsample": true,
+      "repeated_best_solutions": 6,
+      "weak_identification": false
+    }
+  }
+]
