@@ -1,0 +1,23 @@
+{
+  "design": "balanced common exact-pair calendar",
+  "frequency_minutes": 5,
+  "window_start_utc": "2021-01-01T00:00:00+00:00",
+  "window_end_utc": "2025-12-31T23:59:59+00:00",
+  "assets": [
+    "USDT",
+    "USDC",
+    "DAI"
+  ],
+  "common_exact_pairs": 229484,
+  "common_pair_timestamp_sha256": "96a9522e2548289d8b50769a16ce6e949953596534920a158dfedb7cd12850d7",
+  "selection_rule": "intersection of observed t and t+300 seconds for all assets; no imputation",
+  "quality_gate": {
+    "minimum_common_pairs": 100000,
+    "passed": true
+  },
+  "raw_sha256": {
+    "USDT": "417ea3aa71f86c4476c30568f251f3f873ae8b0d44c5f480f5ad2f35fc6acc22",
+    "USDC": "9a6eb1ec5bc81c49e0bd59c229d97e8c1d20dfb7ddccb49e4d0c3bac7a787349",
+    "DAI": "a455ae9809468ca5ad66b81770cbb5492e801d98d470e23c29408a4bb9115fd7"
+  }
+}

@@ -1,4 +1,5 @@
 % !TeX program = xelatex
+\iffalse
 \documentclass[11pt]{article}
 \usepackage[a4paper,margin=1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
@@ -1633,6 +1634,7 @@ approximations are prediction models unless a consistent continuous-time
 semigroup is separately proved.
 \end{enumerate}
 
+\fi
 \clearpage
 \appendix
 \section{Detailed proofs}
@@ -2020,8 +2022,11 @@ converse in Theorem~\ref{rev:thm-generator-martingale}.
 
 \begin{proof}[Detailed generator proof of
 Proposition~\ref{rev:prop-martingale-rescaling}]
-For completeness, let
-$R_t=\mathcal R_{0,t}=\exp\{\int_0^t\gamma(a)\dd a\}$ and define
+For completeness, define the deterministic scaling factor
+\[
+R_t=\mathcal R_{0,t}=\exp\!\left\{\int_0^t\gamma(a)\dd a\right\},
+\]
+and set
 \[
 \widetilde q(t,u)=\frac{q(t,u)-m}{R_t}.
 \]
@@ -2127,6 +2132,7 @@ and its right derivative at $t=s$ gives
 $b_{\mathrm{mix}}(s,x)=b_0(s,x)+\lambda(s)(m-x)$.
 \end{proof}
 
+\endinput
 \clearpage
 \bibliographystyle{plainnat}
 \bibliography{meanreversion_theory_references}

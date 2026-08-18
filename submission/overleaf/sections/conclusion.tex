@@ -1,0 +1,44 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+This paper develops a Copula-based theory of mean-reverting Markov processes
+and studies its empirical content without equating stationarity, dependence
+decay, and a restoring force.  The corrected framework separates a
+drift-reverting transition kernel from mean convergence under an initial law,
+requires strong conditional-mean persistence to be contractive, and fixes the
+almost-everywhere versions needed for Copula densities and conditional kernels.
+Strict monotone diffusion transforms yield observable densities only under
+invertibility and support conditions.
+
+The stationary-reset family is the central construction.  Within the scalar
+mixture class, Chapman--Kolmogorov consistency forces multiplicative weights
+whenever the base kernel is not already the invariant projection.  A regular
+cumulative hazard gives the familiar exponential survival form; an ordinary
+intensity requires absolute continuity, not merely right continuity.  On the
+centered $L^2$ space, reset mixing multiplies the base semigroup and every
+stationary covariance by $e^{-\lambda t}$.  Under a reversible base semigroup,
+the spectral gap shifts by exactly $\lambda$.  These results clarify both the
+advantage and the identification limit of the construction: conditional-mean
+and second-order decay see $\kappa+\lambda$, while the separate rates must come
+from transition shape or coherent multi-horizon restrictions.
+
+The empirical revision changes the substantive conclusion.  Exact ties are a
+first-order feature of Kraken stablecoin prices, not a minor numerical issue.
+They make the continuous mixed-OU point-density likelihood unbounded and
+invalidate the earlier continuous-path LR bootstrap.  A nearest-tick interval
+likelihood removes that divergence.  Using separated full and frozen-training
+estimates, it finds positive out-of-sample MOU--OU score differences for USDT
+and USDC and weaker evidence for DAI.  The common calendar also reveals marked
+cross-asset heterogeneity, but those point estimates are not yet formal
+mechanism comparisons.
+
+Most importantly, one-minute dynamics do not transfer successfully to the
+five-minute kernel for any of the three assets.  The continuous-time semigroup
+restriction therefore fails under the present interval approximation.  The
+evidence supports dependence refresh as a useful predictive representation;
+it does not yet validate frequency-invariant structural rates or identify
+arbitrage, redemption, or collateral mechanisms.  The next decisive step is
+not a larger continuous bootstrap.  It is scalable full filtering of the
+rounded observation model, followed by multi-horizon estimation and a
+synchronous day-block cross-asset bootstrap.  Structural economic
+interpretation should remain conditional on those gates.

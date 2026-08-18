@@ -10,3 +10,4 @@ data/interim/*.parquet
 data/processed/*.parquet
 output/models/*.joblib
 output/models/*.npz
+build/latex/

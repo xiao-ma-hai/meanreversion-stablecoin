@@ -1,0 +1,97 @@
+% !TeX program = xelatex
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{booktabs,longtable,tabularx,array,threeparttable}
+\usepackage{graphicx,subcaption}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[authoryear,round]{natbib}
+\usepackage{microtype}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\graphicspath{{figures/}}
+\setlength{\emergencystretch}{2em}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{assumption}[definition]{Assumption}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{lemma}[definition]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem{example}[definition]{Example}
+
+\newcommand{\E}{\mathbb E}
+\newcommand{\Pp}{\mathbb P}
+\newcommand{\Qq}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\Law}{\operatorname{Law}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\one}{\mathbf 1}
+\newcommand{\1}{\mathbf 1}
+\newcommand{\classD}{\mathrm{class}\text{-}(D)}
+\newcommand{\Normal}{\mathcal N}
+\newcommand{\Gam}{\operatorname{Gamma}}
+\newcommand{\id}{\mathrm I}
+\newcommand{\Leb}{\operatorname{Leb}}
+
+\title{Copula-Based Mean-Reverting Processes:\\
+Theory, Observation Discreteness, and Stablecoin Evidence}
+\author{Qinhan Duan \and Qian Gao \and Jingping Yang \and Jiaqi Zhu}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We develop a copula-based framework for mean-reverting Markov processes and
+evaluate its empirical content using one- and five-minute Kraken prices for
+USDT/USD, USDC/USD, and DAI/USD.
+The theory distinguishes local drift reversion, finite-horizon conditional
+mean reversion, and convergence of moments under an initial law.  For
+absolutely continuous Markov copulas, we derive conditional-mean and generator
+criteria, establish observable densities for monotone transforms of OU and CIR
+diffusions, and characterize a stationary-reset family that preserves its
+invariant marginal while multiplying centered semigroup decay by a survival
+probability.  The empirical analysis first identifies a decisive observation
+problem: 17--54 percent of aligned five-minute transitions are exact price
+ties, making the usual continuous mixed-OU point-density likelihood unbounded
+as the base reversion rate approaches zero.  We therefore introduce a bounded
+nearest-tick interval likelihood and separate 2021--2025 descriptive estimates
+from parameters frozen on 2021--2023.  The three assets share 229,484 exact,
+non-imputed five-minute transition times.  Under the interval approximation,
+the mixed model improves 2024 and post-selection 2025 scores relative to OU
+for USDT and USDC; DAI evidence is less stable.  One-to-five-minute parameter
+transfer fails for all three assets, however, so the continuous-time semigroup
+interpretation and cross-asset parameter ordering do not pass the present
+structural gate.  The evidence supports a useful dependence-refresh
+representation, but full filtering, synchronous multi-asset inference, and
+frequency stability are required before its rates can be given a structural
+economic interpretation.
+\end{abstract}
+
+\noindent\textbf{Keywords:} mean reversion; Markov copula; stablecoin; transition density; stationary reset; invariant margin
+
+\medskip
+\noindent\textbf{JEL classification:} C22; C58; G12; G15
+
+\input{sections/introduction}
+\input{sections/theory}
+\input{sections/empirical}
+\input{sections/conclusion}
+
+\appendix
+\input{sections/proofs}
+\input{sections/empirical_appendix}
+
+\clearpage
+\bibliographystyle{plainnat}
+\bibliography{references}
+\end{document}

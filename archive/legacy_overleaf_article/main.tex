@@ -1,0 +1,107 @@
+% !TeX program = xelatex
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{booktabs,longtable,tabularx,array,threeparttable}
+\usepackage{graphicx,subcaption}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[authoryear,round]{natbib}
+\usepackage{microtype}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+
+\hypersetup{
+  pdftitle={Copula-Based Mean-Reverting Processes: Theory and Evidence from Stablecoin Prices},
+  pdfauthor={Qinhan Duan, Qian Gao, Jingping Yang, and Jiaqi Zhu}
+}
+\graphicspath{{figures/}}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{assumption}[definition]{Assumption}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{lemma}[definition]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem{example}[definition]{Example}
+
+\newcommand{\E}{\mathbb E}
+\newcommand{\Pp}{\mathbb P}
+\newcommand{\Qq}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\Law}{\operatorname{Law}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\one}{\mathbf 1}
+\newcommand{\1}{\mathbf 1}
+\newcommand{\classD}{\mathrm{class}\text{-}(D)}
+\newcommand{\Normal}{\mathcal N}
+\newcommand{\Gam}{\operatorname{Gamma}}
+\newcommand{\id}{\mathrm I}
+\newcommand{\Leb}{\operatorname{Leb}}
+\newcommand{\target}{m}
+\newcommand{\kappahat}{\widehat{\kappa}}
+\newcommand{\lambdahat}{\widehat{\lambda}}
+\newcommand{\thetahat}{\widehat{\theta}}
+\newcommand{\sourcefile}[1]{\par\noindent{\footnotesize\textit{Replication source:} \path{#1}.}}
+
+\renewcommand{\arraystretch}{1.16}
+\setlength{\tabcolsep}{4pt}
+\setlist{nosep,leftmargin=2em}
+
+\title{Copula-Based Mean-Reverting Processes:\\
+Theory and Evidence from Stablecoin Prices}
+\author{Qinhan Duan \and Qian Gao \and Jingping Yang \and Jiaqi Zhu}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We develop a copula-based framework for constructing mean-reverting Markov
+processes and evaluate its empirical content using high-frequency stablecoin
+prices.  Mean reversion is formulated through the sign of the local conditional
+drift toward a target, rather than through stationarity alone.  We first obtain
+exact conditional-mean and generator characterizations for absolutely continuous
+Markov copulas.  We then construct observable mean-reverting processes by
+monotone transformations of Ornstein--Uhlenbeck and Cox--Ingersoll--Ross
+diffusions and by mixing a stationary transition copula with the independence
+copula.  The latter construction has a Poisson-reset representation, preserves
+the invariant marginal and Markov semigroup, and adds a nonlocal reversion term
+to the generator.  Using 524,610 exact five-minute USDT/USD transitions from
+2021--2025, we find strong finite-horizon mean reversion but substantial
+departure from a single Gaussian OU transition.  A matched boundary bootstrap
+rejects the OU restriction in favor of the mixed-OU density in sample.  The
+reset component improves out-of-sample copula log scores for Gaussian and
+two-scale Gaussian dependence, but not uniformly across copula families, and a
+weakly identified Markov-switching OU is the strongest five-minute forecasting
+benchmark.  These results support the copula separation of marginal behavior
+and temporal dependence while showing that structural validity, dependence fit,
+and predictive ranking are distinct empirical criteria.
+\end{abstract}
+
+\noindent\textbf{Keywords:} mean reversion; Markov copula; stablecoin; transition density; Poisson reset; out-of-sample prediction
+
+\medskip
+\noindent\textbf{JEL classification:} C22; C58; G12; G15
+
+\input{sections/introduction}
+\input{sections/theory}
+\input{sections/empirical}
+\input{sections/conclusion}
+
+\input{sections/proofs}
+\input{sections/empirical_appendix}
+
+\clearpage
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

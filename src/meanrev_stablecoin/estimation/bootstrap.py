@@ -6,6 +6,7 @@ from scipy.optimize import minimize
 
 from ..forecasting import fast_ou_parameters, fit_conditional_lambda
 from ..models.mixed_ou import mixed_ou_logpdf
+from ..models.mixed_ou import mixed_ou_logpdf_tau
 from ..models.ou import ou_logpdf, simulate_ou
 
 
@@ -232,3 +233,179 @@ def matched_joint_mou_lr_bootstrap(
         "interpretation_scope": "conditional composite likelihood on the prespecified matched systematic design",
     }
     return summary, np.array(rows, dtype=object), observed
+
+
+def _select_continuous_path_design(
+    values: np.ndarray,
+    timestamps: np.ndarray,
+    maximum_pairs: int,
+    bar_seconds: int = 300,
+) -> list[np.ndarray]:
+    """Select evenly distributed pieces of genuine continuous paths."""
+    values = np.asarray(values, dtype=float)
+    timestamps = np.asarray(timestamps, dtype=np.int64)
+    breaks = np.flatnonzero(np.diff(timestamps) != bar_seconds) + 1
+    segments = [segment for segment in np.split(values, breaks) if len(segment) >= 2]
+    if not segments:
+        raise ValueError("no continuous segments with at least one transition")
+    chosen_count = min(len(segments), 100)
+    chosen_index = np.unique(np.linspace(0, len(segments) - 1, chosen_count, dtype=int))
+    quota = max(1, int(np.ceil(maximum_pairs / len(chosen_index))))
+    selected: list[np.ndarray] = []
+    remaining = maximum_pairs
+    for index in chosen_index:
+        segment = segments[int(index)]
+        take_pairs = min(len(segment) - 1, quota, remaining)
+        if take_pairs <= 0:
+            break
+        max_start = len(segment) - (take_pairs + 1)
+        start = max_start // 2
+        selected.append(segment[start:start + take_pairs + 1].copy())
+        remaining -= take_pairs
+    if remaining > 0:
+        # Fill deterministically from long segments if the equal allocation was
+        # exhausted by short runs; overlapping pieces are never introduced.
+        used = sum(len(segment) - 1 for segment in selected)
+        unused_segments = [segment for idx, segment in enumerate(segments) if idx not in set(map(int, chosen_index))]
+        for segment in sorted(unused_segments, key=len, reverse=True):
+            take_pairs = min(len(segment) - 1, maximum_pairs - used)
+            if take_pairs <= 0:
+                break
+            selected.append(segment[:take_pairs + 1].copy())
+            used += take_pairs
+    return selected
+
+
+def _flatten_path_pairs(segments: list[np.ndarray]) -> tuple[np.ndarray, np.ndarray]:
+    return (
+        np.concatenate([segment[:-1] for segment in segments]),
+        np.concatenate([segment[1:] for segment in segments]),
+    )
+
+
+def _fast_ifm_fit(x_prev: np.ndarray, x_next: np.ndarray, delta: float) -> dict[str, float | bool]:
+    values = np.concatenate([x_prev[:1], x_next])
+    theta = float(np.mean(values))
+    tau = max(float(np.std(values, ddof=0)), 1e-8)
+    null = fast_ou_parameters(x_prev, x_next, delta)
+    dd = np.full(len(x_prev), delta)
+
+    def objective(beta: np.ndarray) -> float:
+        kappa, lam = np.exp(beta)
+        ll = mixed_ou_logpdf_tau(x_next, x_prev, dd, theta, tau, float(kappa), float(lam))
+        return -float(np.mean(ll)) if np.isfinite(ll).all() else 1e100
+
+    starts = [
+        np.log([max(null.kappa * scale, 1e-8), lam])
+        for scale in (0.5, 1.0, 2.0)
+        for lam in (1e-8, 0.5, 3.0)
+    ]
+    results = [
+        minimize(objective, start, method="L-BFGS-B", bounds=[(-10, 14), (-18, 12)],
+                 options={"maxiter": 180, "ftol": 1e-10, "gtol": 2e-6})
+        for start in starts
+    ]
+    best = min((result for result in results if np.isfinite(result.fun)), key=lambda result: result.fun)
+    kappa, lam = map(float, np.exp(best.x))
+    return {
+        "ifm_loglik": -float(best.fun) * len(x_prev),
+        "ifm_theta": theta,
+        "ifm_tau": tau,
+        "ifm_kappa": kappa,
+        "ifm_lambda": lam,
+        "ifm_converged": bool(best.success),
+        "ifm_gradient_norm": float(np.linalg.norm(best.jac)),
+    }
+
+
+def path_level_ou_null_bootstrap(
+    values: np.ndarray,
+    timestamps: np.ndarray,
+    replications: int = 99,
+    maximum_pairs: int = 25_000,
+    parallel_jobs: int = 1,
+    seed: int = 20260806,
+) -> tuple[np.ndarray, pd.DataFrame, dict]:
+    """Pilot path bootstrap preserving observed five-minute segment lengths.
+
+    Both unrestricted QML and margin-constrained IFM alternatives are refit in
+    every replication.  Nonconvergence is retained and counted conservatively
+    when computing the boundary-test p-value.
+    """
+    import pandas as pd
+
+    observed_segments = _select_continuous_path_design(values, timestamps, maximum_pairs)
+    xp, xn = _flatten_path_pairs(observed_segments)
+    delta = 1 / 288
+    null = fast_ou_parameters(xp, xn, delta)
+    null_ll = float(np.sum(ou_logpdf(xn, xp, np.full(len(xp), delta), null.theta, null.kappa, null.sigma)))
+    observed_uqml = _joint_mou_fixed_design_fit(xp, xn, delta, multistart=4)
+    observed_ifm = _fast_ifm_fit(xp, xn, delta)
+    observed = {
+        "pairs": len(xp), "segments": len(observed_segments),
+        "theta_null": null.theta, "kappa_null": null.kappa, "sigma_null": null.sigma,
+        "null_loglik": null_ll, **observed_uqml, **observed_ifm,
+    }
+    tau_null = null.sigma / np.sqrt(2 * null.kappa)
+    spawned = np.random.SeedSequence(seed).spawn(replications * 2)
+
+    jobs: list[tuple[int, str, np.random.SeedSequence]] = []
+    for mode_index, mode in enumerate(("stationary_initial", "empirical_segment_initial")):
+        for replication in range(replications):
+            jobs.append((replication, mode, spawned[mode_index * replications + replication]))
+
+    def one(job: tuple[int, str, np.random.SeedSequence]) -> dict[str, float | bool | int | str]:
+        replication, mode, child_seed = job
+        rng = np.random.default_rng(child_seed)
+        simulated: list[np.ndarray] = []
+        for empirical_segment in observed_segments:
+            x0 = (null.theta + tau_null * rng.standard_normal()
+                  if mode == "stationary_initial" else float(empirical_segment[0]))
+            simulated.append(simulate_ou(len(empirical_segment), delta, null.theta, null.kappa, null.sigma, rng, x0=x0))
+        sim_prev, sim_next = _flatten_path_pairs(simulated)
+        try:
+            uqml = _joint_mou_fixed_design_fit(sim_prev, sim_next, delta, multistart=4)
+            ifm = _fast_ifm_fit(sim_prev, sim_next, delta)
+            return {"replication": replication, "initialization": mode, **uqml, **ifm, "fit_failed": False}
+        except Exception as error:  # failure is retained as a bootstrap outcome
+            return {
+                "replication": replication, "initialization": mode,
+                "lr": np.nan, "alternative_converged": False,
+                "ifm_converged": False, "fit_failed": True,
+                "error_type": type(error).__name__, "error_message": str(error),
+            }
+
+    if parallel_jobs == 1:
+        rows = [one(job) for job in jobs]
+    else:
+        with ThreadPoolExecutor(max_workers=parallel_jobs) as executor:
+            rows = list(executor.map(one, jobs))
+    draws = pd.DataFrame(rows)
+    summaries: list[dict] = []
+    observed_lr = float(observed_uqml["lr"])
+    for mode, group in draws.groupby("initialization"):
+        finite = group["lr"].notna()
+        exceed = int((group.loc[finite, "lr"] >= observed_lr).sum())
+        failures = int((~finite | ~group["alternative_converged"].fillna(False)).sum())
+        summaries.append({
+            "test_name": "path_level_OU_null_MOU_UQML_boundary_bootstrap",
+            "initialization": mode,
+            "replications": len(group),
+            "formal_replication_requirement": 1999,
+            "formal_requirement_met": len(group) >= 1999,
+            "selected_continuous_segments": len(observed_segments),
+            "selected_pairs": len(xp),
+            "observed_lr": observed_lr,
+            "finite_fit_replications": int(finite.sum()),
+            "failed_or_nonconverged_replications": failures,
+            "finite_only_corrected_pvalue": float((1 + exceed) / (1 + int(finite.sum()))),
+            "conservative_corrected_pvalue": float((1 + exceed + failures) / (1 + len(group))),
+            "critical_95_finite": float(group.loc[finite, "lr"].quantile(0.95)),
+            "path_level_design": True,
+            "same_segment_lengths_observed_and_bootstrap": True,
+            "ouf_refit_each_replication": True,
+            "mou_ifm_refit_each_replication": True,
+            "mou_uqml_refit_each_replication": True,
+            "scope": "pilot; no formal boundary-test claim until B>=1999",
+        })
+    return np.array(observed_segments, dtype=object), pd.DataFrame(summaries), {"observed": observed, "draws": draws}

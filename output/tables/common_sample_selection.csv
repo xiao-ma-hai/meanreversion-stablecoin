@@ -1,0 +1,2 @@
+frequency_minutes,window_start_utc,window_end_utc,assets,common_exact_pairs,common_pair_timestamp_sha256,no_forward_fill,quality_gate_min_common_pairs,quality_gate_pass
+5,2021-01-01 00:00:00+00:00,2025-12-31 23:59:59+00:00,"USDT,USDC,DAI",229484,96a9522e2548289d8b50769a16ce6e949953596534920a158dfedb7cd12850d7,True,100000,True

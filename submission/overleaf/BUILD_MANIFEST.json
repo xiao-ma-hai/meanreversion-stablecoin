@@ -1,0 +1,19 @@
+{
+  "canonical_theory_source": "manuscript/source/meanreversion_article_theory_revised.tex",
+  "canonical_article_bibliography": "manuscript/source/article_references.bib",
+  "generated_sections": [
+    "sections/theory.tex",
+    "sections/proofs.tex"
+  ],
+  "empirical_sources": [
+    "output/tables/tick_tie_audit.csv",
+    "output/tables/three_coin_data_audit.csv",
+    "output/tables/full_sample_model_estimates.csv",
+    "output/tables/training_model_estimates.csv",
+    "output/tables/oos_scores_with_uncertainty.csv",
+    "output/tables/cross_stablecoin_parameters.csv",
+    "output/tables/frequency_parameter_stability.csv",
+    "output/tables/one_to_five_minute_kernel_test.csv"
+  ],
+  "paper_entry_point": "main.tex"
+}

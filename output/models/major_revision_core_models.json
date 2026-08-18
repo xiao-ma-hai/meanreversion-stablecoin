@@ -1,0 +1,474 @@
+{
+  "fits": {
+    "baseline_full": [
+      {
+        "model_name": "OUF",
+        "params": {
+          "theta": 0.00012795479207079724,
+          "kappa": 1.3612434705062655,
+          "sigma": 0.0013621382224799714
+        },
+        "loglik": 961632.295765864,
+        "nobs": 120000,
+        "aic": -1923258.591531728,
+        "bic": -1923229.5057906627,
+        "converged": true,
+        "optimizer_message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH",
+        "gradient_norm": 8.910160576985187e-06,
+        "hessian_condition": 3008741.542852689,
+        "covariance": [
+          [
+            1.0290804543468326e-08,
+            -7.930392935616201e-06,
+            -2.2111188493468032e-07
+          ],
+          [
+            -7.930392935616206e-06,
+            0.009731071639919181,
+            0.00019925225940490787
+          ],
+          [
+            -2.2111188493468085e-07,
+            0.0001992522594049081,
+            9.906952010714706e-06
+          ]
+        ],
+        "robust_covariance": null,
+        "start_values": {
+          "theta": 0.00012796245227606414,
+          "kappa": 1.3612409135956147,
+          "sigma": 0.0013621385458782956
+        },
+        "metadata": {
+          "half_life_minutes": 733.2501214019429,
+          "stationary_sd": 0.000825540296587185,
+          "multistart": 6,
+          "repeated_best_solutions": 6,
+          "boundary_hit": false,
+          "weak_identification": false
+        }
+      },
+      {
+        "model_name": "MOU-Peg",
+        "params": {
+          "theta": 0.0,
+          "tau": 0.0007389819929071605,
+          "kappa": 0.8777125126120313,
+          "sigma": 0.000979095373822042,
+          "lambda": 2.3141685345820067
+        },
+        "loglik": 989149.2001047896,
+        "nobs": 120000,
+        "aic": -1978294.4002095792,
+        "bic": -1978275.0097155357,
+        "converged": true,
+        "optimizer_message": "CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_<=_PGTOL",
+        "gradient_norm": 0.0,
+        "hessian_condition": 66.52725525450639,
+        "covariance": [
+          [
+            2.715031600594339e-05,
+            -4.1757908346870946e-05
+          ],
+          [
+            -4.175790834687094e-05,
+            0.001737429267615423
+          ]
+        ],
+        "robust_covariance": null,
+        "start_values": {
+          "theta": 0.0,
+          "tau": 0.0007389819929071605,
+          "kappa": 1.3398771351829037,
+          "lambda": 0.0
+        },
+        "metadata": {
+          "parameterization": "theta_tau_kappa_lambda",
+          "margin_theta_fixed": true,
+          "margin_tau_fixed": true,
+          "base_half_life_minutes": 1137.196890398574,
+          "effective_half_life_minutes": 312.7096296034505,
+          "daily_reset_probability": 0.9011516611816923,
+          "repeated_best_solutions": 7,
+          "boundary_hit": false,
+          "weak_identification": false
+        }
+      },
+      {
+        "model_name": "MOU-IFM",
+        "params": {
+          "theta": 6.713154816922092e-05,
+          "tau": 0.0007359264508641077,
+          "kappa": 0.8835710362344125,
+          "sigma": 0.0009782957033527076,
+          "lambda": 2.352885920617737
+        },
+        "loglik": 989145.5122690949,
+        "nobs": 120000,
+        "aic": -1978287.0245381899,
+        "bic": -1978267.6340441464,
+        "converged": true,
+        "optimizer_message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH",
+        "gradient_norm": 1.7763568403352462e-07,
+        "hessian_condition": 77.48683265745294,
+        "covariance": [
+          [
+            2.368014703695362e-05,
+            -5.687228004301707e-05
+          ],
+          [
+            -5.687228004301707e-05,
+            0.0016819947419297477
+          ]
+        ],
+        "robust_covariance": null,
+        "start_values": {
+          "theta": 6.713154816922092e-05,
+          "tau": 0.0007359264508641077,
+          "kappa": 1.3612615795422396,
+          "lambda": 0.0
+        },
+        "metadata": {
+          "parameterization": "theta_tau_kappa_lambda",
+          "margin_theta_fixed": true,
+          "margin_tau_fixed": true,
+          "base_half_life_minutes": 1129.656698866163,
+          "effective_half_life_minutes": 308.4026617110109,
+          "daily_reset_probability": 0.9049056688549132,
+          "repeated_best_solutions": 7,
+          "boundary_hit": false,
+          "weak_identification": false
+        }
+      },
+      {
+        "model_name": "MOU-UQML",
+        "params": {
+          "theta": 0.0007657495490203584,
+          "tau": 0.0042405441426762855,
+          "kappa": 0.025973950668437377,
+          "sigma": 0.0009665083089188809,
+          "lambda": 1.861359484724696
+        },
+        "loglik": 995096.9629151857,
+        "nobs": 120000,
+        "aic": -1990185.9258303714,
+        "bic": -1990147.1448422845,
+        "converged": true,
+        "optimizer_message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH",
+        "gradient_norm": 2.343175602084415e-06,
+        "hessian_condition": 75123.51994035253,
+        "covariance": [
+          [
+            8.902709212969004e-08,
+            1.3660649171935259e-06,
+            -3.906778983680911e-06,
+            2.6942582752933408e-06
+          ],
+          [
+            1.3660649171934422e-06,
+            0.0007793739306387299,
+            -0.0015714860476596776,
+            -4.846141460803626e-05
+          ],
+          [
+            -3.906778983680712e-06,
+            -0.0015714860476596726,
+            0.0032085436105998805,
+            1.8026914746042876e-05
+          ],
+          [
+            2.6942582752933768e-06,
+            -4.846141460802569e-05,
+            1.80269147460154e-05,
+            0.0017020487042358407
+          ]
+        ],
+        "robust_covariance": null,
+        "start_values": {
+          "theta": 6.727178833479855e-05,
+          "tau": 0.0007377439167493919,
+          "kappa": 1.3612212393548986,
+          "lambda": 0.0
+        },
+        "metadata": {
+          "parameterization": "theta_tau_kappa_lambda",
+          "margin_theta_fixed": false,
+          "margin_tau_fixed": false,
+          "base_half_life_minutes": 38428.19110375903,
+          "effective_half_life_minutes": 528.8582935523576,
+          "daily_reset_probability": 0.8445388604032317,
+          "repeated_best_solutions": 7,
+          "boundary_hit": false,
+          "weak_identification": false
+        }
+      }
+    ],
+    "training_2021_2023": [
+      {
+        "model_name": "OUF",
+        "params": {
+          "theta": 0.00016314363658204598,
+          "kappa": 2.857284686110123,
+          "sigma": 0.0015650272819100587
+        },
+        "loglik": 945281.5403716562,
+        "nobs": 120000,
+        "aic": -1890557.0807433124,
+        "bic": -1890527.9950022472,
+        "converged": true,
+        "optimizer_message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH",
+        "gradient_norm": 3.641542352200565e-05,
+        "hessian_condition": 636980667.4242334,
+        "covariance": [
+          [
+            3.206488761064817e-08,
+            -0.00012218188659673563,
+            1.939956372759589e-06
+          ],
+          [
+            -0.00012218188659673563,
+            0.4767427608479007,
+            -0.007555380550595764
+          ],
+          [
+            1.9399563727595897e-06,
+            -0.0075553805505957665,
+            0.00012426496882717933
+          ]
+        ],
+        "robust_covariance": null,
+        "start_values": {
+          "theta": 0.00016315187701638532,
+          "kappa": 2.857269481701048,
+          "sigma": 0.0015650271171471514
+        },
+        "metadata": {
+          "half_life_minutes": 349.3288382702836,
+          "stationary_sd": 0.000654681634562839,
+          "multistart": 6,
+          "repeated_best_solutions": 6,
+          "boundary_hit": false,
+          "weak_identification": false
+        }
+      },
+      {
+        "model_name": "MOU-Peg",
+        "params": {
+          "theta": 0.0,
+          "tau": 0.0008510742146092798,
+          "kappa": 0.9352381932181393,
+          "sigma": 0.0011639747187182504,
+          "lambda": 2.03667442564351
+        },
+        "loglik": 967776.4921639829,
+        "nobs": 120000,
+        "aic": -1935548.9843279659,
+        "bic": -1935529.5938339224,
+        "converged": true,
+        "optimizer_message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH",
+        "gradient_norm": 3.5527136806704924e-07,
+        "hessian_condition": 635.9741526535441,
+        "covariance": [
+          [
+            8.280537325262513e-06,
+            1.2437180638904931e-05
+          ],
+          [
+            1.243718063890494e-05,
+            0.005247401345123114
+          ]
+        ],
+        "robust_covariance": null,
+        "start_values": {
+          "theta": 0.0,
+          "tau": 0.0008510742146092798,
+          "kappa": 2.765289038838852,
+          "lambda": 0.0
+        },
+        "metadata": {
+          "parameterization": "theta_tau_kappa_lambda",
+          "margin_theta_fixed": true,
+          "margin_tau_fixed": true,
+          "base_half_life_minutes": 1067.2489075448957,
+          "effective_half_life_minutes": 335.855076515891,
+          "daily_reset_probability": 0.8695381491546765,
+          "repeated_best_solutions": 7,
+          "boundary_hit": false,
+          "weak_identification": false
+        }
+      },
+      {
+        "model_name": "MOU-IFM",
+        "params": {
+          "theta": 0.00014360359433683646,
+          "tau": 0.0008388714600380346,
+          "kappa": 0.9613776752039188,
+          "sigma": 0.001163208141982189,
+          "lambda": 2.0776063805733975
+        },
+        "loglik": 967663.3077495536,
+        "nobs": 120000,
+        "aic": -1935322.6154991072,
+        "bic": -1935303.2250050637,
+        "converged": true,
+        "optimizer_message": "CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_<=_PGTOL",
+        "gradient_norm": 0.0,
+        "hessian_condition": 75.58125058264908,
+        "covariance": [
+          [
+            2.646391832138303e-05,
+            5.820907441376215e-06
+          ],
+          [
+            5.820907441376199e-06,
+            0.001998860496713582
+          ]
+        ],
+        "robust_covariance": null,
+        "start_values": {
+          "theta": 0.00014360359433683646,
+          "tau": 0.0008388714600380346,
+          "kappa": 2.8572815188113334,
+          "lambda": 0.0
+        },
+        "metadata": {
+          "parameterization": "theta_tau_kappa_lambda",
+          "margin_theta_fixed": true,
+          "margin_tau_fixed": true,
+          "base_half_life_minutes": 1038.2308282690321,
+          "effective_half_life_minutes": 328.44263796277716,
+          "daily_reset_probability": 0.8747703942443581,
+          "repeated_best_solutions": 7,
+          "boundary_hit": false,
+          "weak_identification": false
+        }
+      },
+      {
+        "model_name": "MOU-UQML",
+        "params": {
+          "theta": 0.0008659022032156527,
+          "tau": 0.005239687890220821,
+          "kappa": 0.02343019470638797,
+          "sigma": 0.0011342488954219556,
+          "lambda": 1.979294848835418
+        },
+        "loglik": 975427.7594486084,
+        "nobs": 120000,
+        "aic": -1950847.5188972168,
+        "bic": -1950808.7379091298,
+        "converged": true,
+        "optimizer_message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH",
+        "gradient_norm": 9.230220898754491e-07,
+        "hessian_condition": 82397.42607466712,
+        "covariance": [
+          [
+            8.698736603022523e-08,
+            -3.457305604993057e-06,
+            7.028822432441628e-06,
+            6.152925957819507e-06
+          ],
+          [
+            -3.457305604993129e-06,
+            0.0009456496378559769,
+            -0.001901475250372707,
+            -0.0004089577150162812
+          ],
+          [
+            7.028822432441775e-06,
+            -0.001901475250372703,
+            0.0038568785158855584,
+            0.0007064818105636922
+          ],
+          [
+            6.152925957819197e-06,
+            -0.00040895771501630343,
+            0.0007064818105637287,
+            0.0024703027965288487
+          ]
+        ],
+        "robust_covariance": null,
+        "start_values": {
+          "theta": 0.00014362401783984916,
+          "tau": 0.000839223853239262,
+          "kappa": 2.8572686962476466,
+          "lambda": 0.0
+        },
+        "metadata": {
+          "parameterization": "theta_tau_kappa_lambda",
+          "margin_theta_fixed": false,
+          "margin_tau_fixed": false,
+          "base_half_life_minutes": 42600.2409503747,
+          "effective_half_life_minutes": 498.3869069920509,
+          "daily_reset_probability": 0.8618333686709074,
+          "repeated_best_solutions": 7,
+          "boundary_hit": false,
+          "weak_identification": false
+        }
+      }
+    ]
+  },
+  "latent_noise_ou": {
+    "model_name": "LatentNoiseOU",
+    "params": {
+      "theta": 6.561018224435923e-05,
+      "tau": 0.0007338262891783394,
+      "kappa": 0.7186034356272181,
+      "sigma": 0.0008797371027679426,
+      "observation_sd": 0.00015630359418834148
+    },
+    "loglik": 201553.02861446602,
+    "nobs": 30000,
+    "aic": -403098.05722893204,
+    "bic": -403064.82141828944,
+    "converged": true,
+    "optimizer_message": "CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH",
+    "gradient_norm": 0.0007224068449967161,
+    "hessian_condition": 219596928.13513044,
+    "covariance": [
+      [
+        3.4648849365887513e-07,
+        2.2083967194272065e-05,
+        -5.10369614620175e-05,
+        -0.00026494278742624443
+      ],
+      [
+        2.2083967194272062e-05,
+        0.0018292752823457687,
+        -0.00410821773117602,
+        -0.01691975542758914
+      ],
+      [
+        -5.103696146201748e-05,
+        -0.004108217731176025,
+        0.00988522996219397,
+        0.0389283155958897
+      ],
+      [
+        -0.00026494278742624443,
+        -0.01691975542758915,
+        0.038928315595889704,
+        0.20320584149108073
+      ]
+    ],
+    "robust_covariance": null,
+    "start_values": {
+      "theta": 6.497315496978409e-05,
+      "tau": 0.000749928719263259,
+      "kappa": 1.4874880948658162,
+      "observation_sd": 0.00021742362097164643
+    },
+    "metadata": {
+      "likelihood_type": "exact_linear_gaussian_state_space",
+      "latent_half_life_minutes": 1388.9885443354756,
+      "observed_stationary_sd": 0.0007502878355974096,
+      "noise_variance_share": 0.04339923945168663,
+      "repeated_best_solutions": 4,
+      "weak_identification": false
+    }
+  },
+  "estimation_design": {
+    "systematic_pair_cap": 120000,
+    "evaluation_pair_cap": 120000,
+    "latent_noise_systematic_observations": 30000
+  }
+}

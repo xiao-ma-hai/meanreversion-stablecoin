@@ -42,6 +42,18 @@ article_extension:
   matched_lr_parallel_jobs: 4
   two_scale_copula_max_pairs_per_horizon: 100000
 
+major_revision:
+  estimation_pairs: 120000
+  evaluation_pairs: 120000
+  multistart: 7
+  latent_noise_observations: 30000
+  latent_noise_multistart: 5
+  identification_grid_points: 17
+  path_bootstrap_replications_pilot: 99
+  path_bootstrap_replications_formal: 1999
+  path_bootstrap_pairs: 25000
+  path_bootstrap_parallel_jobs: 4
+
 full_model_suite:
   enabled: true
   estimation_pairs: 60000

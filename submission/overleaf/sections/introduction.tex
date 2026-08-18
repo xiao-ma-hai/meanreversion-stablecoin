@@ -1,0 +1,81 @@
+\section{Introduction}
+\label{sec:introduction}
+
+Mean reversion is a central organizing principle in continuous-time finance.
+The Gaussian specification of \citet{Vasicek1977} and the square-root
+diffusion of \citet{CoxIngersollRoss1985} remain canonical because they
+combine an interpretable restoring force with tractable transition laws.
+Empirical financial dynamics, however, are often nonlinear and state
+dependent.  \citet{ChanEtAl1992} compare alternative short-rate diffusions,
+\citet{AitSahalia1996} documents nonlinear drift and volatility, and
+\citet{BibbySorensen1995}, \citet{Kessler1997}, and
+\citet{AitSahalia2002} develop inference for discretely observed diffusions.
+These findings motivate models that retain a precise restoring mechanism
+without forcing the marginal distribution and temporal dependence into one
+Gaussian specification.
+
+Copulas provide that separation.  \citet{DarsowNguyenOlsen1992} connect
+Copulas and Markov transition operators through the star product, while
+\citet{ChenFan2006} and \citet{ChenWuYi2009} develop semiparametric
+estimation for stationary Copula-based Markov models.  Monotone
+space--time transformations provide a complementary construction
+\citep{BibbonaSacerdoteTorre2016}, and \citet{FangJiangLiuYang2020} study
+Copula-based Markov processes directly.  This literature establishes how to
+separate margins from serial dependence.  It does not make stationarity, a
+declining dependence coefficient, and an economic restoring force
+interchangeable.  We therefore formulate mean reversion through conditional
+drift and conditional-mean restrictions and state separately what is needed
+for convergence under a chosen initial law.
+
+Stablecoins provide a sharp application because the state of interest is the
+deviation from a peg.  The survey of \citet{AnteEtAl2023} documents a broad
+and rapidly growing empirical literature.  \citet{LyonsViswanathNatraj2023}
+connect Tether's peg stability to the design and accessibility of arbitrage,
+while \citet{DuanUrquhart2023} find that correction speeds vary across
+stablecoins and over time.  Nonlinear or time-varying stabilization also
+appears in \citet{DjogbenouInanJasiak2023} and
+\citet{HuiWongLo2025}; \citet{BergaultEtAl2024} model pegged assets with
+nested OU factors.  Run incentives and tail events add another dimension
+\citep{MaZengZhang2023,LiuMakarovSchoar2023,AhmedAldasoroDuley2025,
+EichengreenNguyenViswanathNatraj2025}.  A useful model must therefore
+represent ordinary correction and exceptional transitions without confusing
+a better short-horizon density fit with a credible long-run distribution.
+
+The paper develops three process families.  Section~2 gives an absolutely
+continuous Markov--Copula foundation and exact conditional-mean and generator
+criteria.  Section~3 constructs observable processes through strictly
+monotone transformations of OU and CIR diffusions.  The inverse map and
+Jacobian make explicit when a formal PDE solution does not define an
+estimable model because monotonicity, support, or invertibility fails.
+Section~4 introduces the central stationary-reset construction.  A
+multiplicative mixture of a stationary transition Copula and independence is
+a genuine Markov evolution, preserves its invariant margin, and multiplies
+conditional-mean persistence by a survival probability.  Its nonhomogeneous
+Poisson representation places the result within the stochastic-resetting
+literature \citep{EvansMajumdar2011,EvansMajumdarSchehr2020}; the contribution
+here is not the reset mechanism itself, but its Markov--Copula formulation,
+margin preservation, observable density, and exact reversion identities.
+
+Section~5 uses a common-exchange, common-calendar design for Kraken USDT/USD,
+USDC/USD, and DAI/USD from 2021 through 2025.  All assets are processed with
+the same gap rule, price-quantization model, likelihood, training window, and
+scoring protocol.  This is a mechanism-aligned heterogeneity exercise rather
+than a causal design: a common venue and synchronized calendar reduce, but do
+not remove, confounding from liquidity and asset-specific trading intensity.
+One-minute data are used to test microstructure sensitivity and continuous-time
+semigroup consistency rather than simply to enlarge the sample.
+
+The observation model changes the empirical problem.  Kraken transaction
+prices lie on tick grids and a large fraction of adjacent closes are exactly
+equal.  With even one tie, the continuous mixed-OU point-density likelihood is
+unbounded as the base innovation variance collapses, while the reset component
+continues to assign positive mass to non-ties.  We replace that criterion by
+the probability of the observed price interval.  We then separate full-sample
+descriptive estimates from frozen training estimates and attach day-clustered
+uncertainty to out-of-sample score differences.  The mixed representation
+improves five-minute prediction for the two most liquid assets, but its
+estimated rates change materially between one- and five-minute data.  The
+paper therefore treats dependence refresh as an empirically useful
+representation while withholding a structural interpretation of
+$\kappa$ and $\lambda$ until full filtering and cross-frequency restrictions
+are passed.

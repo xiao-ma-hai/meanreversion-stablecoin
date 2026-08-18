@@ -19,9 +19,9 @@ from pathlib import Path
 
 PROJECT = Path(__file__).resolve().parents[1]
 ORIGINAL = PROJECT.parent / "meanreversion_article_main.tex"
-REPORT = PROJECT / "theory_correction_comparison.tex"
-REVISED = PROJECT / "meanreversion_article_theory_revised.tex"
-BIBLIOGRAPHY = PROJECT / "meanreversion_theory_references.bib"
+REPORT = PROJECT / "manuscript" / "audits" / "theory_correction_comparison.tex"
+REVISED = PROJECT / "manuscript" / "source" / "meanreversion_article_theory_revised.tex"
+BIBLIOGRAPHY = PROJECT / "manuscript" / "source" / "meanreversion_theory_references.bib"
 
 MODELS = (
     "OUF",

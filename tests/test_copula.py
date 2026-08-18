@@ -1,10 +1,21 @@
 import numpy as np
 
 from meanrev_stablecoin.models.copula import (
+    EmpiricalMarginal,
     gaussian_copula_logpdf,
+    rank_pseudo_observations,
     two_scale_mixed_gaussian_copula_logpdf,
     two_scale_rho,
 )
+
+
+def test_midrank_pseudo_observations_handle_ties_without_order_dependence():
+    values = np.array([1.0, 2.0, 1.0, 3.0])
+    u = rank_pseudo_observations(values)
+    assert u[0] == u[2]
+    assert np.isclose(u[0], 0.25)
+    marginal = EmpiricalMarginal.fit(values)
+    assert np.allclose(marginal.cdf(values), u)
 
 
 def test_gaussian_copula_independence_density_is_one():

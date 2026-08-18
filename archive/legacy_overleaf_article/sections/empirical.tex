@@ -1,0 +1,967 @@
+% Standalone empirical-results document for meanreversion_article_main.tex.
+\iffalse
+% Figure paths below are explicit and relative to this TeX file's project root.
+% All numerical entries below are copied from files listed in Appendix B.
+% Generated and theory-audited through the full-model gate on 2026-08-09.
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{booktabs}
+\usepackage{threeparttable}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{geometry}
+\usepackage{microtype}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+
+\geometry{margin=1in}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\1}{\mathbf{1}}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\kappahat}{\widehat{\kappa}}
+\newcommand{\lambdahat}{\widehat{\lambda}}
+\newcommand{\thetahat}{\widehat{\theta}}
+\newcommand{\sourcefile}[1]{\par\noindent{\footnotesize\textit{Source file:} \path{#1}.}}
+
+\title{Empirical Analysis of Mean Reversion in USDT/USD\\
+\large Theory Alignment, Estimation, and Out-of-Sample Evidence}
+\author{Empirical appendix for \texttt{meanreversion\_article\_main.tex}}
+\date{9 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This document implements and audits the stablecoin application of the copula-based
+mean-reverting processes developed in \texttt{meanreversion\_article\_main.tex}.
+The core parametric mixed-OU (MOU) and mixed-CIR (MCIR) transition kernels are
+exactly the constant-intensity Poisson-switching special cases of the article's
+mixed-copula construction.  The affine transformed OU and CIR specifications are
+restricted versions of the article's linear transformation solutions.  The
+nonparametric, threshold, rolling, and forecasting exercises are empirical
+diagnostics that are not claimed as additional theoretical propositions.
+
+Using 524,610 exact five-minute transition pairs from Kraken USDT/USD over
+2021--2025, the estimated free-mean OU has a long-run log-price deviation of
+0.665 basis points and a half-life of 589.5 minutes.  The jointly estimated MOU
+substantially improves the in-sample transition likelihood.  A matched-design,
+jointly re-estimated boundary bootstrap rejects the OU restriction
+($LR=12{,}722.80$, $B=500$, corrected $p=0.001996$), although neither model passes
+the residual specification tests and MOUF does not dominate OUF in the original
+forecast exercise.  A diagnostic two-scale mixed copula attains the highest
+out-of-sample copula log score, while the two-scale Gaussian copula most closely
+matches the empirical dependence curve.  These two-scale specifications are not
+one-dimensional Markov models and the empirical marginal is not verified to
+satisfy the article's mean-reversion sufficient condition.  The evidence supports
+the mixed kernel as a useful density extension, but does not identify its reset
+intensity with a unique economic mechanism.  A second-stage registry estimates
+or explicitly diagnoses all 25 finite-dimensional article and methodology
+objects before ranking them.  On the untouched 2024 selection sample, an exact
+filtered two-state Markov-switching OU has the highest five-minute conditional
+log score (8.82469), ahead of a Student-$t$ marginal and Student-$t$ copula
+(8.78120).  The day-block interval for the difference is strictly positive, but
+both models have weakly identified structural parameters.  Model emphasis must
+therefore distinguish predictive performance from structural identification.
+\end{abstract}
+
+\fi
+\section{Empirical Analysis}
+\label{sec:empirical}
+
+\subsection{Theory-to-empirics interface}
+\label{emp:sec:alignment}
+
+We define a Markov process as mean reverting when it has an asymptotic
+mean and its infinitesimal conditional drift has the sign of the displacement
+toward that mean.  It then constructs new processes through (i) monotone
+transformations of OU and CIR diffusions and (ii) mixtures of a consistent base
+copula family with the independence copula.  Table~\ref{emp:tab:alignment}
+records the exact relationship between those constructions and the empirical
+implementation.
+
+\begin{table}[htbp]
+\centering
+\caption{Correspondence between theory and empirical specifications}
+\label{emp:tab:alignment}
+\begin{threeparttable}
+\small
+\begin{tabular}{p{0.22\textwidth}p{0.43\textwidth}p{0.25\textwidth}}
+\toprule
+Theoretical object & Empirical counterpart & Interpretation \\
+\midrule
+Mean-reversion definition & Five-minute local-linear estimate of
+$\mu_h(x)=h^{-1}\E[X_{t+h}-X_t\mid X_t=x]$ and sign statistic
+$\1\{(\theta-x)\mu_h(x)>0\}$ & Finite-horizon proxy; it does not prove the
+$h\downarrow0$ limit or asymptotic moment convergence. \\
+Stationary OU and CIR & Exact OU transition density for $X_t=\log P_t$; CIR
+transition density for $P_t$ and for absolute depeg pressure & Model equations
+match.  Price CIR is numerically weakly identified. \\
+Linear transformed OU &
+$X_t=A_0e^{(\kappa-d)t}r_t+B_0e^{-dt}$ with $A_0=1$ and $B_0=0$ & Exact
+restricted special case of the article's linear OU solution. \\
+Linear transformed CIR &
+$P_t=A_0e^{(\kappa-d)t}r_t+\theta[1-A_0e^{(\kappa-d)t}]+B_0e^{-dt}$,
+with $A_0=1$ and $B_0=0$ & Exact restricted formula; base CIR parameters are
+held fixed and the resulting model is weakly identified. \\
+Mixed copula
+$C^{\mathrm{mix}}_{s,t}=a_{s,t}C_{s,t}+(1-a_{s,t})\Pi$ & MOU and MCIR with
+$a_{s,t}=e^{-\lambda(t-s)}$ and the stationary OU/Gamma marginal in the reset
+component & Exact constant-intensity case of the article's Poisson construction. \\
+General $a_{s,t}=\exp\{-\int_s^t c(u)\dd u\}$ & Constant and deterministic
+seasonal $c(t)$ specifications & The finite-dimensional seasonal model is
+estimated in the full registry but does not determine model selection. \\
+Gaussian copula with a general marginal & Gaussian and mixed Gaussian copulas
+with an empirical marginal & Copula construction is consistent, but the
+article's sufficient sign condition for mean reversion is not imposed and is
+not supported by the fitted finite-horizon drift. \\
+Two-scale latent Gaussian copula & A weighted sum of fast and slow OU covariance
+components, optionally combined with an independence reset & Diagnostic extension:
+the two-dimensional latent state is Markov, but the observed scalar state is
+generally not one-dimensional Markov and is not an article proposition. \\
+Nonlinear OU/CIR transformations & Exponential OU; quadratic and exponential
+CIR; and the stated special-function branches & All explicit families are
+implemented; weak identification, non-injectivity, monotonicity, and support
+failures are retained as empirical outcomes. \\
+Mixed-copula bond-pricing PDE & Not used for stablecoin prices & Not applicable
+to the stated empirical objective. \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]\footnotesize
+\item Throughout the theory and empirical implementation, a positive restoring
+coefficient is written as $b(x)=\alpha(m-x)$; the opposite sign would describe
+mean repulsion.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+Sections~2--4 define processes and observable transition densities rather than
+an estimator.  We therefore add maximum likelihood, composite likelihood, block
+bootstrap, PIT diagnostics, and rolling out-of-sample scores without altering
+the theoretical process definitions.
+
+\subsection{Data, state variables, and exact transition design}
+\label{emp:sec:data}
+
+The raw file is Kraken's five-minute USDT/USD OHLCVT series.  Its SHA-256 digest
+is
+\begin{center}
+\texttt{417ea3aa71f86c4476c30568f251f3f873ae8b0d44c5f480f5ad2f35fc6acc22}.
+\end{center}
+The audit finds 797,178 observations from 29 March 2017 to 31 December 2025,
+750,220 exact 300-second adjacent pairs, no duplicate timestamps, no missing
+fields, and grid coverage of 86.5186\%.  The main sample is 2021--2025.  The
+training, validation, and test periods are 2021--2023, 2024, and 2025,
+respectively.
+
+\begin{table}[htbp]
+\centering
+\caption{Sample construction}
+\label{emp:tab:samples}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Sample & Period & Observations & Coverage (\%) & Exact 5-minute pairs \\
+\midrule
+Baseline & 2021--2025 & 524,835 & 99.7998 & 524,610 \\
+Extended & 2020--2025 & 627,782 & 99.4434 & 625,690 \\
+Full & 2017--2025 & 797,178 & 86.5186 & 750,220 \\
+Training & 2021--2023 & 314,759 & 99.8094 & 314,590 \\
+Validation & 2024 & 105,153 & 99.7581 & 105,118 \\
+Test & 2025 & 104,923 & 99.8126 & 104,900 \\
+\bottomrule
+\end{tabular}
+\sourcefile{output/tables/sample_summary.csv}
+\end{table}
+
+For OU, threshold-OU, MOU, transformed-OU, and semiparametric copula models the
+state is the log price
+\begin{equation}
+X_t=\log P_t,
+\qquad X_t=0\Longleftrightarrow P_t=1.
+\label{emp:eq:state}
+\end{equation}
+Price CIR and MCIR instead use $P_t>0$ directly.  Depeg-pressure CIR uses
+$|P_t-1|+10^{-8}$ and is interpreted as an amplitude model, not a signed
+mean-reversion model.  Transition pairs are formed by timestamp hashing: a pair
+$(X_t,X_{t+h})$ is used only when the timestamp difference is exactly $h$.
+Missing bars are never interpolated.
+
+\subsection{Empirical specifications and estimators}
+\label{emp:sec:methods}
+
+\subsubsection{OU benchmark and finite-horizon drift}
+
+The OU benchmark is
+\begin{equation}
+\dd X_t=\kappa(\theta-X_t)\dd t+\sigma\dd W_t,
+\qquad \kappa>0,\quad\sigma>0.
+\label{emp:eq:ou}
+\end{equation}
+For an interval $h$, its conditional mean and variance are
+\begin{align}
+m_h(x)&=\theta+e^{-\kappa h}(x-\theta),\\
+v_h&=\frac{\sigma^2}{2\kappa}\left(1-e^{-2\kappa h}\right).
+\label{emp:eq:oumoments}
+\end{align}
+OU0 fixes $\theta=0$, whereas OUF estimates $\theta$.  Parameters are estimated
+by exact Gaussian transition maximum likelihood.  Ordinary Hessian standard
+errors, UTC-day cluster-sandwich standard errors, and UTC-day block bootstrap
+intervals are reported.
+
+The model-free diagnostic estimates
+\begin{equation}
+\mu_h(x)=\frac{1}{h}\E[X_{t+h}-X_t\mid X_t=x]
+\label{emp:eq:finite-drift}
+\end{equation}
+by local-linear regression on a 99-point quantile grid.  Bandwidth is selected by
+blocked cross-validation and uncertainty is computed from 1,000 UTC-day bootstrap
+replications.  The sign-consistency ratio is
+\begin{equation}
+\operatorname{SCR}_h(\theta)
+=\frac{1}{G}\sum_{g=1}^G
+\one\!\left\{(\theta-x_g)\widehat\mu_h(x_g)>0\right\}.
+\label{emp:eq:scr}
+\end{equation}
+
+\subsubsection{Parametric mixed-copula transition kernel}
+
+Let $P_h(x,\dd y)$ be the transition kernel of a stationary base process with
+invariant distribution $F$.  The article's constant-intensity Poisson
+construction gives
+\begin{equation}
+Q_h(x,\dd y)
+=e^{-\lambda h}P_h(x,\dd y)
++\left(1-e^{-\lambda h}\right)F(\dd y).
+\label{emp:eq:mixed-kernel}
+\end{equation}
+For an OU base process, the conditional density used in estimation is therefore
+\begin{equation}
+q_h(y\mid x)
+=e^{-\lambda h}\phi\!\left(y;m_h(x),v_h\right)
++\left(1-e^{-\lambda h}\right)
+\phi\!\left(y;\theta,\frac{\sigma^2}{2\kappa}\right).
+\label{emp:eq:mou-density}
+\end{equation}
+This is exactly the transition density implied by the article's process
+$Y_t=Y_t^{(N_t)}$ when the component processes are stationary OU processes.
+It nests the OU at $\lambda=0$ and satisfies
+\begin{equation}
+\E[Y_{t+h}-\theta\mid Y_t=x]
+=e^{-(\kappa+\lambda)h}(x-\theta).
+\label{emp:eq:mou-mean}
+\end{equation}
+Hence the base diffusion half-life is $\log(2)/\kappa$, while the conditional
+mean half-life of the mixed process is $\log(2)/(\kappa+\lambda)$.  These two
+quantities must not be conflated.
+
+MOU0 fixes $\theta=0$; MOUF jointly estimates
+$(\theta,\kappa,\sigma,\lambda)$.  MCIR replaces the OU transition and Normal
+invariant density in Equation~\eqref{emp:eq:mou-density} with the CIR transition
+and its Gamma invariant density.  Because the price-CIR likelihood is weakly
+identified, MCIR holds the base CIR parameters fixed and estimates only
+$\lambda$; MCIR is therefore a restricted diagnostic, not a full joint MLE.
+
+\subsubsection{Semiparametric multi-horizon copula}
+
+Let $F_n$ be the empirical marginal CDF and $U_t=F_n(X_t)$.  For a Gaussian base
+copula with $\rho_h=e^{-\kappa h}$, the fitted copula density is
+\begin{equation}
+c_h^{\mathrm{mix}}(u,v)
+=e^{-\lambda h}c_{\mathrm{G}}(u,v;\rho_h)
++1-e^{-\lambda h}.
+\label{emp:eq:semiparam-copula}
+\end{equation}
+The parameters are estimated by an equally weighted composite likelihood over
+5, 10, 30, 60, 120, and 360 minutes.  Equation~\eqref{emp:eq:semiparam-copula}
+defines a consistent stationary Markov copula construction.  It does
+\emph{not}, for an arbitrary $F_n$, automatically satisfy the sign restriction
+in the article's proposition for Gaussian copulas with general stationary
+marginals.  This restriction is evaluated after estimation rather than assumed.
+
+To test whether the failure at long horizons is caused by the single exponential
+correlation curve, define the two-scale correlation
+\begin{equation}
+ \rho_h^{(2)}=w\exp(-\kappa_{f}h)+(1-w)\exp(-\kappa_{s}h),
+ \qquad 0<w<1,\quad 0<\kappa_s<\kappa_f,
+ \label{emp:eq:two-scale-rho}
+\end{equation}
+and the two-scale mixed density
+\begin{equation}
+ c_{h}^{(2,\mathrm{mix})}(u,v)
+ =e^{-\lambda h}c_{\mathrm G}(u,v;\rho_h^{(2)})+1-e^{-\lambda h}.
+ \label{emp:eq:two-scale-mix}
+\end{equation}
+Equation~\eqref{emp:eq:two-scale-rho} is generated by the sum of two independent
+stationary OU factors.  The latent vector is Markov, but its scalar sum is in
+general not one-dimensional Markov.  Consequently, Equations
+\eqref{emp:eq:two-scale-rho}--\eqref{emp:eq:two-scale-mix} are used to diagnose
+multi-horizon dependence and density forecasts; they are not presented as a new
+instance of the article's one-dimensional Markov theorem.  Four models are fitted
+on exactly the same deterministic subsample at each horizon: SingleGaussian,
+SingleMixed, TwoScaleGaussian, and TwoScaleMixed.
+
+\subsubsection{Prespecified model hierarchy}
+
+The hierarchy is fixed before interpreting the additional results.  OUF and MOUF
+are the \emph{core structural comparison}, because their transition laws directly
+match the article.  Heteroskedastic threshold OU is the \emph{main empirical
+extension} for conditional asymmetry.  The four empirical-marginal copula models
+are \emph{diagnostic extensions}.  Random walk and nested-OU forecasts are
+\emph{prediction benchmarks}.  CIR, MCIR, and affine transformed models are
+\emph{appendix feasibility checks}.  A diagnostic model can reveal a missing
+dependence scale without inheriting the theoretical status of the core models.
+\sourcefile{output/tables/article_model_hierarchy.csv}
+
+\subsubsection{Model comparison and inference}
+
+Likelihood, AIC, and BIC are compared only for models fitted to the same state,
+sample, and likelihood.  PIT uniformity and Ljung--Box tests assess transition
+density calibration.  Because $\lambda=0$ is a boundary point, the ordinary
+$\chi^2$ likelihood-ratio reference distribution is not used.  The primary
+parametric bootstrap uses the same deterministic 25,000 pairs for the observed
+and simulated statistics, holds the observed regressors fixed under the null, and
+jointly re-estimates $(\theta,\kappa,\sigma,\lambda)$ under MOUF in every
+replication.  Out-of-sample comparison uses negative
+log score (NLS), CRPS, MAE, RMSE, Brier score, event log score, AUC, and calibration.
+All 2025 predictions use parameters selected without 2025 outcomes.
+
+\subsection{Empirical results}
+\label{emp:sec:results}
+
+\subsubsection{Nonparametric evidence and OU benchmark}
+
+\begin{table}[htbp]
+\centering
+\caption{Finite-horizon mean-reversion sign diagnostics}
+\label{emp:tab:scr}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Anchor definition & $\widehat\theta$ & SCR & 95\% bootstrap interval & Grid points \\
+\midrule
+Peg anchor & 0 & 0.7778 & [0.7677, 0.8788] & 99 \\
+Sample anchor & $6.700\times10^{-5}$ & 0.8788 & [0.8586, 0.9697] & 99 \\
+\bottomrule
+\end{tabular}
+\sourcefile{output/tables/sign_test_baseline.csv}
+\end{table}
+
+The point estimates predominantly have the correct direction, but the
+simultaneous confidence band in Figure~\ref{emp:fig:drift} contains zero over a
+large part of the state grid.  The evidence is therefore directional rather than
+a proof of pointwise significant infinitesimal mean reversion.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.82\textwidth]{nonparametric_vs_ou_drift.pdf}
+\caption{Local-linear finite-horizon drift and the OUF-implied drift.}
+\label{emp:fig:drift}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\caption{OU, asymmetric OU, and MOU parameter estimates}
+\label{emp:tab:parameters}
+\begin{threeparttable}
+\small
+\begin{tabular}{lrrrrrr}
+\toprule
+Model & $10^4\widehat\theta$ & $\widehat\kappa$ & $\widehat\lambda$ &
+$\widehat\sigma$ & Base HL (min) & Effective HL (min) \\
+\midrule
+OUF & 0.665 & 1.6932 & --- & 0.001355 & 589.5 & 589.5 \\
+MOUF & 7.248 & 0.02484 & 1.8863 & 0.000963 & 40,190.4 & 522.3 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]\footnotesize
+\item Rates are per day.  OUF UTC-day cluster standard errors are
+$(0.166,0.2099,0.0001456)$ for $(10^4\theta,\kappa,\sigma)$.  MOUF cluster
+standard errors are $(6.496,0.01419,0.18835,0.00000950)$ for
+$(10^4\theta,\kappa,\lambda,\sigma)$.  The large difference between the OUF and
+MOUF estimates of $\theta$ is a warning against interpreting the MOUF stationary
+mean as the economic peg without further stationarity restrictions.
+\end{tablenotes}
+\end{threeparttable}
+\sourcefile{output/tables/model_estimates.csv}
+\end{table}
+
+The heteroskedastic threshold OU estimates
+$(\kappa_+,\kappa_-)=(1.5674,1.8103)$ and
+$(\sigma_+,\sigma_-)=(0.001248,0.001515)$.  Its likelihood gain is driven mainly
+by asymmetric conditional volatility rather than by a large difference in
+reversion speed.
+
+\subsubsection{Does the mixed kernel add explanatory power?}
+
+\begin{table}[htbp]
+\centering
+\caption{Comparable five-minute transition likelihoods}
+\label{emp:tab:likelihood}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Model & Parameters & Log likelihood & AIC & BIC \\
+\midrule
+OU0 & 2 & 4,207,015.02 & $-8,414,026.04$ & $-8,414,003.70$ \\
+OUF & 3 & 4,207,021.25 & $-8,414,036.50$ & $-8,414,002.98$ \\
+Threshold OU, heteroskedastic & 4 & 4,211,719.53 & $-8,423,431.07$ & $-8,423,386.38$ \\
+MOU0 & 3 & 4,351,515.34 & $-8,703,024.68$ & $-8,702,991.17$ \\
+MOUF & 4 & 4,351,562.04 & $-8,703,116.07$ & $-8,703,071.39$ \\
+\bottomrule
+\end{tabular}
+\sourcefile{output/tables/model_comparison.csv}
+\end{table}
+
+Relative to OUF, MOUF increases the total log likelihood by 144,540.79, or
+approximately 0.2755 per transition pair, and lowers AIC by 289,079.58.  This is
+the clearest in-sample evidence for the mixed kernel.  The gain reflects a
+two-scale transition density: a highly persistent narrow base component and a
+small-probability draw from a much wider invariant component.
+
+The primary boundary bootstrap removes the design mismatch in the earlier
+diagnostic.  Both the observed and null-simulated statistics use the same
+deterministic systematic sample of 25,000 out of 524,610 exact transitions, the
+same fixed regressor values and five-minute step, the same OUF refit, and the same
+joint MOUF optimization.  The observed statistic is $LR=12{,}722.80$.  Among
+$B=500$ null replications, none is as large (maximum $0.635$), giving the
+finite-replication correction
+\begin{equation}
+ \widehat p=\frac{1+\sum_{b=1}^{B}\1\{LR_b\geq LR_{\mathrm{obs}}\}}{B+1}
+ =\frac{1}{501}=0.001996.
+ \label{emp:eq:bootstrap-p}
+\end{equation}
+The alternative optimizer reports convergence in 98.2\% of replications and
+$\widehat\lambda$ is at its zero boundary in 99.4\%, as expected for this
+nonregular null.  Thus the ordinary $\chi^2$ approximation is inappropriate, but
+the matched conditional bootstrap provides strong evidence that the MOUF density
+adds a component absent from OUF on this prespecified design.  The claim remains
+conditional on the 25,000-pair systematic design and the maintained OU null; it is
+not a proof that the economic data-generating process is MOUF.
+\sourcefile{output/tables/matched_joint_mou_lr_bootstrap.csv}
+\sourcefile{output/tables/matched_joint_mou_lr_bootstrap_draws.csv}
+
+The former $B=200$ profiled calculation is retained only as a historical
+sensitivity file because it compares a full-sample observed statistic with
+shorter simulated paths and does not jointly fit the same alternative.  It is not
+used for the primary significance statement.
+\sourcefile{output/tables/mixed_lr_bootstrap.csv}
+
+Three reported reset intensities answer different questions:
+\begin{table}[htbp]
+\centering
+\caption{Reset-intensity estimates under different objectives}
+\label{emp:tab:lambdas}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.28\textwidth}r>{\raggedright\arraybackslash}X}
+\toprule
+Estimation objective & $\widehat\lambda$ per day & Interpretation \\
+\midrule
+Joint five-minute MOUF likelihood & 1.8863 & Jointly changes the OU base and reset component \\
+Matched joint MOUF likelihood & 1.9185 & Same 25,000-pair design as the boundary bootstrap \\
+Restricted boundary profile & 0.7678 & Profiles $\lambda$ conditional on a re-estimated OU base \\
+Multi-horizon empirical-marginal copula & 0.2557 & Composite dependence fit over 5--360 minutes \\
+\bottomrule
+\end{tabularx}
+\end{table}
+These estimates are not interchangeable.  Their dispersion is direct evidence
+that $\kappa$ and $\lambda$ are sensitive to the marginal model, estimation
+objective, and horizon set.
+
+\subsubsection{Multi-horizon dependence}
+
+\begin{table}[htbp]
+\centering
+\caption{Empirical and fitted Gaussian-rank dependence}
+\label{emp:tab:horizons}
+\small
+\begin{tabular}{rrrrrr}
+\toprule
+$h$ (min) & Pairs & Empirical & Base fit & Mixed fit & Reset weight \\
+\midrule
+5   & 524,610 & 0.99128 & 0.99692 & 0.99603 & 0.00089 \\
+10  & 524,494 & 0.98868 & 0.99384 & 0.99208 & 0.00177 \\
+30  & 524,279 & 0.98067 & 0.98165 & 0.97643 & 0.00531 \\
+60  & 524,143 & 0.97160 & 0.96363 & 0.95342 & 0.01060 \\
+120 & 524,017 & 0.95664 & 0.92858 & 0.90901 & 0.02108 \\
+360 & 523,734 & 0.91630 & 0.80068 & 0.75111 & 0.06192 \\
+\bottomrule
+\end{tabular}
+\sourcefile{output/tables/copula_horizon_fit.csv}
+\end{table}
+
+The mixed term reduces absolute dependence error at 5 and 10 minutes, but makes
+the fit worse from 30 minutes onward.  At 360 minutes the data remain much more
+persistent than either single-exponential specification.  A constant-intensity
+independence reset therefore does not replace a slow latent factor, a regime
+switching model, or a multi-scale OU structure.
+
+The prespecified two-scale comparison confirms that the missing persistence is a
+separate dimension from the reset mixture.
+\begin{table}[htbp]
+\centering
+\caption{Single- versus two-scale empirical-marginal copula fits}
+\label{emp:tab:scale-models}
+\small
+\begin{tabular}{lrrrrrr}
+\toprule
+Model & $\widehat\kappa_s$ & $\widehat\kappa_f$ & $\widehat w$ &
+$\widehat\lambda$ & Mean log score & Dependence RMSE \\
+\midrule
+SingleGaussian   & 1.1398 & ---      & ---     & 0      & 1.42051 & 0.07022 \\
+SingleMixed      & 0.8889 & ---      & ---     & 0.2505 & 1.46991 & 0.07018 \\
+TwoScaleGaussian & 0.3348 & 251.0089 & 0.01244 & 0      & 1.52663 & 0.00377 \\
+TwoScaleMixed    & 0.1361 & 225.0237 & 0.01215 & 0.5078 & 1.59503 & 0.03223 \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}\footnotesize
+Rates are per day.  ``Mean log score'' is the equally weighted mean copula log
+density over six horizons, using at most 100,000 deterministic pairs per horizon;
+higher is better.  Dependence RMSE compares the six empirical Gaussian-rank
+correlations with the fitted correlations; lower is better.  All four optimizers
+converged, and repeated starts attained the same best solution.
+\end{flushleft}
+\sourcefile{output/tables/copula_scale_model_comparison.csv}
+\end{table}
+
+The two metrics answer different questions.  TwoScaleGaussian reduces dependence
+RMSE by 94.6\% relative to SingleGaussian and reproduces the 360-minute dependence
+as 0.9083 versus the empirical 0.9163.  TwoScaleMixed has the highest full-density
+score, improving it by 0.0684 over TwoScaleGaussian, but its reset component lowers
+the fitted 360-minute dependence to 0.8410 and therefore increases correlation
+RMSE.  Thus the slow factor explains the long-memory shape, whereas the mixed
+component explains additional features of the joint density; a likelihood gain
+alone is not evidence of a better correlation curve.
+\sourcefile{output/tables/copula_scale_horizon_fit.csv}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.82\textwidth]{single_vs_two_scale_dependence.pdf}
+\caption{Empirical multi-horizon dependence and the four scale/reset specifications.}
+\label{emp:fig:two-scale}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{subfigure}{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth]{gaussian_vs_mixed_copula.pdf}
+\caption{Gaussian and mixed copula contours.}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth]{multihorizon_dependence.pdf}
+\caption{Dependence across horizons.}
+\end{subfigure}
+\caption{Copula shape and multi-horizon dependence.}
+\label{emp:fig:copula}
+\end{figure}
+
+For the empirical marginal $F_n$, the fitted semiparametric conditional mean has
+five-minute sign consistency of only 34.34\% around the exact peg and 42.42\%
+around the empirical marginal mean $6.713\times10^{-5}$.  Thus the empirical-
+marginal Gaussian/mixed-copula fit is useful as a dependence diagnostic, but it
+is not empirically verified as a mean-reverting process under the article's
+definition.  This conclusion is distinct from the parametric MOU result, whose
+Normal invariant marginal and OU base satisfy the theoretical construction by
+design.
+\sourcefile{output/tables/copula_conditional_drift_baseline.csv}
+\sourcefile{output/tables/descriptive_statistics_baseline.csv}
+
+\subsubsection{Density diagnostics and out-of-sample performance}
+
+Numerical optimization succeeds for OUF and MOUF, but both models are rejected
+by PIT uniformity and by Ljung--Box tests of transformed residuals and squared
+residuals (reported numerical $p$-values are effectively zero).  The mixed model
+therefore improves relative likelihood without achieving absolute transition-
+density adequacy.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.86\textwidth]{pit_and_residual_acf.pdf}
+\caption{PIT and residual diagnostics for OUF and MOUF.}
+\label{emp:fig:pit}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\caption{Validation-period model selection, 2024}
+\label{emp:tab:validation}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Model & Mean NLS & Mean CRPS & Mean RMSE & NLS rank \\
+\midrule
+OUF & $-7.18759$ & 0.00013091 & 0.00023667 & 1 \\
+Random walk & $-7.13145$ & 0.00013279 & 0.00021416 & 2 \\
+Nested-OU proxy & $-7.13006$ & 0.00014465 & 0.00026387 & 3 \\
+MOUF & $-7.10424$ & 0.00015907 & 0.00029675 & 4 \\
+\bottomrule
+\end{tabular}
+\sourcefile{output/tables/validation_model_selection.csv}
+\end{table}
+
+Lower NLS and CRPS are better.  OUF is selected on the validation period.  In
+the 2025 test period, MOUF has a better 5-minute NLS for the 50-basis-point
+depeg specification ($-8.7632$ versus $-8.7025$ for OUF), but OUF is better at
+60, 360, and 1,440 minutes.  The mixed kernel therefore has a localized
+short-horizon density advantage rather than uniform out-of-sample dominance.
+\sourcefile{output/tables/forecast_scores.csv}
+
+The scale/reset comparison is a separate copula-density exercise.  The empirical
+marginal and all copula parameters are estimated using 2021--2023 only; the fitted
+objects are then frozen for 2024 and 2025.  Table~\ref{emp:tab:copula-oos} reports
+the equally weighted mean across the six horizons.
+\begin{table}[htbp]
+\centering
+\caption{Out-of-sample copula log scores by model scale}
+\label{emp:tab:copula-oos}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Model & Training 2021--2023 & Validation 2024 & Test 2025 \\
+\midrule
+SingleGaussian   & 1.27385 & 1.54637 & 1.38939 \\
+SingleMixed      & 1.31164 & 1.59861 & 1.43596 \\
+TwoScaleGaussian & 1.40784 & 1.61073 & 1.50638 \\
+TwoScaleMixed    & 1.47899 & 1.66640 & 1.57116 \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}\footnotesize
+Higher log score is better.  Each period-specific mean first averages over
+observations within a horizon and then gives equal weight to each of the six
+horizons.  No validation or test outcomes enter parameter estimation.
+\end{flushleft}
+\sourcefile{output/tables/copula_scale_oos_scores.csv}
+\end{table}
+
+TwoScaleMixed exceeds SingleMixed by 0.06780 log-score units in validation and
+0.13520 in test; it also exceeds TwoScaleGaussian by 0.05567 and 0.06478.  This is
+the clearest out-of-sample metric in favor of combining a slow factor with the
+mixed reset.  The advantage is not uniform by horizon: on the 2025 test data the
+two-scale models score worse than SingleMixed at 5 and 10 minutes, but better at
+30, 60, 120, and 360 minutes.  The result supports multi-scale dependence, not an
+unqualified claim that the mixed process dominates every forecast horizon.
+
+The baseline 50/25-basis-point event rule identifies eight events.  Their
+empirical recovery-time median is 155 minutes, compared with 665 minutes under
+OUF simulation and 1,085 minutes under MOUF simulation.  The reset mechanism
+does not necessarily move the state toward the peg; it draws from the invariant
+marginal.  Consequently, the effective conditional-mean half-life in
+Equation~\eqref{emp:eq:mou-mean} is not a first-passage-time statistic.
+\sourcefile{output/tables/first_passage_comparison.csv}
+
+\subsubsection{Frequency, sample, and block-length robustness}
+
+\begin{table}[htbp]
+\centering
+\caption{Baseline frequency robustness}
+\label{emp:tab:frequency}
+\small
+\begin{tabular}{rrrrrr}
+\toprule
+Minutes & Exact pairs & $\widehat\kappa$ & $\widehat\lambda$ & OU HL & Effective HL \\
+\midrule
+5  & 524,610 & 1.6932 & 0.6969 & 589.5 & 417.6 \\
+15 & 174,578 & 1.8504 & 0.1784 & 539.4 & 492.0 \\
+30 & 87,068  & 1.3992 & 0.1323 & 713.4 & 651.7 \\
+60 & 43,322  & 1.1311 & 0.0785 & 882.5 & 825.2 \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}\footnotesize
+All non-five-minute rows use complete aggregation bins only.  Half-lives are in
+minutes.  In this table $\lambda$ is estimated conditionally on fast OU
+parameters, so it should not be compared numerically with the joint MOUF estimate
+without qualification.
+\end{flushleft}
+\sourcefile{output/tables/robustness_estimates.csv}
+\end{table}
+
+The decline in $\widehat\kappa$ at lower sampling frequencies is consistent with
+microstructure noise inflating high-frequency reversion estimates.  The 1-, 3-,
+and 7-day moving-block bootstrap standard errors for OUF $\kappa$ are 0.2021,
+0.2300, and 0.2622, respectively; uncertainty increases with block length but
+the reversion-rate estimate remains positive.  In the full 2017--2025 sample,
+retaining three flagged hard anomalies produces $\widehat\kappa=303.09$, whereas
+excluding them gives $\widehat\kappa=2.742$.  Structural interpretation of the
+full-sample high-frequency estimate is therefore untenable without explicit
+outlier treatment.
+\sourcefile{output/tables/ou_block_length_robustness.csv}
+
+\subsection{Full-model registry and validation selection}
+\label{emp:sec:full-registry}
+
+The second-stage exercise removes the MVP complexity screen.  Every article
+model with an explicit finite-dimensional observation density, and every
+benchmark or marginal--copula family required by the empirical methodology, is
+either estimated or assigned a terminal failure diagnostic before any model is
+chosen for emphasis.  The registry contains 25 theory/methodology objects.  Of
+these, 18 are estimated in the current or pre-existing pipeline, five terminate
+with a retained monotonicity, support, or endpoint failure, the stationary
+Gaussian--Gamma construction is estimable but fails the article's shape
+condition, and the bond-pricing PDE is retained as not observable from spot data.
+\sourcefile{output/tables/full_model_implementation_status.csv}
+
+For every comparable model, selection uses the same 2024 five-minute
+conditional log score on the log-price measure,
+\begin{equation}
+ \widehat S_m^{V}
+ =\frac{1}{N_V}\sum_{i=1}^{N_V}\log q_m
+   (x_{t_i}\mid\mathcal F_{t_i-}),
+ \qquad N_V=40{,}000.
+ \label{emp:eq:uniform-score}
+\end{equation}
+Price-density models are converted by the Jacobian
+$q_X(x_t\mid x_{t-h})=q_P(e^{x_t}\mid e^{x_{t-h}})e^{x_t}$.
+Copula models use
+$q_X(x_t\mid x_{t-h})=c_h(F(x_{t-h}),F(x_t))f(x_t)$.
+Thus AIC values from ordinary and composite likelihoods do not enter this
+cross-class ranking.  For the two-state OU, the primary one-step score is the
+exact hidden-state predictive density
+\begin{equation}
+ q_t(x_t\mid\mathcal F_{t-1})
+ =\sum_{j=1}^{2}\left(\sum_{i=1}^{2}\alpha_{t-1,i}p_{ij}\right)
+ p_j(x_t\mid x_{t-1}),
+ \label{emp:eq:msou-filter-score}
+\end{equation}
+with the filter reset to its stationary probabilities after every timestamp
+gap.  Longer-horizon Markov-switching entries are labelled as endpoint-mixture
+approximations and do not determine selection.
+
+\begin{table}[htbp]
+\centering
+\caption{Unified 2024 validation ranking at the five-minute horizon}
+\label{emp:tab:full-ranking}
+\begin{threeparttable}
+\footnotesize
+\begin{tabularx}{\textwidth}{r>{\raggedright\arraybackslash}p{0.27\textwidth}rr>{\raggedright\arraybackslash}X}
+\toprule
+Rank & Model & Mean log score & Coverage & Identification audit \\
+\midrule
+1 & Markov-switching OU & 8.824686 & 1.000 & weak: slow regime/boundary \\
+2 & Student-$t$ margin + Student-$t$ copula & 8.781202 & 1.000 & weak: $\nu=2.05$ grid boundary \\
+3 & Student-$t$ margin + mixed Student-$t$ copula & 8.781201 & 1.000 & weak: $\lambda\simeq0$, $\nu$ boundary \\
+23 & MOUF & 8.431420 & 1.000 & passes numerical identification gate \\
+43 & OUF & 8.221318 & 1.000 & passes numerical identification gate \\
+44 & Random walk & 8.220764 & 1.000 & no-reversion benchmark \\
+\bottomrule
+\end{tabularx}
+\begin{tablenotes}[flushleft]\footnotesize
+\item The rank numbers for MOUF, OUF, and the random walk are their positions in
+the complete candidate table; omitted rows are not omitted from estimation or
+ranking.  Selection uses 2024 only.  The 2025 scores are post-extension
+exploratory because aggregate 2025 outcomes had been inspected previously.
+\end{tablenotes}
+\end{threeparttable}
+\sourcefile{output/tables/full_model_validation_ranking.csv}
+\end{table}
+
+The selected model's advantage is not merely a point-ranking artifact.
+Day-block resampling of paired score differences gives the comparisons in
+Table~\ref{emp:tab:full-pairwise}.  These intervals measure predictive-score
+uncertainty conditional on the frozen estimates; they do not repair weak
+identification of the switching parameters.
+
+\begin{table}[htbp]
+\centering
+\caption{Paired day-block comparison of the selected model}
+\label{emp:tab:full-pairwise}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Reference & $\widehat S_{MSOU}-\widehat S_{ref}$ & 95\% block interval & Daily win share \\
+\midrule
+Student-$t$ margin + Student-$t$ copula & 0.043484 & [0.018242, 0.065954] & 0.656 \\
+MOUF & 0.393266 & [0.355106, 0.429977] & 0.915 \\
+OUF & 0.603368 & [0.566379, 0.640416] & 0.956 \\
+Random walk & 0.603922 & [0.564066, 0.642485] & 0.959 \\
+\bottomrule
+\end{tabular}
+\sourcefile{output/tables/full_model_pairwise_validation.csv}
+\end{table}
+
+The expanded grid also makes the mixed-copula claim more precise.  With the
+Student-$t$ marginal fixed, adding the independent-reset component raises the
+Gaussian validation score by 0.078347 and the two-scale Gaussian score by
+0.048432.  It changes the Student-$t$ copula score by only
+$-6.95\times10^{-7}$ because $\widehat\lambda$ is effectively zero.  For Frank,
+Clayton, survival Clayton, Gumbel, and survival Gumbel, the fitted mixed versions
+hit weak-identification/boundary diagnostics and reduce the validation score by
+1.98 to 3.21.  The empirical advantage is therefore specific to the Gaussian
+and two-scale Gaussian reset constructions; it is not a theorem that mixing
+improves every copula family.
+\sourcefile{output/tables/full_mixture_incremental_scores.csv}
+
+The transformation audit is equally informative.  Affine OU is estimable;
+exponential OU converges but is weakly identified.  The OU special-function
+solution is even in the latent state and hence non-injective on $\mathbb R$.
+Affine CIR is estimated but weak, while quadratic CIR, exponential CIR, and the
+prespecified CIR special-function branches fail global monotonicity or observed
+support.  These failures are substantive outcomes, not silent exclusions.  The
+Gamma Case~1 equation has no finite shape root on the audited range, so Case~2
+lacks the stationary endpoint it requires.  Finally, the mixed-copula bond PDE
+cannot be estimated without a bond-price cross section and a risk-neutral
+measure; its equation is implemented only as a non-observable theoretical
+object in this spot-price application.
+
+\subsection{Consistency between the theory and the empirical evidence}
+\label{emp:sec:conclusion}
+
+The first point of agreement is directional.  USDT/USD log prices display
+finite-horizon reversion around a near-zero log-price anchor, consistent with
+the sign restriction in Section~\ref{sec:mean-reverting-markov}.  The OU process
+therefore supplies an interpretable local benchmark.  Its rejected transition
+diagnostics, however, show that a correct restoring direction does not imply a
+correct conditional density.  This is precisely the distinction made by the
+theory between mean reversion and distributional specification.
+
+The mixed-copula results provide a second, more specific correspondence.  For
+stationary OU and CIR bases, the empirical density is exactly the
+constant-intensity Poisson-reset kernel of
+Section~\ref{sec:mixed-copula-processes}.  For the OU base, the matched-design
+boundary experiment rejects the no-reset restriction at the minimum attainable
+corrected level $1/501$.  The result is evidence for a two-component transition
+density---a narrow persistent component together with rare wide
+transitions---and not causal identification of $\lambda$ with redemption,
+arbitrage, or news.  Consistently with that qualification, MOUF does not dominate
+OUF in the original validation exercise, PIT diagnostics, or empirical
+first-passage times.
+
+The multi-horizon evidence identifies a different omission.  Adding a slow
+latent factor reduces the six-horizon dependence RMSE from 0.07022 to 0.00377.
+Adding an independent reset to the two-scale model raises validation and test
+copula log scores to 1.66640 and 1.57116, but increases the correlation RMSE to
+0.03223.  Hence persistence shape and density score are distinct targets.  This
+finding is also theoretically coherent: the two-factor latent process is Markov
+in its augmented state, whereas its scalar observation is not generally a
+one-dimensional Markov process of the class developed in Sections~2--4.  The
+empirical-marginal copula likewise remains a dependence and forecasting
+extension unless the marginal sign restriction is imposed during estimation.
+
+The transformation results reinforce the role of the admissibility conditions
+in Section~\ref{sec:diffusion-transforms}.  Every explicit finite-dimensional
+family is either estimated or assigned a terminal diagnosis.  Nonlinear CIR
+variants fail monotonicity or support, exponential OU is weakly identified, and
+the OU special-function map is non-injective.  These outcomes do not contradict
+the transformation equations; they show why a formal solution is insufficient
+for an observable one-dimensional density.  Among these families, only the
+affine-OU calibration is suitable for routine empirical comparison.
+
+Finally, the common validation rule separates structural contribution from
+forecast ranking.  The two-state Markov-switching OU has the largest 2024
+five-minute log score and a positive paired advantage over the Student-$t$
+copula benchmark, but its near-zero slow-regime rate is weakly identified.  The
+most defensible mixed-copula claim is therefore narrower and sharper: relative
+to an OU transition, the Poisson-reset kernel preserves the invariant marginal
+and Markov semigroup while materially improving the matched in-sample density;
+within Gaussian and two-scale Gaussian dependence, it also improves validation
+and test copula scores.  The reset is redundant for the fitted Student-$t$
+copula, performs poorly for the fitted Archimedean mixtures, and does not alone
+generate the observed slow persistence.  The mixed copula is thus the paper's
+principal theoretical innovation, whereas the forecasting leader is determined
+by the frozen empirical comparison.
+
+\endinput
+\appendix
+\section{Theory and implementation audit checklist}
+\label{emp:app:audit}
+
+\begin{enumerate}
+\item[\checkmark] MOU density equals
+$e^{-\lambda h}p_{\mathrm{OU}}+(1-e^{-\lambda h})f_{\mathrm{OU,stat}}$ pointwise.
+The code test verifies exact equality to OU when $\lambda=0$.
+\item[\checkmark] MCIR uses the stationary Gamma law implied by the same
+$(\theta,\kappa,\sigma)$ as the CIR base.
+\item[\checkmark] Mixed conditional mean decays at $\kappa+\lambda$; simulation
+and analytic moments are compared in the test suite and generator-validation
+table.
+\item[\checkmark] Affine OU and CIR inverse transformations and Jacobians match
+the article's linear formulas under $A_0=1$ and $B_0=0$.
+\item[\checkmark] All primary five-minute pairs are exact timestamp matches; no
+missing bar is treated as an observed transition.
+\item[$\triangle$] The article assumes a stationary base process.  Rolling
+estimates show substantial parameter variation, so stationarity is an empirical
+approximation rather than an established fact.
+\item[$\triangle$] The semiparametric empirical marginal does not impose the
+article's Gaussian-copula marginal sign restriction and fails the finite-horizon
+sign diagnostic on most grid points.
+\item[$\triangle$] Price-CIR likelihood evaluation requires a high-noncentrality
+Gaussian moment fallback for all evaluated price transitions; price CIR and
+affine transformed CIR are flagged as weakly identified.
+\item[\checkmark] The primary boundary bootstrap uses the same 25,000 transition
+pairs and the same joint OUF/MOUF estimators for the observed and all 500 simulated
+statistics.  Its inference is conditional on the systematic design and fixed
+observed regressors, rather than an unconditional full-sample statement.
+\item[$\triangle$] The two-scale scalar copula model captures multi-horizon
+dependence but is not one-dimensional Markov; it is a diagnostic latent-factor
+extension rather than an implementation of the article's scalar Markov theorem.
+\item[\checkmark] Deterministic seasonal $c(t)$, exponential OU, quadratic and
+exponential CIR, and the article's special-function branches are implemented.
+Converged, weak, non-monotone, and support-failed outcomes are all retained in
+the same implementation-status table.
+\item[\checkmark] Normal, Student-$t$, skew Student-$t$, GED, and monotone-spline
+margins are crossed with Gaussian, Student-$t$, Frank, Clayton, survival Clayton,
+Gumbel, and survival Gumbel copulas; base and independence-mixed versions are
+scored for all three periods and four horizons.
+\item[\checkmark] Random-walk, jump-OU, nested-OU, two-state OU, and a
+finite-dimensional deterministic time-varying marginal--copula model enter the
+same primary validation ranking.  No model is removed because it is complex.
+\item[$\triangle$] Markov-switching OU wins the exact filtered one-step score but
+its slow-regime rate is near the optimization boundary and spans substantially
+less than one mean-reversion unit in the continuous estimation segment.
+\item[$\times$] The mixed-copula bond-pricing PDE is not empirically observable
+from a USDT spot-price series without a bond-price cross section and a specified
+risk-neutral measure.  This is retained as an explicit data-identification
+failure rather than an unimplemented model.
+\end{enumerate}
+
+\section{Output provenance}
+\label{emp:app:provenance}
+
+\begin{table}[htbp]
+\centering
+\caption{Primary reproducibility files}
+\small
+\begin{tabular}{p{0.42\textwidth}p{0.48\textwidth}}
+\toprule
+File & Content \\
+\midrule
+\path{output/tables/data_audit.csv} & Raw-data hash, rows, timestamps, gaps, and audit conditions \\
+\path{output/tables/sample_summary.csv} & Sample periods, coverage, and exact-pair counts \\
+\path{output/tables/sign_test_baseline.csv} & Nonparametric sign-consistency statistics \\
+\path{output/tables/model_estimates.csv} & Parameters and ordinary, cluster, and bootstrap uncertainty \\
+\path{output/tables/model_comparison.csv} & Likelihood, information criteria, numerical checks, and PIT tests \\
+\path{output/tables/matched_joint_mou_lr_bootstrap.csv} & Primary matched-design joint-MOUF boundary bootstrap \\
+\path{output/tables/matched_joint_mou_lr_bootstrap_draws.csv} & All 500 null LR draws and convergence diagnostics \\
+\path{output/tables/mixed_lr_bootstrap.csv} & Superseded restricted boundary-bootstrap sensitivity \\
+\path{output/tables/copula_horizon_fit.csv} & Empirical and fitted dependence over six horizons \\
+\path{output/tables/copula_scale_model_comparison.csv} & Single/two-scale fit, parameters, and dependence RMSE \\
+\path{output/tables/copula_scale_horizon_fit.csv} & Four-model fitted dependence at each horizon \\
+\path{output/tables/copula_scale_oos_scores.csv} & Frozen-training-model validation and test copula log scores \\
+\path{output/tables/article_model_hierarchy.csv} & Structural, extension, diagnostic, benchmark, and appendix tiers \\
+\path{output/tables/copula_conditional_drift_baseline.csv} & Semiparametric conditional means and sign diagnostic \\
+\path{output/tables/forecast_scores.csv} & Validation and test forecast scores \\
+\path{output/tables/first_passage_comparison.csv} & Empirical and simulated recovery-time distributions \\
+\path{output/tables/robustness_estimates.csv} & Frequency, extended-sample, and anomaly-policy robustness \\
+\path{output/tables/full_model_registry.csv} & Frozen article/methodology model universe and comparison groups \\
+\path{output/tables/full_model_implementation_status.csv} & Convergence, weak identification, monotonicity, support, and retained failures \\
+\path{output/tables/full_model_validation_ranking.csv} & Complexity-blind 2024 five-minute conditional-density ranking \\
+\path{output/tables/full_model_pairwise_validation.csv} & Paired day-block uncertainty for the selected model \\
+\path{output/tables/full_mixture_incremental_scores.csv} & Within-family mixed-minus-base score increments \\
+\path{output/tables/updated_stage_gate.csv} & Full-model coverage, scoring, diagnostics, and no-leakage gates \\
+\path{output/models/mixed_fits_baseline.json} & Full MOU/MCIR parameter and optimization records \\
+\path{output/models/full_model_fits.json} & Full-suite fits and nonlinear failure diagnostics \\
+\path{output/models/full_copula_fits.json} & Five margins and fourteen fitted copula specifications \\
+\path{output/models/semiparametric_copula_baseline.json} & Multi-horizon composite-likelihood estimate \\
+\path{output/models/copula_scale_models.json} & Full-sample and training-sample scale/reset estimates \\
+\path{output/run_status.json} & Step-level one-click pipeline status \\
+\path{output/manifest.json} & Artifact hashes and joint test/pipeline completion status \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{document}

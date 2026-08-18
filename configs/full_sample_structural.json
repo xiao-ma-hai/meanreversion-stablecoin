@@ -1,0 +1,14 @@
+{
+  "purpose": "descriptive and structural interval-likelihood estimates",
+  "assets": ["USDT", "USDC", "DAI"],
+  "frequency_minutes": 5,
+  "start_utc": "2021-01-01T00:00:00Z",
+  "end_utc": "2025-12-31T23:59:59Z",
+  "price_proxy": "close",
+  "observation_model": "nearest-tick log-price intervals",
+  "dynamic_likelihood": "conditional interval approximation",
+  "pair_rule": "all exact 300-second pairs; no imputation",
+  "tick_rule": "asset-year empirical minimum nonzero exact-pair close change, rounded to a power of ten",
+  "models": ["OU-Interval-IFM", "MOU-Interval-IFM"],
+  "inference_status": "structural-descriptive pending full grid-filter validation"
+}

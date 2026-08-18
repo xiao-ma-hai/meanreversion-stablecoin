@@ -1,0 +1,266 @@
+{
+  "USDT": {
+    "OU": {
+      "model_name": "OU-Interval-IFM",
+      "params": {
+        "theta": 0.00013770361619286348,
+        "tau": 0.0008742028270649665,
+        "kappa": 2.1421442727907314,
+        "lambda": 0.0
+      },
+      "loglik": -510940.55786431197,
+      "nobs": 229484,
+      "aic": 1021883.1157286239,
+      "bic": 1021893.4593172132,
+      "converged": true,
+      "optimizer_message": "CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_<=_PGTOL",
+      "gradient_norm": 4.440892076186212e-08,
+      "hessian_condition": 1.0,
+      "covariance": [
+        [
+          9.262643519995191e-06
+        ]
+      ],
+      "robust_covariance": null,
+      "start_values": {
+        "theta": 0.00013770361619286348,
+        "tau": 0.0008742028270649665,
+        "kappa": 1.967208882198673,
+        "lambda": 0.0
+      },
+      "metadata": {
+        "likelihood_type": "conditional_interval_approximation",
+        "previous_state_treatment": "observed_log_price_bin_midpoint",
+        "margin_fixed": true,
+        "multistart": 4,
+        "repeated_best_solutions": 4,
+        "base_half_life_minutes": 465.94991415119773,
+        "conditional_mean_half_life_minutes": 465.94991415119773,
+        "boundary_hit": false,
+        "weak_identification": false
+      }
+    },
+    "MOU": {
+      "model_name": "MOU-Interval-IFM",
+      "params": {
+        "theta": 0.00013770361619286348,
+        "tau": 0.0008742028270649665,
+        "kappa": 0.8935597371891805,
+        "lambda": 2.458657824339921
+      },
+      "loglik": -451127.5830027939,
+      "nobs": 229484,
+      "aic": 902259.1660055878,
+      "bic": 902279.8531827664,
+      "converged": true,
+      "optimizer_message": "CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_<=_PGTOL",
+      "gradient_norm": 8.881784201676231e-08,
+      "hessian_condition": 67.71562363510422,
+      "covariance": [
+        [
+          1.4477257009258763e-05,
+          -2.6432407284216993e-05
+        ],
+        [
+          -2.643240728421699e-05,
+          0.0009278153563298856
+        ]
+      ],
+      "robust_covariance": null,
+      "start_values": {
+        "theta": 0.00013770361619286348,
+        "tau": 0.0008742028270649665,
+        "kappa": 1.967208882198673,
+        "lambda": 0.0
+      },
+      "metadata": {
+        "likelihood_type": "conditional_interval_approximation",
+        "previous_state_treatment": "observed_log_price_bin_midpoint",
+        "margin_fixed": true,
+        "multistart": 4,
+        "repeated_best_solutions": 4,
+        "base_half_life_minutes": 1117.028776549498,
+        "conditional_mean_half_life_minutes": 297.75273283605947,
+        "boundary_hit": false,
+        "weak_identification": false
+      }
+    },
+    "margin_loglik": -1167091.2489777564
+  },
+  "USDC": {
+    "OU": {
+      "model_name": "OU-Interval-IFM",
+      "params": {
+        "theta": -0.0001349801417345034,
+        "tau": 0.0025209484117890246,
+        "kappa": 1.1008733241905713,
+        "lambda": 0.0
+      },
+      "loglik": -507150.6323561306,
+      "nobs": 229484,
+      "aic": 1014303.2647122612,
+      "bic": 1014313.6083008504,
+      "converged": true,
+      "optimizer_message": "CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_<=_PGTOL",
+      "gradient_norm": 4.4408921008381155e-08,
+      "hessian_condition": 1.0,
+      "covariance": [
+        [
+          8.807535121246699e-06
+        ]
+      ],
+      "robust_covariance": null,
+      "start_values": {
+        "theta": -0.0001349801417345034,
+        "tau": 0.0025209484117890246,
+        "kappa": 0.9585971601051255,
+        "lambda": 0.0
+      },
+      "metadata": {
+        "likelihood_type": "conditional_interval_approximation",
+        "previous_state_treatment": "observed_log_price_bin_midpoint",
+        "margin_fixed": true,
+        "multistart": 4,
+        "repeated_best_solutions": 4,
+        "base_half_life_minutes": 906.6728369862248,
+        "conditional_mean_half_life_minutes": 906.6728369862248,
+        "boundary_hit": false,
+        "weak_identification": false
+      }
+    },
+    "MOU": {
+      "model_name": "MOU-Interval-IFM",
+      "params": {
+        "theta": -0.0001349801417345034,
+        "tau": 0.0025209484117890246,
+        "kappa": 0.12974375348649841,
+        "lambda": 1.2345208945883543
+      },
+      "loglik": -341645.5795938047,
+      "nobs": 229484,
+      "aic": 683295.1591876094,
+      "bic": 683315.846364788,
+      "converged": true,
+      "optimizer_message": "CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_<=_PGTOL",
+      "gradient_norm": 9.155133649695052e-08,
+      "hessian_condition": 92.80917864639066,
+      "covariance": [
+        [
+          1.5544786295696253e-05,
+          4.1310784148569857e-07
+        ],
+        [
+          4.1310784148569084e-07,
+          0.0014426876306137628
+        ]
+      ],
+      "robust_covariance": null,
+      "start_values": {
+        "theta": -0.0001349801417345034,
+        "tau": 0.0025209484117890246,
+        "kappa": 0.9585971601051255,
+        "lambda": 0.0
+      },
+      "metadata": {
+        "likelihood_type": "conditional_interval_approximation",
+        "previous_state_treatment": "observed_log_price_bin_midpoint",
+        "margin_fixed": true,
+        "multistart": 4,
+        "repeated_best_solutions": 4,
+        "base_half_life_minutes": 7693.102081482407,
+        "conditional_mean_half_life_minutes": 731.6263317493491,
+        "boundary_hit": false,
+        "weak_identification": false
+      }
+    },
+    "margin_loglik": -1230069.3764880444
+  },
+  "DAI": {
+    "OU": {
+      "model_name": "OU-Interval-IFM",
+      "params": {
+        "theta": -4.175084636505096e-06,
+        "tau": 0.0023124502723869287,
+        "kappa": 3.9737444401422226,
+        "lambda": 0.0
+      },
+      "loglik": -1161426.053488926,
+      "nobs": 229484,
+      "aic": 2322854.106977852,
+      "bic": 2322864.4505664413,
+      "converged": true,
+      "optimizer_message": "CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_<=_PGTOL",
+      "gradient_norm": 8.881784250980039e-08,
+      "hessian_condition": 1.0,
+      "covariance": [
+        [
+          8.810940168424402e-06
+        ]
+      ],
+      "robust_covariance": null,
+      "start_values": {
+        "theta": -4.175084636505096e-06,
+        "tau": 0.0023124502723869287,
+        "kappa": 3.7035577722654622,
+        "lambda": 0.0
+      },
+      "metadata": {
+        "likelihood_type": "conditional_interval_approximation",
+        "previous_state_treatment": "observed_log_price_bin_midpoint",
+        "margin_fixed": true,
+        "multistart": 4,
+        "repeated_best_solutions": 4,
+        "base_half_life_minutes": 251.18171413423795,
+        "conditional_mean_half_life_minutes": 251.18171413423795,
+        "boundary_hit": false,
+        "weak_identification": false
+      }
+    },
+    "MOU": {
+      "model_name": "MOU-Interval-IFM",
+      "params": {
+        "theta": -4.175084636505096e-06,
+        "tau": 0.0023124502723869287,
+        "kappa": 0.162501717486428,
+        "lambda": 28.915035128795914
+      },
+      "loglik": -990292.4295819309,
+      "nobs": 229484,
+      "aic": 1980588.8591638617,
+      "bic": 1980609.5463410402,
+      "converged": true,
+      "optimizer_message": "CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_<=_PGTOL",
+      "gradient_norm": 1.2560739745807733e-07,
+      "hessian_condition": 3.635480387915216,
+      "covariance": [
+        [
+          2.3483050770841255e-05,
+          -1.2103657148810212e-05
+        ],
+        [
+          -1.2103657148810214e-05,
+          7.220113932372988e-05
+        ]
+      ],
+      "robust_covariance": null,
+      "start_values": {
+        "theta": -4.175084636505096e-06,
+        "tau": 0.0023124502723869287,
+        "kappa": 3.7035577722654622,
+        "lambda": 0.0
+      },
+      "metadata": {
+        "likelihood_type": "conditional_interval_approximation",
+        "previous_state_treatment": "observed_log_price_bin_midpoint",
+        "margin_fixed": true,
+        "multistart": 4,
+        "repeated_best_solutions": 4,
+        "base_half_life_minutes": 6142.285481319201,
+        "conditional_mean_half_life_minutes": 34.326564360761374,
+        "boundary_hit": false,
+        "weak_identification": false
+      }
+    },
+    "margin_loglik": -1816878.5090941684
+  }
+}

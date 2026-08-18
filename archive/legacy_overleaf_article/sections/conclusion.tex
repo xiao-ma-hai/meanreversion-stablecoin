@@ -1,0 +1,45 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+This paper develops a rigorous copula-based theory of mean-reverting Markov
+processes and examines its empirical relevance for USDT/USD.  The theory makes
+two distinctions that are essential in applications.  First, an invariant
+distribution or a decaying dependence coefficient is not, by itself, a
+directional mean-reversion result; the conditional drift must point toward the
+target.  Second, a finite-dimensional formula is not an observable model unless
+its transformation is invertible on the relevant support and its transition
+density is normalized.  These requirements preserve the valid affine and
+monotone OU/CIR constructions while explaining the empirical failure of several
+quadratic, exponential, and special-function branches.
+
+The mixed-copula construction is the main theoretical result.  A multiplicative
+mixture of a stationary transition copula and independence defines a consistent
+Markov semigroup, leaves the invariant marginal unchanged, and has a Poisson
+reset representation.  Its conditional centered mean is the base conditional
+mean multiplied by the no-reset probability, so the local generator acquires
+the transparent restoring term $\lambda(m-x)$.  This provides a parsimonious
+way to alter transition density shape and recovery speed without rebuilding the
+marginal distribution.
+
+The stablecoin evidence is consistent with the motivation for that separation,
+but it also defines its limits.  USDT/USD exhibits finite-horizon directional
+reversion, while a single OU transition fails density diagnostics.  The mixed-OU
+kernel is strongly favored in the matched in-sample boundary experiment, and
+reset mixtures improve out-of-sample log scores for Gaussian and two-scale
+Gaussian dependence.  The improvement is not generic across copula families,
+and a constant reset rate cannot reproduce the observed slow multi-horizon
+persistence.  The strongest five-minute forecasting model is instead a
+two-state OU with weakly identified slow-regime dynamics.  Accordingly, the
+evidence supports the mixed copula as a structurally coherent density extension,
+not as a universally dominant forecasting law or a uniquely identified model of
+redemption and arbitrage.
+
+Several extensions follow naturally.  Economic interpretation of reset risk
+requires covariates for liquidity, redemptions, reserve news, and market stress.
+Slow persistence calls for an explicitly augmented Markov state rather than a
+horizon-by-horizon scalar copula approximation.  Finally, the nonlocal pricing
+equation should be taken to bond or derivative data under a specified
+risk-neutral measure; it is not identified by a spot stablecoin series alone.
+These extensions preserve the paper's central principle: marginal behavior,
+temporal dependence, mean-reversion direction, and predictive performance must
+be modeled and tested separately.

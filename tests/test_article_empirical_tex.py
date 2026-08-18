@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-TEX = ROOT / "empirical_results_article.tex"
+TEX = ROOT / "archive" / "legacy_manuscripts" / "empirical_results_article.tex"
 
 
 def _without_comments(text: str) -> str:

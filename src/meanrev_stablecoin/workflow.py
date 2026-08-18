@@ -745,6 +745,60 @@ def run_article_core_extensions(config: dict[str, Any], force: bool = False, dry
     }
 
 
+def run_major_revision_cycle(config: dict[str, Any], force: bool = False, dry_run: bool = False) -> dict[str, Any]:
+    """Run the margin-constrained mixed-OU and latent-noise revision cycle."""
+    from .major_revision import run_major_revision_empirics
+
+    logger = setup_logging("17_major_revision_cycle", config)
+    target = _paths(config)["tables"] / "invariant_margin_audit.csv"
+    if dry_run:
+        logger.info("DRY RUN major revision cycle")
+        return {"dry_run": True}
+    if target.exists() and not force:
+        logger.info("Using cached major-revision outputs: %s", target)
+        return {"cached": True, "path": str(target)}
+    result = run_major_revision_empirics(
+        _load_prepared(config), config,
+        _paths(config)["tables"], _paths(config)["models"], _paths(config)["figures"],
+    )
+    logger.info("Major revision empirical cycle complete: %s", result)
+    return result
+
+
+def run_major_revision_path_bootstrap(config: dict[str, Any], force: bool = False, dry_run: bool = False) -> dict[str, Any]:
+    """Run the continuous-segment OU-null path bootstrap pilot."""
+    from .estimation.bootstrap import path_level_ou_null_bootstrap
+
+    logger = setup_logging("18_major_revision_path_bootstrap", config)
+    target = _paths(config)["tables"] / "path_level_mou_bootstrap_summary.csv"
+    if dry_run:
+        logger.info("DRY RUN major revision path bootstrap")
+        return {"dry_run": True}
+    if target.exists() and not force:
+        logger.info("Using cached path-bootstrap outputs: %s", target)
+        return {"cached": True, "path": str(target)}
+    df = select_sample(_load_prepared(config), "baseline").sort_values("timestamp")
+    settings = config["major_revision"]
+    segments, summary, payload = path_level_ou_null_bootstrap(
+        df["log_price"].to_numpy(dtype=float),
+        df["timestamp"].to_numpy(dtype=np.int64),
+        replications=int(settings["path_bootstrap_replications_pilot"]),
+        maximum_pairs=int(settings["path_bootstrap_pairs"]),
+        parallel_jobs=int(settings["path_bootstrap_parallel_jobs"]),
+        seed=int(config["project"]["random_seed"]),
+    )
+    write_csv(summary, target)
+    write_csv(payload["draws"], _paths(config)["tables"] / "path_level_mou_bootstrap_draws.csv")
+    write_json({
+        "observed": payload["observed"],
+        "selected_segment_lengths": [len(segment) for segment in segments],
+        "summary": summary.to_dict(orient="records"),
+    }, _paths(config)["models"] / "path_level_mou_bootstrap.json")
+    logger.info("Path bootstrap pilot complete: %s", summary.to_dict(orient="records"))
+    return {"replications_per_initialization": int(settings["path_bootstrap_replications_pilot"]),
+            "formal_requirement_met": bool(summary["formal_requirement_met"].all())}
+
+
 def run_full_model_suite(config: dict[str, Any], force: bool = False, dry_run: bool = False) -> dict[str, Any]:
     """Run the frozen second-stage registry without changing legacy MVP outputs."""
     from .full_suite import run_full_suite

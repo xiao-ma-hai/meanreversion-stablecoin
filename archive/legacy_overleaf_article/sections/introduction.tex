@@ -1,0 +1,95 @@
+\section{Introduction}
+\label{sec:introduction}
+
+Mean reversion is a central organizing principle in continuous-time finance.
+The Gaussian specification of \citet{Vasicek1977} and the square-root diffusion
+of \citet{CoxIngersollRoss1985} remain canonical because they combine an
+economically interpretable restoring force with tractable transition laws and,
+in the interest-rate setting, tractable pricing implications.  Subsequent
+empirical work shows, however, that the conditional distribution of financial
+state variables is often more nonlinear and state dependent than either model
+allows.  \citet{ChanEtAl1992} compare alternative short-rate diffusions,
+\citet{AitSahalia1996} documents nonlinear drift and volatility, and
+\citet{BibbySorensen1995}, \citet{AitSahalia2002}, and \citet{Kessler1997}
+develop methods for discretely observed diffusions.  Standard treatments of
+the underlying stochastic calculus and term-structure models include
+\citet{Shreve2004} and \citet{BrigoMercurio2006}; the CIR boundary and solution
+structure are further discussed by \citet{PlatenHeath2006}.  These results motivate a model class that
+retains a precise notion of reversion while relaxing the tight link between a
+diffusion's marginal law and its serial dependence.
+
+Copulas provide a natural separation.  \citet{DarsowNguyenOlsen1992} relate
+copulas to Markov transition operators through the star product, while
+\citet{ChenFan2006} and \citet{ChenWuYi2009} develop semiparametric estimation
+for stationary copula-based Markov models.  The diffusion construction of
+\citet{BibbonaSacerdoteTorre2016} further shows how monotone space--time
+transformations preserve serial dependence while changing the marginals, and
+\citet{FangJiangLiuYang2020} studies copula-based Markov processes directly.
+This literature establishes the probabilistic and econometric foundations for
+modeling invariant marginals and temporal dependence separately.  It does not,
+by itself, guarantee the directional restoring force required by an economic
+notion of mean reversion.  Our theory makes that restriction explicit and
+identifies when it is preserved by transformations and copula mixtures.
+
+Stablecoins provide a particularly sharp application; \citet{AnteEtAl2023}
+survey the rapidly growing empirical literature.  Their market value is
+designed to remain close to a reference asset, so the relevant state variable
+is the deviation from the peg rather than an unrestricted cryptocurrency
+return.  Nevertheless, deviations are neither Gaussian nor uniformly short
+lived.  \citet{LyonsViswanathNatraj2023} connect Tether's peg stability to the
+design and accessibility of arbitrage, whereas \citet{DuanUrquhart2023} find
+that the speed at which deviations are corrected varies substantially across
+stablecoins and over time.  Time variation and nonlinear stabilization also
+appear in \citet{DjogbenouInanJasiak2023} and
+\citet{HuiWongLo2025}; \citet{BergaultEtAl2024} instead represent pegged-asset
+dynamics with nested OU factors.  \citet{MaZengZhang2023} emphasizes the link
+between run incentives and the centralization of arbitrage.  Tail events raise a separate run-risk dimension:
+\citet{LiuMakarovSchoar2023} study the Terra--Luna collapse,
+\citet{AhmedAldasoroDuley2025} show how information about reserve quality can
+alter run incentives, and \citet{EichengreenNguyenViswanathNatraj2025}
+construct market-based measures of stablecoin devaluation risk.  A credible
+empirical model must therefore represent both ordinary correction toward the
+peg and occasional transitions that are too wide, persistent, or asymmetric
+for a single Gaussian diffusion.
+
+This paper develops such a model in three steps.  Section~2 gives a
+measure-theoretically precise Markov--copula foundation and distinguishes local
+drift reversion from finite-horizon conditional-mean reversion and stationarity.
+Section~3 constructs mean-reverting processes by monotone transformations of OU
+and CIR diffusions.  The observable transition density follows from the inverse
+map and its Jacobian, which also reveals when a formal differential-equation
+solution fails as an empirical model because it is not globally monotone or
+does not cover the observed support.  Section~4 introduces the central
+copula-based construction.  Mixing a stationary transition copula with the
+independence copula under a multiplicative survival weight yields a genuine
+Markov semigroup, an exact transition density, and a Poisson-reset
+interpretation.  The reset intensity augments the base mean-reversion rate
+without altering the invariant marginal.
+
+The empirical analysis evaluates these restrictions without selecting models
+by complexity.  All theoretical families with a finite-dimensional observable
+density are estimated or assigned a retained monotonicity, support, endpoint,
+or identification diagnosis.  This is particularly important at five-minute
+frequency, where measurement effects can distort OU estimates
+\citep{HolyTomanova2018}.  Models are compared on a common log-price
+conditional-density measure using an untouched 2024 validation sample, with
+2025 retained as post-selection evidence.  This design matters for the main
+conclusion.  The mixed-OU kernel produces a large in-sample likelihood gain and
+the independent-reset component improves the validation score of Gaussian and
+two-scale Gaussian copulas.  Yet it is redundant for the fitted Student-$t$
+copula, deteriorates the fitted Archimedean mixtures, and does not by itself
+reproduce the slow dependence observed across horizons.  A two-state OU obtains
+the best five-minute predictive score, although its slow regime is weakly
+identified.  Thus the copula-reset model is the paper's principal structural
+contribution, while predictive model selection remains an empirical result
+rather than a maintained claim.
+
+The contribution is consequently both constructive and diagnostic.  On the
+constructive side, the paper supplies verifiable conditions under which a
+copula-based process has an observable Markov density and a restoring drift,
+together with exact OU, CIR, reset, and pricing formulas.  On the diagnostic
+side, it shows which formally derived transformations do not define usable
+one-dimensional models and which empirical extensions require an augmented
+state.  This distinction aligns the theoretical claims with the evidence and
+prevents a better in-sample fit from being interpreted as universal
+out-of-sample or economic identification.

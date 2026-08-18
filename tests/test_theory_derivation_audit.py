@@ -30,7 +30,9 @@ def test_theory_audit_retains_invalid_and_conditional_results() -> None:
 
 
 def test_standalone_theory_audit_states_k_negative_distinction() -> None:
-    text = (ROOT / "theoretical_derivation_audit.tex").read_text(encoding="utf-8")
+    text = (
+        ROOT / "manuscript" / "audits" / "theoretical_derivation_audit.tex"
+    ).read_text(encoding="utf-8")
     assert "\\min\\{B_0,B_0+\\eta\\}\\geq0" in text
     assert "超临界平方根扩散" in text
     assert "u_\\tau=zu_{zz}" in text

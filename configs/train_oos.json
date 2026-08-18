@@ -1,0 +1,18 @@
+{
+  "purpose": "frozen training estimates and out-of-sample evaluation",
+  "assets": ["USDT", "USDC", "DAI"],
+  "frequency_minutes": 5,
+  "training_start_utc": "2021-01-01T00:00:00Z",
+  "training_end_utc": "2023-12-31T23:59:59Z",
+  "validation_start_utc": "2024-01-01T00:00:00Z",
+  "validation_end_utc": "2024-12-31T23:59:59Z",
+  "post_selection_start_utc": "2025-01-01T00:00:00Z",
+  "post_selection_end_utc": "2025-12-31T23:59:59Z",
+  "price_proxy": "close",
+  "observation_model": "nearest-tick log-price intervals",
+  "dynamic_likelihood": "conditional interval approximation",
+  "pair_rule": "all exact 300-second pairs; no imputation",
+  "parameter_freeze": "margin and dynamics estimated only on 2021-2023",
+  "uncertainty": "UTC-day cluster standard errors for pair-weighted mean score differences",
+  "test_terminology": "2025 is post-selection evaluation, not an untouched test set"
+}

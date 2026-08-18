@@ -1,0 +1,4 @@
+first_asset,second_asset,delta_kappa,delta_lambda,delta_conditional_mean_half_life_minutes,synchronous_ci_lower,synchronous_ci_upper,formal_inference_gate,inference_note
+USDT,USDC,0.7638159837026821,1.2241369297515665,-433.87359891328964,,,False,synchronous day-block refit deferred until full filtered likelihood passes size/power validation
+USDT,DAI,0.7310580197027525,-26.456377304455994,263.4261684752981,,,False,synchronous day-block refit deferred until full filtered likelihood passes size/power validation
+USDC,DAI,-0.032757963999929585,-27.68051423420756,697.2997673885877,,,False,synchronous day-block refit deferred until full filtered likelihood passes size/power validation

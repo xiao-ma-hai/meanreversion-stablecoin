@@ -1,0 +1,13 @@
+evaluation_sample,model,mean_log_score,total_log_score,mean_model_copula_log_score,copula_score_warning,nobs,fit_sample
+training_2021_2023,OUF,7.877346169763801,945281.5403716562,2.2869752802587255,model-specific PIT; compare only jointly with margin audit,120000,training_2021_2023
+training_2021_2023,MOU-Peg,8.064804101366525,967776.4921639829,2.4151408826688097,model-specific PIT; compare only jointly with margin audit,120000,training_2021_2023
+training_2021_2023,MOU-IFM,8.063860897912946,967663.3077495536,2.399765291427738,model-specific PIT; compare only jointly with margin audit,120000,training_2021_2023
+training_2021_2023,MOU-UQML,8.128564662071737,975427.7594486084,3.8183376985931687,model-specific PIT; compare only jointly with margin audit,120000,training_2021_2023
+validation_2024,OUF,8.21352062228777,863388.8607736458,2.298561454761083,model-specific PIT; compare only jointly with margin audit,105118,training_2021_2023
+validation_2024,MOU-Peg,8.425929026803663,885716.8074395475,2.541156968255129,model-specific PIT; compare only jointly with margin audit,105118,training_2021_2023
+validation_2024,MOU-IFM,8.426299020564505,885755.7004436996,2.559199419496782,model-specific PIT; compare only jointly with margin audit,105118,training_2021_2023
+validation_2024,MOU-UQML,8.436460315299593,886823.8354236627,4.126057306648284,model-specific PIT; compare only jointly with margin audit,105118,training_2021_2023
+test_2025,OUF,8.285028378371011,869099.4768911191,2.124162237279034,model-specific PIT; compare only jointly with margin audit,104900,training_2021_2023
+test_2025,MOU-Peg,8.52307840445727,894070.9246275676,2.4928090133793583,model-specific PIT; compare only jointly with margin audit,104900,training_2021_2023
+test_2025,MOU-IFM,8.523476952044996,894112.7322695202,2.5066037124003757,model-specific PIT; compare only jointly with margin audit,104900,training_2021_2023
+test_2025,MOU-UQML,8.540405669860315,895888.5547683471,4.226162070473135,model-specific PIT; compare only jointly with margin audit,104900,training_2021_2023

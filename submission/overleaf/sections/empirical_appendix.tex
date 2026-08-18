@@ -1,0 +1,38 @@
+\section{Empirical Reproducibility and Deferred Gates}
+\label{app:empirical}
+
+All raw files are immutable and recorded by SHA-256.  Timestamps are UTC,
+missing bars are not imputed, and exact-horizon construction never bridges a
+gap.  The active research sequence is:
+\begin{verbatim}
+python scripts/20_audit_tick_and_ties.py
+python scripts/25_three_coin_data_audit.py
+python scripts/21_interval_likelihood_research.py
+python scripts/26_cross_stablecoin_comparison.py
+python scripts/27_frequency_semigroup_test.py
+python scripts/19_build_submission_paper.py
+\end{verbatim}
+
+The generated tables distinguish the following objects.  The file
+\path{full_sample_model_estimates.csv} contains 2021--2025 descriptive fits;
+\path{training_model_estimates.csv} contains parameters estimated only on
+2021--2023; and \path{oos_scores_with_uncertainty.csv} scores those frozen
+parameters in 2024 and post-selection 2025.  The common-pair calendar and
+every stratified frequency sample have separate hashes.
+
+The original theoretical model registry remains in the replication archive.
+Models with valid finite-dimensional densities are not deleted when they fail
+monotonicity, support, numerical identification, or an invariant-margin gate.
+They are not re-ranked under the old continuous point-density score, however,
+because that score is invalid for tied transaction prices.  A fair renewed
+comparison requires either the same interval observation likelihood or the
+full filter for every candidate.
+
+The current formal blockers are: (i) production-scale evaluation of the full
+grid/adaptive filter in \eqref{eq:grid-filter}; (ii) size and power validation
+of a quantized-path boundary bootstrap; (iii) synchronous UTC-day bootstrap
+confidence intervals for cross-asset parameter differences; (iv) a
+multi-horizon profile or Godambe analysis that separates $\kappa$ from
+$\lambda$; and (v) resolution of the failed one-to-five-minute semigroup
+pretest.  The manuscript reports these as unmet gates rather than treating
+optimizer convergence or Hessian condition numbers as identification proofs.

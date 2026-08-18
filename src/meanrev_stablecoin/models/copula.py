@@ -4,6 +4,7 @@ from dataclasses import dataclass
 
 import numpy as np
 from scipy.optimize import minimize
+from scipy.stats import rankdata
 from scipy.special import expit, logit, logsumexp, ndtr, ndtri
 
 
@@ -17,8 +18,12 @@ class EmpiricalMarginal:
         return cls(np.sort(np.asarray(values, dtype=float)), clip)
 
     def cdf(self, values: np.ndarray) -> np.ndarray:
-        ranks = np.searchsorted(self.sorted_values, np.asarray(values), side="right")
-        u = (ranks - 0.5) / len(self.sorted_values)
+        values = np.asarray(values)
+        left = np.searchsorted(self.sorted_values, values, side="left")
+        right = np.searchsorted(self.sorted_values, values, side="right")
+        # At a training atom this is exactly the mid-rank convention
+        # (average rank - 1/2)/n; between atoms it equals the empirical CDF.
+        u = (left + right) / (2.0 * len(self.sorted_values))
         return np.clip(u, self.clip, 1 - self.clip)
 
     def quantile(self, u: np.ndarray) -> np.ndarray:
@@ -27,9 +32,29 @@ class EmpiricalMarginal:
 
 def rank_pseudo_observations(values: np.ndarray, clip: float = 1e-8) -> np.ndarray:
     values = np.asarray(values, dtype=float)
+    ranks = rankdata(values, method="average")
+    u = (ranks - 0.5) / len(values)
+    return np.clip(u, clip, 1 - clip)
+
+
+def randomized_pseudo_observations(
+    values: np.ndarray,
+    rng: np.random.Generator,
+    clip: float = 1e-8,
+) -> np.ndarray:
+    """Randomized distributional-transform ranks for tie sensitivity checks."""
+    values = np.asarray(values, dtype=float)
     order = np.argsort(values, kind="mergesort")
+    sorted_values = values[order]
     ranks = np.empty(len(values), dtype=float)
-    ranks[order] = np.arange(1, len(values) + 1)
+    start = 0
+    while start < len(values):
+        stop = start + 1
+        while stop < len(values) and sorted_values[stop] == sorted_values[start]:
+            stop += 1
+        tie_ranks = np.arange(start + 1, stop + 1, dtype=float)
+        ranks[order[start:stop]] = rng.permutation(tie_ranks)
+        start = stop
     u = (ranks - 0.5) / len(values)
     return np.clip(u, clip, 1 - clip)
 
